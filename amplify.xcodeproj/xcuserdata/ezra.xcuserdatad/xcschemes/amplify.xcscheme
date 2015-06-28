@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "631CF9BF1B407C0C006CE0FE"
+               BlueprintIdentifier = "633C89011B40952100035BFD"
                BuildableName = "amplify.app"
                BlueprintName = "amplify"
                ReferencedContainer = "container:amplify.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "631CF9CF1B407C0C006CE0FE"
+               BlueprintIdentifier = "633C89141B40952100035BFD"
                BuildableName = "amplifyTests.xctest"
                BlueprintName = "amplifyTests"
                ReferencedContainer = "container:amplify.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "631CF9CF1B407C0C006CE0FE"
+               BlueprintIdentifier = "633C89141B40952100035BFD"
                BuildableName = "amplifyTests.xctest"
                BlueprintName = "amplifyTests"
                ReferencedContainer = "container:amplify.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "631CF9BF1B407C0C006CE0FE"
+            BlueprintIdentifier = "633C89011B40952100035BFD"
             BuildableName = "amplify.app"
             BlueprintName = "amplify"
             ReferencedContainer = "container:amplify.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "631CF9BF1B407C0C006CE0FE"
+            BlueprintIdentifier = "633C89011B40952100035BFD"
             BuildableName = "amplify.app"
             BlueprintName = "amplify"
             ReferencedContainer = "container:amplify.xcodeproj">
@@ -95,7 +95,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "631CF9BF1B407C0C006CE0FE"
+            BlueprintIdentifier = "633C89011B40952100035BFD"
             BuildableName = "amplify.app"
             BlueprintName = "amplify"
             ReferencedContainer = "container:amplify.xcodeproj">

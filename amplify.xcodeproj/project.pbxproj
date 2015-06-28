@@ -7,42 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		631CF9C61B407C0C006CE0FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631CF9C51B407C0C006CE0FE /* AppDelegate.swift */; };
-		631CF9C81B407C0C006CE0FE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631CF9C71B407C0C006CE0FE /* Images.xcassets */; };
-		631CF9CB1B407C0C006CE0FE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631CF9C91B407C0C006CE0FE /* MainMenu.xib */; };
-		631CF9D71B407C0C006CE0FE /* amplifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631CF9D61B407C0C006CE0FE /* amplifyTests.swift */; };
+		633C89091B40952100035BFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C89081B40952100035BFD /* AppDelegate.m */; };
+		633C890B1B40952100035BFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C890A1B40952100035BFD /* main.m */; };
+		633C890D1B40952100035BFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633C890C1B40952100035BFD /* Images.xcassets */; };
+		633C89101B40952100035BFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C890E1B40952100035BFD /* MainMenu.xib */; };
+		633C891C1B40952100035BFD /* amplifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C891B1B40952100035BFD /* amplifyTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		631CF9D11B407C0C006CE0FE /* PBXContainerItemProxy */ = {
+		633C89161B40952100035BFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 631CF9B81B407C0C006CE0FE /* Project object */;
+			containerPortal = 633C88FA1B40952100035BFD /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 631CF9BF1B407C0C006CE0FE;
+			remoteGlobalIDString = 633C89011B40952100035BFD;
 			remoteInfo = amplify;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		631CF9C01B407C0C006CE0FE /* amplify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amplify.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		631CF9C41B407C0C006CE0FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		631CF9C51B407C0C006CE0FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		631CF9C71B407C0C006CE0FE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		631CF9CA1B407C0C006CE0FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		631CF9D01B407C0C006CE0FE /* amplifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amplifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		631CF9D51B407C0C006CE0FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		631CF9D61B407C0C006CE0FE /* amplifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = amplifyTests.swift; sourceTree = "<group>"; };
+		633C89021B40952100035BFD /* amplify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amplify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		633C89061B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633C89071B40952100035BFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		633C89081B40952100035BFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		633C890A1B40952100035BFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		633C890C1B40952100035BFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		633C890F1B40952100035BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		633C89151B40952100035BFD /* amplifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amplifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		633C891A1B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633C891B1B40952100035BFD /* amplifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amplifyTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		631CF9BD1B407C0C006CE0FE /* Frameworks */ = {
+		633C88FF1B40952100035BFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		631CF9CD1B407C0C006CE0FE /* Frameworks */ = {
+		633C89121B40952100035BFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,56 +55,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		631CF9B71B407C0C006CE0FE = {
+		633C88F91B40952100035BFD = {
 			isa = PBXGroup;
 			children = (
-				631CF9C21B407C0C006CE0FE /* amplify */,
-				631CF9D31B407C0C006CE0FE /* amplifyTests */,
-				631CF9C11B407C0C006CE0FE /* Products */,
+				633C89041B40952100035BFD /* amplify */,
+				633C89181B40952100035BFD /* amplifyTests */,
+				633C89031B40952100035BFD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		631CF9C11B407C0C006CE0FE /* Products */ = {
+		633C89031B40952100035BFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				631CF9C01B407C0C006CE0FE /* amplify.app */,
-				631CF9D01B407C0C006CE0FE /* amplifyTests.xctest */,
+				633C89021B40952100035BFD /* amplify.app */,
+				633C89151B40952100035BFD /* amplifyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		631CF9C21B407C0C006CE0FE /* amplify */ = {
+		633C89041B40952100035BFD /* amplify */ = {
 			isa = PBXGroup;
 			children = (
-				631CF9C51B407C0C006CE0FE /* AppDelegate.swift */,
-				631CF9C71B407C0C006CE0FE /* Images.xcassets */,
-				631CF9C91B407C0C006CE0FE /* MainMenu.xib */,
-				631CF9C31B407C0C006CE0FE /* Supporting Files */,
+				633C89071B40952100035BFD /* AppDelegate.h */,
+				633C89081B40952100035BFD /* AppDelegate.m */,
+				633C890C1B40952100035BFD /* Images.xcassets */,
+				633C890E1B40952100035BFD /* MainMenu.xib */,
+				633C89051B40952100035BFD /* Supporting Files */,
 			);
 			path = amplify;
 			sourceTree = "<group>";
 		};
-		631CF9C31B407C0C006CE0FE /* Supporting Files */ = {
+		633C89051B40952100035BFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				631CF9C41B407C0C006CE0FE /* Info.plist */,
+				633C89061B40952100035BFD /* Info.plist */,
+				633C890A1B40952100035BFD /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		631CF9D31B407C0C006CE0FE /* amplifyTests */ = {
+		633C89181B40952100035BFD /* amplifyTests */ = {
 			isa = PBXGroup;
 			children = (
-				631CF9D61B407C0C006CE0FE /* amplifyTests.swift */,
-				631CF9D41B407C0C006CE0FE /* Supporting Files */,
+				633C891B1B40952100035BFD /* amplifyTests.m */,
+				633C89191B40952100035BFD /* Supporting Files */,
 			);
 			path = amplifyTests;
 			sourceTree = "<group>";
 		};
-		631CF9D41B407C0C006CE0FE /* Supporting Files */ = {
+		633C89191B40952100035BFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				631CF9D51B407C0C006CE0FE /* Info.plist */,
+				633C891A1B40952100035BFD /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -109,13 +114,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		631CF9BF1B407C0C006CE0FE /* amplify */ = {
+		633C89011B40952100035BFD /* amplify */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 631CF9DA1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplify" */;
+			buildConfigurationList = 633C891F1B40952100035BFD /* Build configuration list for PBXNativeTarget "amplify" */;
 			buildPhases = (
-				631CF9BC1B407C0C006CE0FE /* Sources */,
-				631CF9BD1B407C0C006CE0FE /* Frameworks */,
-				631CF9BE1B407C0C006CE0FE /* Resources */,
+				633C88FE1B40952100035BFD /* Sources */,
+				633C88FF1B40952100035BFD /* Frameworks */,
+				633C89001B40952100035BFD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -123,46 +128,46 @@
 			);
 			name = amplify;
 			productName = amplify;
-			productReference = 631CF9C01B407C0C006CE0FE /* amplify.app */;
+			productReference = 633C89021B40952100035BFD /* amplify.app */;
 			productType = "com.apple.product-type.application";
 		};
-		631CF9CF1B407C0C006CE0FE /* amplifyTests */ = {
+		633C89141B40952100035BFD /* amplifyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 631CF9DD1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplifyTests" */;
+			buildConfigurationList = 633C89221B40952100035BFD /* Build configuration list for PBXNativeTarget "amplifyTests" */;
 			buildPhases = (
-				631CF9CC1B407C0C006CE0FE /* Sources */,
-				631CF9CD1B407C0C006CE0FE /* Frameworks */,
-				631CF9CE1B407C0C006CE0FE /* Resources */,
+				633C89111B40952100035BFD /* Sources */,
+				633C89121B40952100035BFD /* Frameworks */,
+				633C89131B40952100035BFD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				631CF9D21B407C0C006CE0FE /* PBXTargetDependency */,
+				633C89171B40952100035BFD /* PBXTargetDependency */,
 			);
 			name = amplifyTests;
 			productName = amplifyTests;
-			productReference = 631CF9D01B407C0C006CE0FE /* amplifyTests.xctest */;
+			productReference = 633C89151B40952100035BFD /* amplifyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		631CF9B81B407C0C006CE0FE /* Project object */ = {
+		633C88FA1B40952100035BFD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Ezra Zigmond";
 				TargetAttributes = {
-					631CF9BF1B407C0C006CE0FE = {
+					633C89011B40952100035BFD = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
-					631CF9CF1B407C0C006CE0FE = {
+					633C89141B40952100035BFD = {
 						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 631CF9BF1B407C0C006CE0FE;
+						TestTargetID = 633C89011B40952100035BFD;
 					};
 				};
 			};
-			buildConfigurationList = 631CF9BB1B407C0C006CE0FE /* Build configuration list for PBXProject "amplify" */;
+			buildConfigurationList = 633C88FD1B40952100035BFD /* Build configuration list for PBXProject "amplify" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -170,28 +175,28 @@
 				en,
 				Base,
 			);
-			mainGroup = 631CF9B71B407C0C006CE0FE;
-			productRefGroup = 631CF9C11B407C0C006CE0FE /* Products */;
+			mainGroup = 633C88F91B40952100035BFD;
+			productRefGroup = 633C89031B40952100035BFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				631CF9BF1B407C0C006CE0FE /* amplify */,
-				631CF9CF1B407C0C006CE0FE /* amplifyTests */,
+				633C89011B40952100035BFD /* amplify */,
+				633C89141B40952100035BFD /* amplifyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		631CF9BE1B407C0C006CE0FE /* Resources */ = {
+		633C89001B40952100035BFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				631CF9C81B407C0C006CE0FE /* Images.xcassets in Resources */,
-				631CF9CB1B407C0C006CE0FE /* MainMenu.xib in Resources */,
+				633C890D1B40952100035BFD /* Images.xcassets in Resources */,
+				633C89101B40952100035BFD /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		631CF9CE1B407C0C006CE0FE /* Resources */ = {
+		633C89131B40952100035BFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -201,37 +206,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		631CF9BC1B407C0C006CE0FE /* Sources */ = {
+		633C88FE1B40952100035BFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				631CF9C61B407C0C006CE0FE /* AppDelegate.swift in Sources */,
+				633C890B1B40952100035BFD /* main.m in Sources */,
+				633C89091B40952100035BFD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		631CF9CC1B407C0C006CE0FE /* Sources */ = {
+		633C89111B40952100035BFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				631CF9D71B407C0C006CE0FE /* amplifyTests.swift in Sources */,
+				633C891C1B40952100035BFD /* amplifyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		631CF9D21B407C0C006CE0FE /* PBXTargetDependency */ = {
+		633C89171B40952100035BFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 631CF9BF1B407C0C006CE0FE /* amplify */;
-			targetProxy = 631CF9D11B407C0C006CE0FE /* PBXContainerItemProxy */;
+			target = 633C89011B40952100035BFD /* amplify */;
+			targetProxy = 633C89161B40952100035BFD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		631CF9C91B407C0C006CE0FE /* MainMenu.xib */ = {
+		633C890E1B40952100035BFD /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				631CF9CA1B407C0C006CE0FE /* Base */,
+				633C890F1B40952100035BFD /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -239,7 +245,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		631CF9D81B407C0C006CE0FE /* Debug */ = {
+		633C891D1B40952100035BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -279,11 +285,10 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		631CF9D91B407C0C006CE0FE /* Release */ = {
+		633C891E1B40952100035BFD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -319,7 +324,7 @@
 			};
 			name = Release;
 		};
-		631CF9DB1B407C0C006CE0FE /* Debug */ = {
+		633C89201B40952100035BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -330,7 +335,7 @@
 			};
 			name = Debug;
 		};
-		631CF9DC1B407C0C006CE0FE /* Release */ = {
+		633C89211B40952100035BFD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -341,7 +346,7 @@
 			};
 			name = Release;
 		};
-		631CF9DE1B407C0C006CE0FE /* Debug */ = {
+		633C89231B40952100035BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -361,7 +366,7 @@
 			};
 			name = Debug;
 		};
-		631CF9DF1B407C0C006CE0FE /* Release */ = {
+		633C89241B40952100035BFD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -380,32 +385,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		631CF9BB1B407C0C006CE0FE /* Build configuration list for PBXProject "amplify" */ = {
+		633C88FD1B40952100035BFD /* Build configuration list for PBXProject "amplify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				631CF9D81B407C0C006CE0FE /* Debug */,
-				631CF9D91B407C0C006CE0FE /* Release */,
+				633C891D1B40952100035BFD /* Debug */,
+				633C891E1B40952100035BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		631CF9DA1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplify" */ = {
+		633C891F1B40952100035BFD /* Build configuration list for PBXNativeTarget "amplify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				631CF9DB1B407C0C006CE0FE /* Debug */,
-				631CF9DC1B407C0C006CE0FE /* Release */,
+				633C89201B40952100035BFD /* Debug */,
+				633C89211B40952100035BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		631CF9DD1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplifyTests" */ = {
+		633C89221B40952100035BFD /* Build configuration list for PBXNativeTarget "amplifyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				631CF9DE1B407C0C006CE0FE /* Debug */,
-				631CF9DF1B407C0C006CE0FE /* Release */,
+				633C89231B40952100035BFD /* Debug */,
+				633C89241B40952100035BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 631CF9B81B407C0C006CE0FE /* Project object */;
+	rootObject = 633C88FA1B40952100035BFD /* Project object */;
 }
