@@ -10,9 +10,9 @@
 		633C89091B40952100035BFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C89081B40952100035BFD /* AppDelegate.m */; };
 		633C890B1B40952100035BFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C890A1B40952100035BFD /* main.m */; };
 		633C890D1B40952100035BFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633C890C1B40952100035BFD /* Images.xcassets */; };
-		633C89101B40952100035BFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C890E1B40952100035BFD /* MainMenu.xib */; };
 		633C891C1B40952100035BFD /* amplifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C891B1B40952100035BFD /* amplifyTests.m */; };
 		633C89281B409EF300035BFD /* AmplifyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C89271B409EF300035BFD /* AmplifyMenu.m */; };
+		63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD8C911B40A6DD00FBD29D /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,13 +32,13 @@
 		633C89081B40952100035BFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		633C890A1B40952100035BFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		633C890C1B40952100035BFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		633C890F1B40952100035BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		633C89151B40952100035BFD /* amplifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amplifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		633C891A1B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C891B1B40952100035BFD /* amplifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amplifyTests.m; sourceTree = "<group>"; };
 		633C89251B40980300035BFD /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		633C89261B409EF300035BFD /* AmplifyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyMenu.h; sourceTree = "<group>"; };
 		633C89271B409EF300035BFD /* AmplifyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyMenu.m; sourceTree = "<group>"; };
+		63DD8C911B40A6DD00FBD29D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 				633C89071B40952100035BFD /* AppDelegate.h */,
 				633C89081B40952100035BFD /* AppDelegate.m */,
 				633C890C1B40952100035BFD /* Images.xcassets */,
-				633C890E1B40952100035BFD /* MainMenu.xib */,
 				633C89051B40952100035BFD /* Supporting Files */,
+				63DD8C911B40A6DD00FBD29D /* MainMenu.xib */,
 				633C89261B409EF300035BFD /* AmplifyMenu.h */,
 				633C89271B409EF300035BFD /* AmplifyMenu.m */,
 			);
@@ -180,7 +180,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 633C88F91B40952100035BFD;
 			productRefGroup = 633C89031B40952100035BFD /* Products */;
@@ -199,7 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				633C890D1B40952100035BFD /* Images.xcassets in Resources */,
-				633C89101B40952100035BFD /* MainMenu.xib in Resources */,
+				63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,17 +240,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		633C890E1B40952100035BFD /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				633C890F1B40952100035BFD /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		633C891D1B40952100035BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -289,7 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -326,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -339,6 +327,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = amplify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -350,6 +339,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = amplify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
