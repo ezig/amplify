@@ -7,13 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "Spotify.h"
 
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSMenu *statusMenu;
 
 @property (strong, nonatomic) NSStatusItem *statusItem;
-
+@property (strong, nonatomic) SpotifyApplication *spotify;
 @end
 
 @implementation AppDelegate
@@ -27,6 +28,7 @@
     self.statusItem.image = icon;
     self.statusItem.menu = self.statusMenu;
     
+    self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

@@ -35,6 +35,7 @@
 		633C89151B40952100035BFD /* amplifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amplifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		633C891A1B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C891B1B40952100035BFD /* amplifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amplifyTests.m; sourceTree = "<group>"; };
+		633C89251B40980300035BFD /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 		633C89041B40952100035BFD /* amplify */ = {
 			isa = PBXGroup;
 			children = (
+				633C89251B40980300035BFD /* Spotify.h */,
 				633C89071B40952100035BFD /* AppDelegate.h */,
 				633C89081B40952100035BFD /* AppDelegate.m */,
 				633C890C1B40952100035BFD /* Images.xcassets */,
@@ -401,6 +403,7 @@
 				633C89211B40952100035BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		633C89221B40952100035BFD /* Build configuration list for PBXNativeTarget "amplifyTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +412,7 @@
 				633C89241B40952100035BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
