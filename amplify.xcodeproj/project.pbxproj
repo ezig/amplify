@@ -12,6 +12,7 @@
 		633C890D1B40952100035BFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633C890C1B40952100035BFD /* Images.xcassets */; };
 		633C89101B40952100035BFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C890E1B40952100035BFD /* MainMenu.xib */; };
 		633C891C1B40952100035BFD /* amplifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C891B1B40952100035BFD /* amplifyTests.m */; };
+		633C89281B409EF300035BFD /* AmplifyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C89271B409EF300035BFD /* AmplifyMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		633C891A1B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C891B1B40952100035BFD /* amplifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amplifyTests.m; sourceTree = "<group>"; };
 		633C89251B40980300035BFD /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
+		633C89261B409EF300035BFD /* AmplifyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyMenu.h; sourceTree = "<group>"; };
+		633C89271B409EF300035BFD /* AmplifyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				633C890C1B40952100035BFD /* Images.xcassets */,
 				633C890E1B40952100035BFD /* MainMenu.xib */,
 				633C89051B40952100035BFD /* Supporting Files */,
+				633C89261B409EF300035BFD /* AmplifyMenu.h */,
+				633C89271B409EF300035BFD /* AmplifyMenu.m */,
 			);
 			path = amplify;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				633C890B1B40952100035BFD /* main.m in Sources */,
+				633C89281B409EF300035BFD /* AmplifyMenu.m in Sources */,
 				633C89091B40952100035BFD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

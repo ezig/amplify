@@ -26,6 +26,8 @@
     [icon setTemplate:YES];
     
     self.statusItem.image = icon;
+    
+    self.statusMenu.delegate = self;
     self.statusItem.menu = self.statusMenu;
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
@@ -35,8 +37,9 @@
     // Insert code here to tear down your application
 }
 
-- (IBAction)didPressQuit:(id)sender {
-    [[NSApplication sharedApplication] terminate:nil];
+- (void)menuWillOpen:(NSMenu *)menu {
+    if (![self.spotify isRunning]) {
+    }
 }
 
 @end
