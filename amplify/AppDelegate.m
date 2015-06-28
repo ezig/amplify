@@ -35,4 +35,8 @@
     // Insert code here to tear down your application
 }
 
+- (IBAction)didPressQuit:(id)sender {
+    [[NSApplication sharedApplication] terminate:nil];
+}
+
 @end

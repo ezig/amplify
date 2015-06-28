@@ -31,6 +31,9 @@
                 <menuItem isSeparatorItem="YES" id="SrX-qx-Vfy"/>
                 <menuItem title="Quit" id="rt2-b8-Jo0">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didPressQuit:" target="Voe-Tx-rLC" id="m4I-8C-ABr"/>
+                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="263" y="161.5"/>
