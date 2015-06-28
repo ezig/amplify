@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		631CF9C61B407C0C006CE0FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631CF9C51B407C0C006CE0FE /* AppDelegate.swift */; };
+		631CF9C81B407C0C006CE0FE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631CF9C71B407C0C006CE0FE /* Images.xcassets */; };
+		631CF9CB1B407C0C006CE0FE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631CF9C91B407C0C006CE0FE /* MainMenu.xib */; };
+		631CF9D71B407C0C006CE0FE /* amplifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631CF9D61B407C0C006CE0FE /* amplifyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		631CF9D11B407C0C006CE0FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 631CF9B81B407C0C006CE0FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 631CF9BF1B407C0C006CE0FE;
+			remoteInfo = amplify;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		631CF9C01B407C0C006CE0FE /* amplify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amplify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		631CF9C41B407C0C006CE0FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		631CF9C51B407C0C006CE0FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		631CF9C71B407C0C006CE0FE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		631CF9CA1B407C0C006CE0FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		631CF9D01B407C0C006CE0FE /* amplifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amplifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		631CF9D51B407C0C006CE0FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		631CF9D61B407C0C006CE0FE /* amplifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = amplifyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		631CF9BD1B407C0C006CE0FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		631CF9CD1B407C0C006CE0FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		631CF9B71B407C0C006CE0FE = {
+			isa = PBXGroup;
+			children = (
+				631CF9C21B407C0C006CE0FE /* amplify */,
+				631CF9D31B407C0C006CE0FE /* amplifyTests */,
+				631CF9C11B407C0C006CE0FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		631CF9C11B407C0C006CE0FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				631CF9C01B407C0C006CE0FE /* amplify.app */,
+				631CF9D01B407C0C006CE0FE /* amplifyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		631CF9C21B407C0C006CE0FE /* amplify */ = {
+			isa = PBXGroup;
+			children = (
+				631CF9C51B407C0C006CE0FE /* AppDelegate.swift */,
+				631CF9C71B407C0C006CE0FE /* Images.xcassets */,
+				631CF9C91B407C0C006CE0FE /* MainMenu.xib */,
+				631CF9C31B407C0C006CE0FE /* Supporting Files */,
+			);
+			path = amplify;
+			sourceTree = "<group>";
+		};
+		631CF9C31B407C0C006CE0FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				631CF9C41B407C0C006CE0FE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		631CF9D31B407C0C006CE0FE /* amplifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				631CF9D61B407C0C006CE0FE /* amplifyTests.swift */,
+				631CF9D41B407C0C006CE0FE /* Supporting Files */,
+			);
+			path = amplifyTests;
+			sourceTree = "<group>";
+		};
+		631CF9D41B407C0C006CE0FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				631CF9D51B407C0C006CE0FE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		631CF9BF1B407C0C006CE0FE /* amplify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 631CF9DA1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplify" */;
+			buildPhases = (
+				631CF9BC1B407C0C006CE0FE /* Sources */,
+				631CF9BD1B407C0C006CE0FE /* Frameworks */,
+				631CF9BE1B407C0C006CE0FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = amplify;
+			productName = amplify;
+			productReference = 631CF9C01B407C0C006CE0FE /* amplify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		631CF9CF1B407C0C006CE0FE /* amplifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 631CF9DD1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplifyTests" */;
+			buildPhases = (
+				631CF9CC1B407C0C006CE0FE /* Sources */,
+				631CF9CD1B407C0C006CE0FE /* Frameworks */,
+				631CF9CE1B407C0C006CE0FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				631CF9D21B407C0C006CE0FE /* PBXTargetDependency */,
+			);
+			name = amplifyTests;
+			productName = amplifyTests;
+			productReference = 631CF9D01B407C0C006CE0FE /* amplifyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		631CF9B81B407C0C006CE0FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Ezra Zigmond";
+				TargetAttributes = {
+					631CF9BF1B407C0C006CE0FE = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					631CF9CF1B407C0C006CE0FE = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 631CF9BF1B407C0C006CE0FE;
+					};
+				};
+			};
+			buildConfigurationList = 631CF9BB1B407C0C006CE0FE /* Build configuration list for PBXProject "amplify" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 631CF9B71B407C0C006CE0FE;
+			productRefGroup = 631CF9C11B407C0C006CE0FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				631CF9BF1B407C0C006CE0FE /* amplify */,
+				631CF9CF1B407C0C006CE0FE /* amplifyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		631CF9BE1B407C0C006CE0FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				631CF9C81B407C0C006CE0FE /* Images.xcassets in Resources */,
+				631CF9CB1B407C0C006CE0FE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		631CF9CE1B407C0C006CE0FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		631CF9BC1B407C0C006CE0FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				631CF9C61B407C0C006CE0FE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		631CF9CC1B407C0C006CE0FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				631CF9D71B407C0C006CE0FE /* amplifyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		631CF9D21B407C0C006CE0FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 631CF9BF1B407C0C006CE0FE /* amplify */;
+			targetProxy = 631CF9D11B407C0C006CE0FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		631CF9C91B407C0C006CE0FE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				631CF9CA1B407C0C006CE0FE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		631CF9D81B407C0C006CE0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		631CF9D91B407C0C006CE0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		631CF9DB1B407C0C006CE0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = amplify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		631CF9DC1B407C0C006CE0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = amplify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		631CF9DE1B407C0C006CE0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = amplifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/amplify.app/Contents/MacOS/amplify";
+			};
+			name = Debug;
+		};
+		631CF9DF1B407C0C006CE0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = amplifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/amplify.app/Contents/MacOS/amplify";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		631CF9BB1B407C0C006CE0FE /* Build configuration list for PBXProject "amplify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				631CF9D81B407C0C006CE0FE /* Debug */,
+				631CF9D91B407C0C006CE0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		631CF9DA1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				631CF9DB1B407C0C006CE0FE /* Debug */,
+				631CF9DC1B407C0C006CE0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		631CF9DD1B407C0C006CE0FE /* Build configuration list for PBXNativeTarget "amplifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				631CF9DE1B407C0C006CE0FE /* Debug */,
+				631CF9DF1B407C0C006CE0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 631CF9B81B407C0C006CE0FE /* Project object */;
+}
