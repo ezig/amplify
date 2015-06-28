@@ -33,6 +33,14 @@
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    if (menuItem == self.playItem) {
+        if (self.spotify.playerState != SpotifyEPlSPlaying) {
+            self.playItem.title = @"Play";
+        } else {
+            self.playItem.title = @"Pause";
+        }
+    }
+    
     if (![self.spotify isRunning] && menuItem != self.quitItem) {
         return NO;
     } else {
