@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Spotify.h"
+#import <Carbon/Carbon.h>
 
 @interface AppDelegate ()
 
@@ -29,12 +30,43 @@
     
     self.statusMenu.delegate = self;
     self.statusItem.menu = self.statusMenu;
+
+    [self setupHotkey];
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
 }
 
+// TODO: clean up hot key handling
+- (void)setupHotkey {
+    EventHotKeyRef hotKeyRef;
+    EventHotKeyID hotKeyID;
+    EventTypeSpec eventType;
+    
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind = kEventHotKeyPressed;
+    
+    hotKeyID.signature = 'mhk1';
+    hotKeyID.id = 1;
+    
+    InstallApplicationEventHandler(&hotKeyHandler, 1, &eventType, NULL, NULL);
+    
+   RegisterEventHotKey(kVK_ANSI_Period, cmdKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
+}
+
+OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData)
+{
+    AppDelegate* delegate = (AppDelegate*)[[NSApplication sharedApplication] delegate];
+    [delegate statusItemClicked:nil];
+    return noErr;
+}
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (void)statusItemClicked:(id)sender {
+    //show the popup menu associated with the status item.
+    [self.statusItem.button performClick:nil];
 }
 
 - (void)menuWillOpen:(NSMenu *)menu {

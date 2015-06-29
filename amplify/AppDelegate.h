@@ -10,6 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
 
+-(void)statusItemClicked:(id)sender;
 
 @end
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
@@ -20,26 +21,45 @@
         <viewController id="t6s-wX-0Zc"/>
         <menu id="3of-xI-vMu" customClass="AmplifyMenu">
             <items>
-                <menuItem title="Play" id="drb-0F-T5j">
+                <menuItem title="Play" keyEquivalent="p" id="drb-0F-T5j">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="didPressPlay:" target="3of-xI-vMu" id="Frq-0T-F3i"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Next " id="4mJ-f7-a8r">
+                <menuItem title="Next " keyEquivalent="d" id="4mJ-f7-a8r">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="didPressNext:" target="3of-xI-vMu" id="fBN-V8-85m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Prev" id="XVr-md-tSB">
+                <menuItem title="Prev" keyEquivalent="a" id="XVr-md-tSB">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="didPressPrev:" target="3of-xI-vMu" id="i4c-3y-1yq"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Shufflify" keyEquivalent="u" id="gsr-cB-lqc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didPressShuffle:" target="3of-xI-vMu" id="t63-oC-IMK"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="49R-PA-M20"/>
+                <menuItem title="Vol Up" keyEquivalent="w" id="L7k-mS-pCP">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didPressVolumeUp:" target="3of-xI-vMu" id="1TU-I5-Rsr"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Vol Down" keyEquivalent="s" id="9kd-rZ-k5z">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didPressVolumeDown:" target="3of-xI-vMu" id="M4e-wL-uOx"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="SrX-qx-Vfy"/>
-                <menuItem title="Quit" id="rt2-b8-Jo0">
+                <menuItem title="Quit" keyEquivalent="q" id="rt2-b8-Jo0">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="didPressQuit:" target="3of-xI-vMu" id="noi-jp-E2W"/>
@@ -51,6 +71,7 @@
                 <outlet property="playItem" destination="drb-0F-T5j" id="ghE-Ks-C6E"/>
                 <outlet property="prevItem" destination="XVr-md-tSB" id="6oA-7J-GZJ"/>
                 <outlet property="quitItem" destination="rt2-b8-Jo0" id="Ct0-L3-KZn"/>
+                <outlet property="shuffleItem" destination="gsr-cB-lqc" id="lGc-vH-yAt"/>
             </connections>
             <point key="canvasLocation" x="262.5" y="161.5"/>
         </menu>
