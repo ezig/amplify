@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) SpotifyApplication *spotify;
 
+@property (weak) IBOutlet NSMenuItem *songItem;
 @property (weak) IBOutlet NSMenuItem *playItem;
 @property (weak) IBOutlet NSMenuItem *nextItem;
 @property (weak) IBOutlet NSMenuItem *prevItem;
@@ -28,9 +29,33 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
+        
+        // TODO: set initial song title
+        // register a listener for playback change
+        // this notification will fire when the user presses pause/play
+        // and also when the track changes
+        [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                            selector:@selector(eventOccured:)
+                                                                name:@"com.spotify.client.PlaybackStateChanged"
+                                                              object:nil
+                                                  suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
     }
     
     return self;
+}
+
+- (void)eventOccured:(NSNotification *)notification {
+    NSLog(@"%@", notification.userInfo);
+    if (self.spotify.playerState == SpotifyEPlSPlaying) {
+        self.playItem.title = @"Pause";
+        self.songItem.title = [self getFormattedSongTitle];
+    } else {
+        self.playItem.title = @"Play";
+    }
+}
+
+- (NSString *)getFormattedSongTitle {
+    return [NSString stringWithFormat:@"%@ - %@", self.spotify.currentTrack.name, self.spotify.currentTrack.artist];
 }
 
 // TODO: clean up menu validation
@@ -38,15 +63,6 @@
     if (![self.spotify isRunning] && menuItem != self.quitItem) {
         return NO;
     } else {
-        
-        if (menuItem == self.playItem) {
-            if (self.spotify.playerState != SpotifyEPlSPlaying) {
-                self.playItem.title = @"Play";
-            } else {
-                self.playItem.title = @"Pause";
-            }
-        }
-        
         if (menuItem == self.shuffleItem) {
             if (self.spotify.shufflingEnabled) {
                 if (self.spotify.shuffling) {
@@ -58,7 +74,6 @@
                 return NO;
             }
         }
-        
         return YES;
     }
 }

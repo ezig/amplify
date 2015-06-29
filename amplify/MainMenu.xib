@@ -21,6 +21,10 @@
         <viewController id="t6s-wX-0Zc"/>
         <menu id="3of-xI-vMu" customClass="AmplifyMenu">
             <items>
+                <menuItem title="No song" id="Yzi-ni-7TW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="4SQ-ar-2ZN"/>
                 <menuItem title="Play" keyEquivalent="p" id="drb-0F-T5j">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -72,6 +76,7 @@
                 <outlet property="prevItem" destination="XVr-md-tSB" id="6oA-7J-GZJ"/>
                 <outlet property="quitItem" destination="rt2-b8-Jo0" id="Ct0-L3-KZn"/>
                 <outlet property="shuffleItem" destination="gsr-cB-lqc" id="lGc-vH-yAt"/>
+                <outlet property="songItem" destination="Yzi-ni-7TW" id="Vai-Fi-yFW"/>
             </connections>
             <point key="canvasLocation" x="262.5" y="161.5"/>
         </menu>
