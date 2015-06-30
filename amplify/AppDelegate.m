@@ -32,7 +32,7 @@
     self.statusItem.image = icon;
     
     self.statusMenu.delegate = self;
-//    self.statusItem.menu = self.statusMenu;
+    
     self.statusItem.action = @selector(togglePopover:);
     
     [self setupHotkey];
@@ -49,6 +49,7 @@
         [self.popover performClose:sender];
     } else {
         [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
+        [NSApp activateIgnoringOtherApps:YES];
     }
 }
 

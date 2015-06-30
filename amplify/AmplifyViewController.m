@@ -42,6 +42,14 @@
                                               suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
+- (BOOL) acceptsFirstResponder {
+    return YES;
+}
+
+- (void) keyDown:(NSEvent *)theEvent {
+    NSLog(@"hey");
+}
+
 - (void) viewDidAppear {
     if ([self.spotify isRunning]) {
         self.volumeSlider.intValue = (int) self.spotify.soundVolume;
