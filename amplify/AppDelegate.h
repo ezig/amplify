@@ -10,7 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
 
--(void)statusItemClicked:(id)sender;
+-(void) togglePopover:(id)sender;
 
 @end
 

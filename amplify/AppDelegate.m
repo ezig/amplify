@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Spotify.h"
+#import "AmplifyviewController.h"
 #import <Carbon/Carbon.h>
 
 @interface AppDelegate ()
@@ -16,6 +17,8 @@
 
 @property (strong, nonatomic) NSStatusItem *statusItem;
 @property (strong, nonatomic) SpotifyApplication *spotify;
+@property (strong, nonatomic) NSPopover *popover;
+
 @end
 
 @implementation AppDelegate
@@ -29,11 +32,24 @@
     self.statusItem.image = icon;
     
     self.statusMenu.delegate = self;
-    self.statusItem.menu = self.statusMenu;
-
+//    self.statusItem.menu = self.statusMenu;
+    self.statusItem.action = @selector(togglePopover:);
+    
     [self setupHotkey];
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
+    
+    _popover = [NSPopover new];
+    _popover.contentViewController = [[AmplifyViewController alloc] initWithNibName:@"AmplifyViewController" bundle:nil];
+    _popover.contentSize = (NSSize) {300, 150};
+}
+
+- (void)togglePopover:(id)sender {
+    if (self.popover.shown) {
+        [self.popover performClose:sender];
+    } else {
+        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
+    }
 }
 
 // TODO: clean up hot key handling
@@ -56,7 +72,7 @@
 OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData)
 {
     AppDelegate* delegate = (AppDelegate*)[[NSApplication sharedApplication] delegate];
-    [delegate statusItemClicked:nil];
+    [delegate togglePopover:nil];
     return noErr;
 }
 

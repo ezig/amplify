@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AmplifyViewController">
+            <connections>
+                <outlet property="playButton" destination="a3h-zJ-78b" id="CVm-Qy-TtF"/>
+                <outlet property="songLabel" destination="JJb-hX-e1p" id="V0N-hn-O1K"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="volumeSlider" destination="Nxk-N7-TQH" id="7CO-Qj-tfP"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJb-hX-e1p">
+                    <rect key="frame" x="211" y="235" width="58" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Song" id="LII-eZ-VR7">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-AY-uEO">
+                    <rect key="frame" x="207" y="13" width="66" height="32"/>
+                    <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sle-1g-ikE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent">q</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressQuit:" target="-2" id="GhE-I1-rOb"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="a3h-zJ-78b">
+                    <rect key="frame" x="229" y="122" width="23" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="dTZ-Sk-o0w"/>
+                        <constraint firstAttribute="width" constant="23" id="lce-w6-nqi"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" title="▶️" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sEq-8m-JnO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                        <string key="keyEquivalent">p</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressPlay:" target="-2" id="13S-a9-Jhy"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="iU3-Ia-GL2">
+                    <rect key="frame" x="267" y="122" width="23" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="3jq-9G-hm8"/>
+                        <constraint firstAttribute="width" constant="23" id="fCn-ZE-du3"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" title="⏩" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hYV-RV-iMu">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                        <string key="keyEquivalent">d</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressNext:" target="-2" id="5rb-ur-kCP"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="tYT-kT-K9w">
+                    <rect key="frame" x="191" y="122" width="23" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="3ar-q0-ymq"/>
+                        <constraint firstAttribute="height" constant="29" id="vlh-jX-jTI"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" title="⏪" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="wDJ-zO-cSo">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                        <string key="keyEquivalent">a</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressPrev:" target="-2" id="SyZ-tq-lcd"/>
+                    </connections>
+                </button>
+                <slider identifier="Volume" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-N7-TQH">
+                    <rect key="frame" x="164" y="17" width="21" height="220"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="wMg-kR-Qw4"/>
+                    </constraints>
+                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="a0C-6X-GIS"/>
+                    <connections>
+                        <action selector="didChangeSlider:" target="-2" id="zIV-4V-C6P"/>
+                    </connections>
+                </slider>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="PFT-qk-3vp">
+                    <rect key="frame" x="305" y="122" width="23" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="0Ag-Bk-2zf"/>
+                        <constraint firstAttribute="height" constant="29" id="lYD-2V-u54"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" title="🔀" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tRE-BK-aIC">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                        <string key="keyEquivalent">u</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressShuffle:" target="-2" id="tVZ-uO-Mke"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="a3h-zJ-78b" firstAttribute="leading" secondItem="tYT-kT-K9w" secondAttribute="trailing" constant="15" id="2au-iL-NAk"/>
+                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="Nxk-N7-TQH" secondAttribute="trailing" constant="8" id="39m-Vm-CHE"/>
+                <constraint firstAttribute="centerY" secondItem="tYT-kT-K9w" secondAttribute="centerY" constant="0.5" id="6Kb-oF-7JZ"/>
+                <constraint firstAttribute="bottom" secondItem="Mge-AY-uEO" secondAttribute="bottom" constant="20" id="BbG-ll-GoT"/>
+                <constraint firstItem="Nxk-N7-TQH" firstAttribute="top" secondItem="JJb-hX-e1p" secondAttribute="bottom" id="Fyu-9n-xwb"/>
+                <constraint firstAttribute="centerY" secondItem="iU3-Ia-GL2" secondAttribute="centerY" constant="0.5" id="LiS-u2-wcs"/>
+                <constraint firstItem="iU3-Ia-GL2" firstAttribute="leading" secondItem="a3h-zJ-78b" secondAttribute="trailing" constant="15" id="M3j-mG-v7Q"/>
+                <constraint firstItem="PFT-qk-3vp" firstAttribute="leading" secondItem="iU3-Ia-GL2" secondAttribute="trailing" constant="15" id="UjN-Fa-jlx"/>
+                <constraint firstAttribute="bottom" secondItem="Nxk-N7-TQH" secondAttribute="bottom" constant="20" id="XOx-p6-q5V"/>
+                <constraint firstItem="JJb-hX-e1p" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="bAP-yh-kbN"/>
+                <constraint firstAttribute="centerX" secondItem="a3h-zJ-78b" secondAttribute="centerX" constant="-0.5" id="l33-9p-mQt"/>
+                <constraint firstAttribute="centerX" secondItem="JJb-hX-e1p" secondAttribute="centerX" id="pBR-sy-ngq"/>
+                <constraint firstAttribute="centerY" secondItem="PFT-qk-3vp" secondAttribute="centerY" constant="0.5" id="qXj-Cw-fMc"/>
+                <constraint firstAttribute="centerY" secondItem="a3h-zJ-78b" secondAttribute="centerY" constant="0.5" id="uLl-HF-Zvh"/>
+                <constraint firstAttribute="centerX" secondItem="Mge-AY-uEO" secondAttribute="centerX" id="vp8-dV-XtV"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>
