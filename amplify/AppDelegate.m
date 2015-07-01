@@ -81,14 +81,5 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     // Insert code here to tear down your application
 }
 
-- (void)statusItemClicked:(id)sender {
-    //show the popup menu associated with the status item.
-    [self.statusItem.button performClick:nil];
-}
-
-- (void)menuWillOpen:(NSMenu *)menu {
-    if (![self.spotify isRunning]) {
-    }
-}
 
 @end

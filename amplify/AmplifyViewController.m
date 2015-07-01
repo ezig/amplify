@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *songLabel;
 @property (weak) IBOutlet NSButton *playButton;
 @property (weak) IBOutlet NSSlider *volumeSlider;
+@property (weak) IBOutlet NSImageView *albumArt;
 
 
 @property (nonatomic, strong) SpotifyApplication *spotify;
@@ -31,6 +32,7 @@
     
     if ([self.spotify isRunning]) {
         [self.songLabel setStringValue:[self getFormattedSongTitle]];
+        [self updateArtwork];
     }
     
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
@@ -103,6 +105,9 @@
     if ([self.spotify isRunning]) {
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
             [self.songLabel setStringValue:[self getFormattedSongTitle]];
+            
+            [self updateArtwork];
+            
             [self.playButton setTitle:@"\u25B6"];
         } else {
             [self.playButton setTitle:@"\u2759 \u2759"];
@@ -112,8 +117,32 @@
     }
 }
 
+// TODO: Display loading while fetching artwork
+- (void) updateArtwork {
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        self.albumArt.image = [self getAlbumArt];
+    });
+}
+
+// TODO: Handle text that is too large for the view
 - (NSString *)getFormattedSongTitle {
     return [NSString stringWithFormat:@"%@ - %@", self.spotify.currentTrack.name, self.spotify.currentTrack.artist];
+}
+
+// TODO: fix the image size
+- (NSImage *)getAlbumArt {
+    NSURL *request = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
+    NSData *data = [NSData dataWithContentsOfURL:request];
+    
+    if (data) {
+        NSURL *artRequest = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
+        NSData *artData = [NSData dataWithContentsOfURL:artRequest];
+        if (artData) {
+            return [[NSImage alloc] initWithData:artData];
+        }
+    }
+    
+    return nil;
 }
 
 - (IBAction)didChangeSlider:(id)sender {

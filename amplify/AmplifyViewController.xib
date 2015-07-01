@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AmplifyViewController">
             <connections>
+                <outlet property="albumArt" destination="K3e-75-vSj" id="Bi6-vX-72z"/>
                 <outlet property="playButton" destination="a3h-zJ-78b" id="CVm-Qy-TtF"/>
                 <outlet property="songLabel" destination="JJb-hX-e1p" id="V0N-hn-O1K"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -79,16 +80,6 @@
                         <action selector="didPressPrev:" target="-2" id="SyZ-tq-lcd"/>
                     </connections>
                 </button>
-                <slider identifier="Volume" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-N7-TQH">
-                    <rect key="frame" x="164" y="17" width="21" height="220"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="17" id="wMg-kR-Qw4"/>
-                    </constraints>
-                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="a0C-6X-GIS"/>
-                    <connections>
-                        <action selector="didChangeSlider:" target="-2" id="zIV-4V-C6P"/>
-                    </connections>
-                </slider>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="PFT-qk-3vp">
                     <rect key="frame" x="305" y="122" width="23" height="29"/>
                     <constraints>
@@ -103,15 +94,35 @@
                         <action selector="didPressShuffle:" target="-2" id="tVZ-uO-Mke"/>
                     </connections>
                 </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-75-vSj">
+                    <rect key="frame" x="83" y="86" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="J6K-WV-fOW"/>
+                        <constraint firstAttribute="height" constant="100" id="Jd3-Pu-KIt"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NXv-g8-KgM"/>
+                </imageView>
+                <slider identifier="Volume" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-N7-TQH">
+                    <rect key="frame" x="334" y="17" width="21" height="220"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="wMg-kR-Qw4"/>
+                    </constraints>
+                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="a0C-6X-GIS"/>
+                    <connections>
+                        <action selector="didChangeSlider:" target="-2" id="zIV-4V-C6P"/>
+                    </connections>
+                </slider>
             </subviews>
             <constraints>
+                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="8" id="2Fl-vG-Ji5"/>
                 <constraint firstItem="a3h-zJ-78b" firstAttribute="leading" secondItem="tYT-kT-K9w" secondAttribute="trailing" constant="15" id="2au-iL-NAk"/>
-                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="Nxk-N7-TQH" secondAttribute="trailing" constant="8" id="39m-Vm-CHE"/>
                 <constraint firstAttribute="centerY" secondItem="tYT-kT-K9w" secondAttribute="centerY" constant="0.5" id="6Kb-oF-7JZ"/>
                 <constraint firstAttribute="bottom" secondItem="Mge-AY-uEO" secondAttribute="bottom" constant="20" id="BbG-ll-GoT"/>
                 <constraint firstItem="Nxk-N7-TQH" firstAttribute="top" secondItem="JJb-hX-e1p" secondAttribute="bottom" id="Fyu-9n-xwb"/>
                 <constraint firstAttribute="centerY" secondItem="iU3-Ia-GL2" secondAttribute="centerY" constant="0.5" id="LiS-u2-wcs"/>
                 <constraint firstItem="iU3-Ia-GL2" firstAttribute="leading" secondItem="a3h-zJ-78b" secondAttribute="trailing" constant="15" id="M3j-mG-v7Q"/>
+                <constraint firstAttribute="centerY" secondItem="K3e-75-vSj" secondAttribute="centerY" id="Piu-GZ-D3B"/>
+                <constraint firstItem="Nxk-N7-TQH" firstAttribute="leading" secondItem="PFT-qk-3vp" secondAttribute="trailing" constant="8" id="Pyy-bl-uv3"/>
                 <constraint firstItem="PFT-qk-3vp" firstAttribute="leading" secondItem="iU3-Ia-GL2" secondAttribute="trailing" constant="15" id="UjN-Fa-jlx"/>
                 <constraint firstAttribute="bottom" secondItem="Nxk-N7-TQH" secondAttribute="bottom" constant="20" id="XOx-p6-q5V"/>
                 <constraint firstItem="JJb-hX-e1p" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="bAP-yh-kbN"/>
