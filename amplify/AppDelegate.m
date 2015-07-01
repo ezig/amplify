@@ -13,8 +13,6 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSMenu *statusMenu;
-
 @property (strong, nonatomic) NSStatusItem *statusItem;
 @property (strong, nonatomic) SpotifyApplication *spotify;
 @property (strong, nonatomic) NSPopover *popover;
@@ -31,25 +29,27 @@
     
     self.statusItem.image = icon;
     
-    self.statusMenu.delegate = self;
-    
     self.statusItem.action = @selector(togglePopover:);
     
     [self setupHotkey];
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     
-    _popover = [NSPopover new];
-    _popover.contentViewController = [[AmplifyViewController alloc] initWithNibName:@"AmplifyViewController" bundle:nil];
-    _popover.contentSize = (NSSize) {300, 150};
+    self.popover = [NSPopover new];
+    AmplifyViewController* contentView = [[AmplifyViewController alloc] initWithNibName:@"AmplifyViewController" bundle:nil];
+    contentView.delegate = self;
+    self.popover.contentViewController = contentView;
+    self.popover.contentSize = (NSSize) {300, 150};
 }
 
 - (void)togglePopover:(id)sender {
     if (self.popover.shown) {
         [self.popover performClose:sender];
+        ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
     } else {
         [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
         [NSApp activateIgnoringOtherApps:YES];
+        ((AmplifyViewController*) self.popover.contentViewController).isVisible = YES;
     }
 }
 

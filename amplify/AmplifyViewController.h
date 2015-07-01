@@ -8,6 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@protocol AmplifyPopoverDelegate <NSObject>
+
+- (void)togglePopover:(id)sender;
+
+@end
+
 @interface AmplifyViewController : NSViewController
+
+@property (nonatomic, strong) id<AmplifyPopoverDelegate> delegate;
+@property (nonatomic, assign) BOOL isVisible;
 
 @end

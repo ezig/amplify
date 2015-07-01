@@ -32,7 +32,6 @@
                     <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sle-1g-ikE">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <string key="keyEquivalent">q</string>
                     </buttonCell>
                     <connections>
                         <action selector="didPressQuit:" target="-2" id="GhE-I1-rOb"/>
@@ -47,7 +46,6 @@
                     <buttonCell key="cell" type="squareTextured" title="▶️" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sEq-8m-JnO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
-                        <string key="keyEquivalent">p</string>
                     </buttonCell>
                     <connections>
                         <action selector="didPressPlay:" target="-2" id="13S-a9-Jhy"/>
@@ -62,7 +60,6 @@
                     <buttonCell key="cell" type="squareTextured" title="⏩" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hYV-RV-iMu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
-                        <string key="keyEquivalent">d</string>
                     </buttonCell>
                     <connections>
                         <action selector="didPressNext:" target="-2" id="5rb-ur-kCP"/>
@@ -77,7 +74,6 @@
                     <buttonCell key="cell" type="squareTextured" title="⏪" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="wDJ-zO-cSo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
-                        <string key="keyEquivalent">a</string>
                     </buttonCell>
                     <connections>
                         <action selector="didPressPrev:" target="-2" id="SyZ-tq-lcd"/>
@@ -102,7 +98,6 @@
                     <buttonCell key="cell" type="squareTextured" title="🔀" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tRE-BK-aIC">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
-                        <string key="keyEquivalent">u</string>
                     </buttonCell>
                     <connections>
                         <action selector="didPressShuffle:" target="-2" id="tVZ-uO-Mke"/>

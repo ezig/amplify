@@ -8,6 +8,7 @@
 
 #import "AmplifyViewController.h"
 #import "Spotify.h"
+#include <Carbon/Carbon.h>
 
 @interface AmplifyViewController ()
 
@@ -32,9 +33,11 @@
         [self.songLabel setStringValue:[self getFormattedSongTitle]];
     }
     
-    // register a listener for playback change
-    // this notification will fire when the user presses pause/play
-    // and also when the track changes
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
+                                          handler:^(NSEvent *event) {
+                                              return [self handleKeyPress:event];
+                                          }];
+    
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(playbackChanged:)
                                                             name:@"com.spotify.client.PlaybackStateChanged"
@@ -42,17 +45,57 @@
                                               suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
-- (BOOL) acceptsFirstResponder {
-    return YES;
-}
-
-- (void) keyDown:(NSEvent *)theEvent {
-    NSLog(@"hey");
-}
-
 - (void) viewDidAppear {
     if ([self.spotify isRunning]) {
         self.volumeSlider.intValue = (int) self.spotify.soundVolume;
+    }
+}
+
+// returning nil will prevent alert sound
+- (NSEvent *) handleKeyPress:(NSEvent *)event {
+    if (self.isVisible) {
+        switch ([event keyCode]) {
+            case kVK_ANSI_P:
+                [self didPressPlay:nil];
+                break;
+            
+            case kVK_ANSI_D:
+                [self didPressNext:nil];
+                break;
+                
+            case kVK_ANSI_A:
+                [self didPressPrev:nil];
+                break;
+            
+            case kVK_ANSI_U:
+                [self didPressShuffle:nil];
+                break;
+                
+            case kVK_ANSI_Q:
+                [self didPressQuit:nil];
+                break;
+                
+            case kVK_ANSI_W:
+                self.volumeSlider.integerValue = MIN(100, self.volumeSlider.integerValue + 5);
+                [self didChangeSlider:nil];
+                break;
+            
+            case kVK_ANSI_S:
+                self.volumeSlider.integerValue = MAX(0, self.volumeSlider.integerValue - 5);
+                [self didChangeSlider:nil];
+                break;
+                
+            case kVK_Escape:
+                [self.delegate togglePopover:self];
+                break;
+                
+            default:
+                return event;
+        }
+        
+        return nil;
+    } else {
+        return event;
     }
 }
 
