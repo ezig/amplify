@@ -30,6 +30,8 @@
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     
+    self.albumArt.imageScaling = NSImageScaleAxesIndependently;
+    
     if ([self.spotify isRunning]) {
         [self.songLabel setStringValue:[self getFormattedSongTitle]];
         [self updateArtwork];

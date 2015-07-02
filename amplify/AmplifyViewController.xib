@@ -17,11 +17,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJb-hX-e1p">
-                    <rect key="frame" x="211" y="235" width="58" height="17"/>
+                    <rect key="frame" x="121" y="113" width="58" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Song" id="LII-eZ-VR7">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -29,7 +29,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-AY-uEO">
-                    <rect key="frame" x="207" y="13" width="66" height="32"/>
+                    <rect key="frame" x="117" y="13" width="66" height="32"/>
                     <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sle-1g-ikE">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -38,22 +38,8 @@
                         <action selector="didPressQuit:" target="-2" id="GhE-I1-rOb"/>
                     </connections>
                 </button>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="a3h-zJ-78b">
-                    <rect key="frame" x="229" y="122" width="23" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="29" id="dTZ-Sk-o0w"/>
-                        <constraint firstAttribute="width" constant="23" id="lce-w6-nqi"/>
-                    </constraints>
-                    <buttonCell key="cell" type="squareTextured" title="▶️" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sEq-8m-JnO">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="14" name="AppleColorEmoji"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="didPressPlay:" target="-2" id="13S-a9-Jhy"/>
-                    </connections>
-                </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="iU3-Ia-GL2">
-                    <rect key="frame" x="267" y="122" width="23" height="29"/>
+                    <rect key="frame" x="177" y="61" width="23" height="29"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="29" id="3jq-9G-hm8"/>
                         <constraint firstAttribute="width" constant="23" id="fCn-ZE-du3"/>
@@ -67,7 +53,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="tYT-kT-K9w">
-                    <rect key="frame" x="191" y="122" width="23" height="29"/>
+                    <rect key="frame" x="101" y="61" width="23" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="23" id="3ar-q0-ymq"/>
                         <constraint firstAttribute="height" constant="29" id="vlh-jX-jTI"/>
@@ -81,7 +67,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="PFT-qk-3vp">
-                    <rect key="frame" x="305" y="122" width="23" height="29"/>
+                    <rect key="frame" x="215" y="61" width="23" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="23" id="0Ag-Bk-2zf"/>
                         <constraint firstAttribute="height" constant="29" id="lYD-2V-u54"/>
@@ -95,15 +81,15 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-75-vSj">
-                    <rect key="frame" x="83" y="86" width="100" height="100"/>
+                    <rect key="frame" x="23" y="40" width="70" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="J6K-WV-fOW"/>
-                        <constraint firstAttribute="height" constant="100" id="Jd3-Pu-KIt"/>
+                        <constraint firstAttribute="width" constant="70" id="J6K-WV-fOW"/>
+                        <constraint firstAttribute="height" constant="70" id="Jd3-Pu-KIt"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NXv-g8-KgM"/>
                 </imageView>
                 <slider identifier="Volume" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-N7-TQH">
-                    <rect key="frame" x="334" y="17" width="21" height="220"/>
+                    <rect key="frame" x="244" y="17" width="21" height="98"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="17" id="wMg-kR-Qw4"/>
                     </constraints>
@@ -112,6 +98,20 @@
                         <action selector="didChangeSlider:" target="-2" id="zIV-4V-C6P"/>
                     </connections>
                 </slider>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="a3h-zJ-78b">
+                    <rect key="frame" x="139" y="61" width="23" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="dTZ-Sk-o0w"/>
+                        <constraint firstAttribute="width" constant="23" id="lce-w6-nqi"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" title="▶️" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sEq-8m-JnO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressPlay:" target="-2" id="13S-a9-Jhy"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="8" id="2Fl-vG-Ji5"/>
@@ -132,6 +132,7 @@
                 <constraint firstAttribute="centerY" secondItem="a3h-zJ-78b" secondAttribute="centerY" constant="0.5" id="uLl-HF-Zvh"/>
                 <constraint firstAttribute="centerX" secondItem="Mge-AY-uEO" secondAttribute="centerX" id="vp8-dV-XtV"/>
             </constraints>
+            <point key="canvasLocation" x="231" y="340.5"/>
         </customView>
     </objects>
 </document>
