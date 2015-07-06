@@ -58,7 +58,7 @@
 }
 
 // returning nil will prevent alert sound
-- (NSEvent *) handleKeyPress:(NSEvent *)event {
+- (NSEvent *)handleKeyPress:(NSEvent *)event {
     if (self.isVisible) {
         switch ([event keyCode]) {
             case kVK_ANSI_P:
@@ -122,7 +122,7 @@
 }
 
 // TODO: Display loading while fetching artwork
-- (void) updateArtwork {
+- (void)updateArtwork {
     dispatch_async(dispatch_get_main_queue(), ^ {
         self.albumArt.image = [self getAlbumArt];
     });
