@@ -7,15 +7,16 @@
 //
 
 #import "AmplifyViewController.h"
+#import "AmplifyScrollLabel.h"
 #import "Spotify.h"
 #include <Carbon/Carbon.h>
 
 @interface AmplifyViewController ()
 
-@property (weak) IBOutlet NSTextField *songLabel;
 @property (weak) IBOutlet NSButton *playButton;
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSImageView *albumArt;
+@property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
 
 
 @property (nonatomic, strong) SpotifyApplication *spotify;
@@ -33,7 +34,8 @@
     self.albumArt.imageScaling = NSImageScaleAxesIndependently;
     
     if ([self.spotify isRunning]) {
-        [self.songLabel setStringValue:[self getFormattedSongTitle]];
+        self.songScrollLabel.text = [self getFormattedSongTitle];
+        self.songScrollLabel.speed = 0.03;
         [self updateArtwork];
     }
     
@@ -106,7 +108,7 @@
 - (void)playbackChanged:(NSNotification *)notification {
     if ([self.spotify isRunning]) {
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
-            [self.songLabel setStringValue:[self getFormattedSongTitle]];
+            self.songScrollLabel.text = [self getFormattedSongTitle];
             
             [self updateArtwork];
             
@@ -115,7 +117,7 @@
             [self.playButton setTitle:@"\u2759 \u2759"];
         }
     } else {
-        [self.songLabel setStringValue:@"No song"];
+        self.songScrollLabel.text = @"No song";
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="albumArt" destination="K3e-75-vSj" id="Bi6-vX-72z"/>
                 <outlet property="playButton" destination="a3h-zJ-78b" id="CVm-Qy-TtF"/>
-                <outlet property="songLabel" destination="JJb-hX-e1p" id="V0N-hn-O1K"/>
+                <outlet property="songScrollLabel" destination="B5g-5z-cdv" id="aug-5m-Lke"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="volumeSlider" destination="Nxk-N7-TQH" id="7CO-Qj-tfP"/>
             </connections>
@@ -20,14 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJb-hX-e1p">
-                    <rect key="frame" x="121" y="113" width="58" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Song" id="LII-eZ-VR7">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-AY-uEO">
                     <rect key="frame" x="117" y="13" width="66" height="32"/>
                     <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sle-1g-ikE">
@@ -80,14 +72,6 @@
                         <action selector="didPressShuffle:" target="-2" id="tVZ-uO-Mke"/>
                     </connections>
                 </button>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-75-vSj">
-                    <rect key="frame" x="23" y="40" width="70" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="J6K-WV-fOW"/>
-                        <constraint firstAttribute="height" constant="70" id="Jd3-Pu-KIt"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NXv-g8-KgM"/>
-                </imageView>
                 <slider identifier="Volume" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-N7-TQH">
                     <rect key="frame" x="244" y="17" width="21" height="98"/>
                     <constraints>
@@ -112,27 +96,42 @@
                         <action selector="didPressPlay:" target="-2" id="13S-a9-Jhy"/>
                     </connections>
                 </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="B5g-5z-cdv" customClass="AmplifyScrollLabel">
+                    <rect key="frame" x="20" y="113" width="260" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="ExZ-kE-sGP"/>
+                    </constraints>
+                </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-75-vSj">
+                    <rect key="frame" x="20" y="40" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="J6K-WV-fOW"/>
+                        <constraint firstAttribute="height" constant="70" id="Jd3-Pu-KIt"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NXv-g8-KgM"/>
+                </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="8" id="2Fl-vG-Ji5"/>
+                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="11" id="2Fl-vG-Ji5"/>
                 <constraint firstItem="a3h-zJ-78b" firstAttribute="leading" secondItem="tYT-kT-K9w" secondAttribute="trailing" constant="15" id="2au-iL-NAk"/>
                 <constraint firstAttribute="centerY" secondItem="tYT-kT-K9w" secondAttribute="centerY" constant="0.5" id="6Kb-oF-7JZ"/>
                 <constraint firstAttribute="bottom" secondItem="Mge-AY-uEO" secondAttribute="bottom" constant="20" id="BbG-ll-GoT"/>
-                <constraint firstItem="Nxk-N7-TQH" firstAttribute="top" secondItem="JJb-hX-e1p" secondAttribute="bottom" id="Fyu-9n-xwb"/>
+                <constraint firstItem="B5g-5z-cdv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="F1u-3j-UIE"/>
+                <constraint firstItem="Nxk-N7-TQH" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" id="GqQ-CK-dgz"/>
+                <constraint firstItem="B5g-5z-cdv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="IGI-6m-zQi"/>
                 <constraint firstAttribute="centerY" secondItem="iU3-Ia-GL2" secondAttribute="centerY" constant="0.5" id="LiS-u2-wcs"/>
                 <constraint firstItem="iU3-Ia-GL2" firstAttribute="leading" secondItem="a3h-zJ-78b" secondAttribute="trailing" constant="15" id="M3j-mG-v7Q"/>
+                <constraint firstAttribute="trailing" secondItem="B5g-5z-cdv" secondAttribute="trailing" constant="20" id="MIg-fm-aMO"/>
                 <constraint firstAttribute="centerY" secondItem="K3e-75-vSj" secondAttribute="centerY" id="Piu-GZ-D3B"/>
                 <constraint firstItem="Nxk-N7-TQH" firstAttribute="leading" secondItem="PFT-qk-3vp" secondAttribute="trailing" constant="8" id="Pyy-bl-uv3"/>
                 <constraint firstItem="PFT-qk-3vp" firstAttribute="leading" secondItem="iU3-Ia-GL2" secondAttribute="trailing" constant="15" id="UjN-Fa-jlx"/>
                 <constraint firstAttribute="bottom" secondItem="Nxk-N7-TQH" secondAttribute="bottom" constant="20" id="XOx-p6-q5V"/>
-                <constraint firstItem="JJb-hX-e1p" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="bAP-yh-kbN"/>
                 <constraint firstAttribute="centerX" secondItem="a3h-zJ-78b" secondAttribute="centerX" constant="-0.5" id="l33-9p-mQt"/>
-                <constraint firstAttribute="centerX" secondItem="JJb-hX-e1p" secondAttribute="centerX" id="pBR-sy-ngq"/>
                 <constraint firstAttribute="centerY" secondItem="PFT-qk-3vp" secondAttribute="centerY" constant="0.5" id="qXj-Cw-fMc"/>
                 <constraint firstAttribute="centerY" secondItem="a3h-zJ-78b" secondAttribute="centerY" constant="0.5" id="uLl-HF-Zvh"/>
                 <constraint firstAttribute="centerX" secondItem="Mge-AY-uEO" secondAttribute="centerX" id="vp8-dV-XtV"/>
             </constraints>
-            <point key="canvasLocation" x="231" y="340.5"/>
+            <point key="canvasLocation" x="231" y="340"/>
         </customView>
     </objects>
 </document>
