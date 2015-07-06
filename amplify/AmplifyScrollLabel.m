@@ -50,7 +50,10 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [self.text drawAtPoint:_point1 withAttributes:self.stringAttrs];
-    [self.text drawAtPoint:_point2 withAttributes:self.stringAttrs];
+    
+    if (self.scrollEnabled) {
+        [self.text drawAtPoint:_point2 withAttributes:self.stringAttrs];
+    }
 }
 
 - (void)resetPosition {
@@ -73,7 +76,6 @@
     
     if (self.stringWidth < self.frame.size.width) {
         self.scrollEnabled = NO;
-        _point2 = NSZeroPoint;
     } else {
         self.scrollEnabled = YES;
     }
