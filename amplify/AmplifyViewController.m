@@ -18,7 +18,6 @@
 @property (weak) IBOutlet NSImageView *albumArt;
 @property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
 
-
 @property (nonatomic, strong) SpotifyApplication *spotify;
 
 @end
@@ -33,10 +32,10 @@
     
     self.albumArt.imageScaling = NSImageScaleAxesIndependently;
     
+    self.songScrollLabel.speed = 0.03;
+    
     if ([self.spotify isRunning]) {
-        self.songScrollLabel.text = [self getFormattedSongTitle];
-        self.songScrollLabel.speed = 0.03;
-        [self updateArtwork];
+        [self playbackChanged:nil];
     }
     
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
@@ -109,12 +108,11 @@
     if ([self.spotify isRunning]) {
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
             self.songScrollLabel.text = [self getFormattedSongTitle];
-            
             [self updateArtwork];
             
-            [self.playButton setTitle:@"\u25B6"];
-        } else {
             [self.playButton setTitle:@"\u2759 \u2759"];
+        } else {
+            [self.playButton setTitle:@"\u25B6"];
         }
     } else {
         self.songScrollLabel.text = @"No song";
@@ -123,34 +121,6 @@
 
 - (NSString *)getFormattedSongTitle {
     return [NSString stringWithFormat:@"%@ - %@", self.spotify.currentTrack.name, self.spotify.currentTrack.artist];
-}
-
-- (void)updateArtwork {
-    NSURL *songURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
-    
-    NSURLRequest *songRequest = [[NSURLRequest alloc] initWithURL:songURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
-    
-    [NSURLConnection sendAsynchronousRequest:songRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-        if (data) {
-            NSURL *artURL = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
-            
-            NSURLRequest *artRequest = [[NSURLRequest alloc] initWithURL:artURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
-            
-            [NSURLConnection sendAsynchronousRequest:artRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-             {
-                if (data) {
-                    dispatch_async(dispatch_get_main_queue(), ^ {
-                        self.albumArt.image = [[NSImage alloc] initWithData:data];
-                    });
-                } else {
-                    self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
-                }
-             }];
-        } else {
-            self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
-        }
-    }];
 }
 
 - (IBAction)didChangeSlider:(id)sender {
@@ -185,6 +155,34 @@
 
 - (IBAction)didPressQuit:(id)sender {
     [[NSApplication sharedApplication] terminate:nil];
+}
+
+- (void)updateArtwork {
+    NSURL *songURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
+    
+    NSURLRequest *songRequest = [[NSURLRequest alloc] initWithURL:songURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
+    
+    [NSURLConnection sendAsynchronousRequest:songRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (data) {
+             NSURL *artURL = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
+             
+             NSURLRequest *artRequest = [[NSURLRequest alloc] initWithURL:artURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
+             
+             [NSURLConnection sendAsynchronousRequest:artRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+              {
+                  if (data) {
+                      dispatch_async(dispatch_get_main_queue(), ^ {
+                          self.albumArt.image = [[NSImage alloc] initWithData:data];
+                      });
+                  } else {
+                      self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
+                  }
+              }];
+         } else {
+             self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
+         }
+     }];
 }
 
 @end

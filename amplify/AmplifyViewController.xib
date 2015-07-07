@@ -11,7 +11,7 @@
                 <outlet property="playButton" destination="a3h-zJ-78b" id="CVm-Qy-TtF"/>
                 <outlet property="songScrollLabel" destination="B5g-5z-cdv" id="aug-5m-Lke"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
-                <outlet property="volumeSlider" destination="Nxk-N7-TQH" id="7CO-Qj-tfP"/>
+                <outlet property="volumeSlider" destination="qPU-ve-U0V" id="HOS-r8-eF0"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -31,11 +31,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="iU3-Ia-GL2">
-                    <rect key="frame" x="177" y="61" width="23" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="29" id="3jq-9G-hm8"/>
-                        <constraint firstAttribute="width" constant="23" id="fCn-ZE-du3"/>
-                    </constraints>
+                    <rect key="frame" x="204" y="76" width="23" height="29"/>
                     <buttonCell key="cell" type="squareTextured" title="⏩" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hYV-RV-iMu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
@@ -45,11 +41,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="tYT-kT-K9w">
-                    <rect key="frame" x="101" y="61" width="23" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="23" id="3ar-q0-ymq"/>
-                        <constraint firstAttribute="height" constant="29" id="vlh-jX-jTI"/>
-                    </constraints>
+                    <rect key="frame" x="98" y="76" width="23" height="29"/>
                     <buttonCell key="cell" type="squareTextured" title="⏪" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="wDJ-zO-cSo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
@@ -59,11 +51,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="PFT-qk-3vp">
-                    <rect key="frame" x="215" y="61" width="23" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="23" id="0Ag-Bk-2zf"/>
-                        <constraint firstAttribute="height" constant="29" id="lYD-2V-u54"/>
-                    </constraints>
+                    <rect key="frame" x="257" y="76" width="23" height="29"/>
                     <buttonCell key="cell" type="squareTextured" title="🔀" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tRE-BK-aIC">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
@@ -72,21 +60,11 @@
                         <action selector="didPressShuffle:" target="-2" id="tVZ-uO-Mke"/>
                     </connections>
                 </button>
-                <slider identifier="Volume" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-N7-TQH">
-                    <rect key="frame" x="244" y="17" width="21" height="98"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="17" id="wMg-kR-Qw4"/>
-                    </constraints>
-                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="a0C-6X-GIS"/>
-                    <connections>
-                        <action selector="didChangeSlider:" target="-2" id="zIV-4V-C6P"/>
-                    </connections>
-                </slider>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="a3h-zJ-78b">
-                    <rect key="frame" x="139" y="61" width="23" height="29"/>
+                    <rect key="frame" x="151" y="76" width="23" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="29" id="dTZ-Sk-o0w"/>
-                        <constraint firstAttribute="width" constant="23" id="lce-w6-nqi"/>
+                        <constraint firstAttribute="height" constant="30" id="ZQz-cs-lmi"/>
+                        <constraint firstAttribute="width" constant="23" id="wwT-bm-Fjk"/>
                     </constraints>
                     <buttonCell key="cell" type="squareTextured" title="▶️" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sEq-8m-JnO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -105,31 +83,50 @@
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-75-vSj">
                     <rect key="frame" x="20" y="40" width="70" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="J6K-WV-fOW"/>
-                        <constraint firstAttribute="height" constant="70" id="Jd3-Pu-KIt"/>
+                        <constraint firstAttribute="width" constant="70" id="BjA-SV-seO"/>
+                        <constraint firstAttribute="height" constant="70" id="fjC-qg-yik"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NXv-g8-KgM"/>
                 </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G1R-CH-OHe">
+                    <rect key="frame" x="98" y="40" width="25" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="21" id="Y1x-WZ-PkL"/>
+                        <constraint firstAttribute="height" constant="28" id="d79-cV-O8z"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="🔈" id="py9-bS-inV">
+                        <font key="font" size="13" name="AppleColorEmoji"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qPU-ve-U0V">
+                    <rect key="frame" x="121" y="44" width="161" height="20"/>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="hGn-J3-fBv"/>
+                </slider>
             </subviews>
             <constraints>
-                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="11" id="2Fl-vG-Ji5"/>
-                <constraint firstItem="a3h-zJ-78b" firstAttribute="leading" secondItem="tYT-kT-K9w" secondAttribute="trailing" constant="15" id="2au-iL-NAk"/>
-                <constraint firstAttribute="centerY" secondItem="tYT-kT-K9w" secondAttribute="centerY" constant="0.5" id="6Kb-oF-7JZ"/>
                 <constraint firstAttribute="bottom" secondItem="Mge-AY-uEO" secondAttribute="bottom" constant="20" id="BbG-ll-GoT"/>
+                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="8" id="Eaz-wA-d0c"/>
                 <constraint firstItem="B5g-5z-cdv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="F1u-3j-UIE"/>
-                <constraint firstItem="Nxk-N7-TQH" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" id="GqQ-CK-dgz"/>
+                <constraint firstAttribute="trailing" secondItem="PFT-qk-3vp" secondAttribute="trailing" constant="20" id="HQ1-s5-z2q"/>
                 <constraint firstItem="B5g-5z-cdv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="IGI-6m-zQi"/>
-                <constraint firstAttribute="centerY" secondItem="iU3-Ia-GL2" secondAttribute="centerY" constant="0.5" id="LiS-u2-wcs"/>
-                <constraint firstItem="iU3-Ia-GL2" firstAttribute="leading" secondItem="a3h-zJ-78b" secondAttribute="trailing" constant="15" id="M3j-mG-v7Q"/>
+                <constraint firstItem="iU3-Ia-GL2" firstAttribute="leading" secondItem="a3h-zJ-78b" secondAttribute="trailing" constant="30" id="IzS-jz-fe1"/>
+                <constraint firstItem="qPU-ve-U0V" firstAttribute="leading" secondItem="G1R-CH-OHe" secondAttribute="trailing" constant="2" id="JDw-g0-cG2"/>
+                <constraint firstItem="a3h-zJ-78b" firstAttribute="leading" secondItem="tYT-kT-K9w" secondAttribute="trailing" constant="30" id="KfD-bx-lUU"/>
+                <constraint firstItem="tYT-kT-K9w" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="8" id="KyJ-bc-mmn"/>
                 <constraint firstAttribute="trailing" secondItem="B5g-5z-cdv" secondAttribute="trailing" constant="20" id="MIg-fm-aMO"/>
-                <constraint firstAttribute="centerY" secondItem="K3e-75-vSj" secondAttribute="centerY" id="Piu-GZ-D3B"/>
-                <constraint firstItem="Nxk-N7-TQH" firstAttribute="leading" secondItem="PFT-qk-3vp" secondAttribute="trailing" constant="8" id="Pyy-bl-uv3"/>
-                <constraint firstItem="PFT-qk-3vp" firstAttribute="leading" secondItem="iU3-Ia-GL2" secondAttribute="trailing" constant="15" id="UjN-Fa-jlx"/>
-                <constraint firstAttribute="bottom" secondItem="Nxk-N7-TQH" secondAttribute="bottom" constant="20" id="XOx-p6-q5V"/>
-                <constraint firstAttribute="centerX" secondItem="a3h-zJ-78b" secondAttribute="centerX" constant="-0.5" id="l33-9p-mQt"/>
-                <constraint firstAttribute="centerY" secondItem="PFT-qk-3vp" secondAttribute="centerY" constant="0.5" id="qXj-Cw-fMc"/>
-                <constraint firstAttribute="centerY" secondItem="a3h-zJ-78b" secondAttribute="centerY" constant="0.5" id="uLl-HF-Zvh"/>
+                <constraint firstItem="qPU-ve-U0V" firstAttribute="top" secondItem="a3h-zJ-78b" secondAttribute="bottom" constant="14" id="bB5-cm-MeW"/>
+                <constraint firstItem="K3e-75-vSj" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="3" id="byA-sk-2JY"/>
+                <constraint firstItem="G1R-CH-OHe" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="10" id="etd-xI-usC"/>
+                <constraint firstItem="PFT-qk-3vp" firstAttribute="leading" secondItem="iU3-Ia-GL2" secondAttribute="trailing" constant="30" id="jHG-W3-CIs"/>
+                <constraint firstItem="K3e-75-vSj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="lDA-Zk-Mgy"/>
+                <constraint firstAttribute="trailing" secondItem="qPU-ve-U0V" secondAttribute="trailing" constant="20" id="lW4-qU-cEq"/>
+                <constraint firstItem="iU3-Ia-GL2" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="8" id="mML-IG-aqW"/>
+                <constraint firstItem="Mge-AY-uEO" firstAttribute="top" secondItem="qPU-ve-U0V" secondAttribute="bottom" constant="5" id="mvc-lV-zWb"/>
+                <constraint firstItem="G1R-CH-OHe" firstAttribute="top" secondItem="tYT-kT-K9w" secondAttribute="bottom" constant="8" id="sBu-xd-3Uj"/>
                 <constraint firstAttribute="centerX" secondItem="Mge-AY-uEO" secondAttribute="centerX" id="vp8-dV-XtV"/>
+                <constraint firstItem="PFT-qk-3vp" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="8" id="xje-zj-9b2"/>
             </constraints>
             <point key="canvasLocation" x="231" y="340"/>
         </customView>
