@@ -15,6 +15,7 @@
 		63C4FB591B422A2600ECA356 /* AmplifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C4FB571B422A2600ECA356 /* AmplifyViewController.m */; };
 		63C4FB5A1B422A2600ECA356 /* AmplifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */; };
 		63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD8C911B40A6DD00FBD29D /* MainMenu.xib */; };
+		63F625B51B4B6150005D07DA /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F625B41B4B6150005D07DA /* noArtworkImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		63C4FB571B422A2600ECA356 /* AmplifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyViewController.m; sourceTree = "<group>"; };
 		63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AmplifyViewController.xib; sourceTree = "<group>"; };
 		63DD8C911B40A6DD00FBD29D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		63F625B41B4B6150005D07DA /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		633C89051B40952100035BFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63F625B31B4B612E005D07DA /* Images */,
 				633C89061B40952100035BFD /* Info.plist */,
 				633C890A1B40952100035BFD /* main.m */,
 			);
@@ -124,6 +127,14 @@
 				633C891A1B40952100035BFD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63F625B31B4B612E005D07DA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				63F625B41B4B6150005D07DA /* noArtworkImage.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 				633C890D1B40952100035BFD /* Images.xcassets in Resources */,
 				63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */,
 				63C4FB5A1B422A2600ECA356 /* AmplifyViewController.xib in Resources */,
+				63F625B51B4B6150005D07DA /* noArtworkImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

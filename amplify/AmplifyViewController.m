@@ -121,32 +121,36 @@
     }
 }
 
-// TODO: Display loading while fetching artwork
-- (void)updateArtwork {
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        self.albumArt.image = [self getAlbumArt];
-    });
-}
-
-// TODO: Handle text that is too large for the view
 - (NSString *)getFormattedSongTitle {
     return [NSString stringWithFormat:@"%@ - %@", self.spotify.currentTrack.name, self.spotify.currentTrack.artist];
 }
 
-// TODO: fix the image size
-- (NSImage *)getAlbumArt {
-    NSURL *request = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
-    NSData *data = [NSData dataWithContentsOfURL:request];
+- (void)updateArtwork {
+    NSURL *songURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
     
-    if (data) {
-        NSURL *artRequest = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
-        NSData *artData = [NSData dataWithContentsOfURL:artRequest];
-        if (artData) {
-            return [[NSImage alloc] initWithData:artData];
+    NSURLRequest *songRequest = [[NSURLRequest alloc] initWithURL:songURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
+    
+    [NSURLConnection sendAsynchronousRequest:songRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+        if (data) {
+            NSURL *artURL = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
+            
+            NSURLRequest *artRequest = [[NSURLRequest alloc] initWithURL:artURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
+            
+            [NSURLConnection sendAsynchronousRequest:artRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+             {
+                if (data) {
+                    dispatch_async(dispatch_get_main_queue(), ^ {
+                        self.albumArt.image = [[NSImage alloc] initWithData:data];
+                    });
+                } else {
+                    self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
+                }
+             }];
+        } else {
+            self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
         }
-    }
-    
-    return nil;
+    }];
 }
 
 - (IBAction)didChangeSlider:(id)sender {
