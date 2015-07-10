@@ -32,7 +32,8 @@
     
     self.albumArt.imageScaling = NSImageScaleAxesIndependently;
     
-    self.songScrollLabel.speed = 0.03;
+    self.songScrollLabel.speed = 0.02;
+    self.songScrollLabel.text = @"No song";
     
     if ([self.spotify isRunning]) {
         [self playbackChanged:nil];
@@ -110,9 +111,9 @@
             self.songScrollLabel.text = [self getFormattedSongTitle];
             [self updateArtwork];
             
-            [self.playButton setTitle:@"\u2759 \u2759"];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"]];
         } else {
-            [self.playButton setTitle:@"\u25B6"];
+            [self.playButton setImage:[NSImage imageNamed:@"play"]];
         }
     } else {
         self.songScrollLabel.text = @"No song";

@@ -39,7 +39,7 @@
     AmplifyViewController* contentView = [[AmplifyViewController alloc] initWithNibName:@"AmplifyViewController" bundle:nil];
     contentView.delegate = self;
     self.popover.contentViewController = contentView;
-    self.popover.contentSize = (NSSize) {300, 150};
+    self.popover.contentSize = (NSSize) {300, 125};
 }
 
 - (void)togglePopover:(id)sender {

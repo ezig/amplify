@@ -6,15 +6,35 @@
 	<dict>
 		<key>Resources/AmplifyViewController.nib</key>
 		<data>
-		Me8yZunx7hj6KSGrLAjlqh2bRGM=
+		kK1oP9nc5UrM4gVquxFiOPULQIA=
 		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
 		somL1nOCbPKpG1mZY1BbXzy11Jo=
 		</data>
+		<key>Resources/next.pdf</key>
+		<data>
+		YsVoveNrh+ygpJnuY75Ttx1o1Ek=
+		</data>
 		<key>Resources/noArtworkImage.png</key>
 		<data>
 		M/3NePjz8kgNW0mzXL8dJaZm4us=
+		</data>
+		<key>Resources/pause.pdf</key>
+		<data>
+		9EAfB6tLrFbIHxTBI7WruGNG810=
+		</data>
+		<key>Resources/play.pdf</key>
+		<data>
+		ktDrWfSLkjWgarMAQgQTCWORmw8=
+		</data>
+		<key>Resources/previous.pdf</key>
+		<data>
+		GM4UJ4hIcvNlRNuiIP6GP3YwRRM=
+		</data>
+		<key>Resources/shuffle.pdf</key>
+		<data>
+		kDdGNHzR+n2RByXHABr84bqB6ew=
 		</data>
 		<key>Resources/statusIcon.png</key>
 		<data>
@@ -23,21 +43,45 @@
 		<key>Resources/statusIcon@2x.png</key>
 		<data>
 		/wi6xRUTrh6M8Rq4rG/o9gZ3t1E=
+		</data>
+		<key>Resources/volume.pdf</key>
+		<data>
+		9y+s6ZFHw+om2qDJgkeay7ytEug=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Resources/AmplifyViewController.nib</key>
 		<data>
-		Me8yZunx7hj6KSGrLAjlqh2bRGM=
+		kK1oP9nc5UrM4gVquxFiOPULQIA=
 		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
 		somL1nOCbPKpG1mZY1BbXzy11Jo=
 		</data>
+		<key>Resources/next.pdf</key>
+		<data>
+		YsVoveNrh+ygpJnuY75Ttx1o1Ek=
+		</data>
 		<key>Resources/noArtworkImage.png</key>
 		<data>
 		M/3NePjz8kgNW0mzXL8dJaZm4us=
+		</data>
+		<key>Resources/pause.pdf</key>
+		<data>
+		9EAfB6tLrFbIHxTBI7WruGNG810=
+		</data>
+		<key>Resources/play.pdf</key>
+		<data>
+		ktDrWfSLkjWgarMAQgQTCWORmw8=
+		</data>
+		<key>Resources/previous.pdf</key>
+		<data>
+		GM4UJ4hIcvNlRNuiIP6GP3YwRRM=
+		</data>
+		<key>Resources/shuffle.pdf</key>
+		<data>
+		kDdGNHzR+n2RByXHABr84bqB6ew=
 		</data>
 		<key>Resources/statusIcon.png</key>
 		<data>
@@ -46,6 +90,10 @@
 		<key>Resources/statusIcon@2x.png</key>
 		<data>
 		/wi6xRUTrh6M8Rq4rG/o9gZ3t1E=
+		</data>
+		<key>Resources/volume.pdf</key>
+		<data>
+		9y+s6ZFHw+om2qDJgkeay7ytEug=
 		</data>
 	</dict>
 	<key>rules</key>
