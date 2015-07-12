@@ -8,21 +8,28 @@
 
 #import "AmplifyViewController.h"
 #import "AmplifyScrollLabel.h"
+#import "AmplifyHoverButton.h"
 #import "Spotify.h"
 #import "NSImage+Transform.h"
 #include <Carbon/Carbon.h>
 
 @interface AmplifyViewController ()
 
-@property (weak) IBOutlet NSButton *nextButton;
-@property (weak) IBOutlet NSButton *prevButton;
+@property (weak) IBOutlet AmplifyHoverButton *nextButton;
+@property (weak) IBOutlet AmplifyHoverButton *prevButton;
+@property (weak) IBOutlet AmplifyHoverButton *playButton;
+
+// not a hover button because the visual effect would be confusing
+// (shuffle button changes color when clicked to indicate shuffling / not shuffling)≥
 @property (weak) IBOutlet NSButton *shuffleButton;
-@property (weak) IBOutlet NSButton *playButton;
+
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSImageView *albumArt;
 @property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
 
 @property (nonatomic, strong) SpotifyApplication *spotify;
+
+@property (nonatomic, strong) NSColor *spotifyGreen;
 
 @property (nonatomic, strong) NSImage *shuffleImage;
 @property (nonatomic, strong) NSImage *shuffleTinted;
@@ -73,10 +80,14 @@
 }
 
 - (void) setupImages {
-    self.shuffleImage = [NSImage imageNamed:@"shuffle"];
-    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:[NSColor colorWithRed:0.51 green:0.72 blue:0.10 alpha:1.0]];
+    self.spotifyGreen = [NSColor colorWithRed:0.51 green:0.72 blue:0.10 alpha:1.0];
     
-    self.nextButton.alternateImage = [[NSImage imageNamed:@"nextButton"] imageTintedWithColor:[NSColor darkGrayColor]];
+    self.shuffleImage = [NSImage imageNamed:@"shuffle"];
+    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyGreen];
+    
+    // don't set the play button here because we're going to set that in playbackChanged anyway
+    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyGreen];
+    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyGreen];
 }
 
 // returning nil will prevent alert sound
@@ -133,9 +144,9 @@
             self.songScrollLabel.text = [self getFormattedSongTitle];
             [self updateArtwork];
             
-            [self.playButton setImage:[NSImage imageNamed:@"pause"]];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"]];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
         }
     } else {
         self.songScrollLabel.text = @"No song";

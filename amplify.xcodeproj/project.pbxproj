@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6315DF091B53115200884624 /* AmplifyHoverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6315DF081B53115200884624 /* AmplifyHoverButton.m */; };
 		633C89091B40952100035BFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C89081B40952100035BFD /* AppDelegate.m */; };
 		633C890B1B40952100035BFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C890A1B40952100035BFD /* main.m */; };
 		633C890D1B40952100035BFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633C890C1B40952100035BFD /* Images.xcassets */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6315DF071B53115200884624 /* AmplifyHoverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmplifyHoverButton.h; path = amplify/AmplifyHoverButton.h; sourceTree = "<group>"; };
+		6315DF081B53115200884624 /* AmplifyHoverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AmplifyHoverButton.m; path = amplify/AmplifyHoverButton.m; sourceTree = "<group>"; };
 		633C89021B40952100035BFD /* amplify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amplify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633C89061B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C89071B40952100035BFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,14 +77,16 @@
 			children = (
 				63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */,
 				63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */,
+				6315DF071B53115200884624 /* AmplifyHoverButton.h */,
+				6315DF081B53115200884624 /* AmplifyHoverButton.m */,
 			);
 			name = Views;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		633C88F91B40952100035BFD = {
 			isa = PBXGroup;
 			children = (
-				6315DF061B52F5CF00884624 /* Views */,
 				633C89041B40952100035BFD /* amplify */,
 				633C89181B40952100035BFD /* amplifyTests */,
 				633C89031B40952100035BFD /* Products */,
@@ -101,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				637760C81B52E80A00838707 /* Categories */,
+				6315DF061B52F5CF00884624 /* Views */,
 				633C89251B40980300035BFD /* Spotify.h */,
 				633C89071B40952100035BFD /* AppDelegate.h */,
 				633C89081B40952100035BFD /* AppDelegate.m */,
@@ -263,6 +269,7 @@
 				633C890B1B40952100035BFD /* main.m in Sources */,
 				633C89091B40952100035BFD /* AppDelegate.m in Sources */,
 				63C4FB591B422A2600ECA356 /* AmplifyViewController.m in Sources */,
+				6315DF091B53115200884624 /* AmplifyHoverButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
