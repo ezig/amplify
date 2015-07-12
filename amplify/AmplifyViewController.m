@@ -9,16 +9,23 @@
 #import "AmplifyViewController.h"
 #import "AmplifyScrollLabel.h"
 #import "Spotify.h"
+#import "NSImage+Transform.h"
 #include <Carbon/Carbon.h>
 
 @interface AmplifyViewController ()
 
+@property (weak) IBOutlet NSButton *nextButton;
+@property (weak) IBOutlet NSButton *prevButton;
+@property (weak) IBOutlet NSButton *shuffleButton;
 @property (weak) IBOutlet NSButton *playButton;
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSImageView *albumArt;
 @property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
 
 @property (nonatomic, strong) SpotifyApplication *spotify;
+
+@property (nonatomic, strong) NSImage *shuffleImage;
+@property (nonatomic, strong) NSImage *shuffleTinted;
 
 @end
 
@@ -27,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [self setupImages];
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     
@@ -38,7 +47,7 @@
     if ([self.spotify isRunning]) {
         [self playbackChanged:nil];
     }
-    
+
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
                                           handler:^(NSEvent *event) {
                                               return [self handleKeyPress:event];
@@ -54,7 +63,20 @@
 - (void) viewDidAppear {
     if ([self.spotify isRunning]) {
         self.volumeSlider.intValue = (int) self.spotify.soundVolume;
+        
+        if ([self.spotify shuffling]) {
+            self.shuffleButton.image = self.shuffleTinted;
+        } else {
+            self.shuffleButton.image = self.shuffleImage;
+        }
     }
+}
+
+- (void) setupImages {
+    self.shuffleImage = [NSImage imageNamed:@"shuffle"];
+    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:[NSColor colorWithRed:0.51 green:0.72 blue:0.10 alpha:1.0]];
+    
+    self.nextButton.alternateImage = [[NSImage imageNamed:@"nextButton"] imageTintedWithColor:[NSColor darkGrayColor]];
 }
 
 // returning nil will prevent alert sound
@@ -149,8 +171,15 @@
 }
 
 - (IBAction)didPressShuffle:(id)sender {
-    if ([self.spotify isRunning]) {
-        self.spotify.shuffling = !self.spotify.shuffling;
+    if ([self.spotify isRunning] && [self.spotify shufflingEnabled]) {
+        if (!self.spotify.shuffling) {
+            self.spotify.shuffling = YES;
+            self.shuffleButton.image = self.shuffleTinted;
+        }
+        else {
+            self.spotify.shuffling = NO;
+            self.shuffleButton.image = self.shuffleImage;
+        }
     }
 }
 

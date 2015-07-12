@@ -40,16 +40,25 @@
     contentView.delegate = self;
     self.popover.contentViewController = contentView;
     self.popover.contentSize = (NSSize) {300, 125};
+    
+    [self.popover.contentViewController viewDidLoad];
 }
+
 
 - (void)togglePopover:(id)sender {
     if (self.popover.shown) {
-        [self.popover performClose:sender];
+        [self.popover close];
         ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
     } else {
-        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
         [NSApp activateIgnoringOtherApps:YES];
+        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
         ((AmplifyViewController*) self.popover.contentViewController).isVisible = YES;
+    }
+}
+
+- (void)applicationDidResignActive:(NSNotification *)notification {
+    if (self.popover.shown) {
+        [self togglePopover:nil];
     }
 }
 
