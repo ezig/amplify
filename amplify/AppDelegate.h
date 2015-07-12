@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "AmplifyViewController.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, AmplifyPopoverDelegate>
 
--(void)statusItemClicked:(id)sender;
+-(void) togglePopover:(id)sender;
 
 @end
 

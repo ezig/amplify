@@ -8,14 +8,15 @@
 
 #import "AppDelegate.h"
 #import "Spotify.h"
+#import "AmplifyviewController.h"
 #import <Carbon/Carbon.h>
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSMenu *statusMenu;
-
 @property (strong, nonatomic) NSStatusItem *statusItem;
 @property (strong, nonatomic) SpotifyApplication *spotify;
+@property (strong, nonatomic) NSPopover *popover;
+
 @end
 
 @implementation AppDelegate
@@ -28,12 +29,38 @@
     
     self.statusItem.image = icon;
     
-    self.statusMenu.delegate = self;
-    self.statusItem.menu = self.statusMenu;
-
+    self.statusItem.action = @selector(togglePopover:);
+    
     [self setupHotkey];
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
+    
+    self.popover = [NSPopover new];
+    AmplifyViewController* contentView = [[AmplifyViewController alloc] initWithNibName:@"AmplifyViewController" bundle:nil];
+    contentView.delegate = self;
+    self.popover.contentViewController = contentView;
+    self.popover.contentSize = (NSSize) {300, 125};
+    
+    [self.popover.contentViewController viewDidLoad];
+}
+
+
+- (void)togglePopover:(id)sender {
+    if (self.popover.shown) {
+        [self.popover close];
+        ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
+        [[[NSWorkspace sharedWorkspace] menuBarOwningApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+    } else {
+        [NSApp activateIgnoringOtherApps:YES];
+        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
+        ((AmplifyViewController*) self.popover.contentViewController).isVisible = YES;
+    }
+}
+
+- (void)applicationDidResignActive:(NSNotification *)notification {
+    if (self.popover.shown) {
+        [self togglePopover:nil];
+    }
 }
 
 // TODO: clean up hot key handling
@@ -56,7 +83,7 @@
 OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData)
 {
     AppDelegate* delegate = (AppDelegate*)[[NSApplication sharedApplication] delegate];
-    [delegate statusItemClicked:nil];
+    [delegate togglePopover:nil];
     return noErr;
 }
 
@@ -64,14 +91,5 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     // Insert code here to tear down your application
 }
 
-- (void)statusItemClicked:(id)sender {
-    //show the popup menu associated with the status item.
-    [self.statusItem.button performClick:nil];
-}
-
-- (void)menuWillOpen:(NSMenu *)menu {
-    if (![self.spotify isRunning]) {
-    }
-}
 
 @end

@@ -11,8 +11,12 @@
 		633C890B1B40952100035BFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C890A1B40952100035BFD /* main.m */; };
 		633C890D1B40952100035BFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633C890C1B40952100035BFD /* Images.xcassets */; };
 		633C891C1B40952100035BFD /* amplifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C891B1B40952100035BFD /* amplifyTests.m */; };
-		633C89281B409EF300035BFD /* AmplifyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 633C89271B409EF300035BFD /* AmplifyMenu.m */; };
+		637760CB1B52E83900838707 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 637760CA1B52E83900838707 /* NSImage+Transform.m */; };
+		63B0132F1B49CC0600DD6EC4 /* AmplifyScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */; };
+		63C4FB591B422A2600ECA356 /* AmplifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C4FB571B422A2600ECA356 /* AmplifyViewController.m */; };
+		63C4FB5A1B422A2600ECA356 /* AmplifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */; };
 		63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD8C911B40A6DD00FBD29D /* MainMenu.xib */; };
+		63F625B51B4B6150005D07DA /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F625B41B4B6150005D07DA /* noArtworkImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +40,15 @@
 		633C891A1B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C891B1B40952100035BFD /* amplifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amplifyTests.m; sourceTree = "<group>"; };
 		633C89251B40980300035BFD /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
-		633C89261B409EF300035BFD /* AmplifyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyMenu.h; sourceTree = "<group>"; };
-		633C89271B409EF300035BFD /* AmplifyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyMenu.m; sourceTree = "<group>"; };
+		637760C91B52E83900838707 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
+		637760CA1B52E83900838707 /* NSImage+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Transform.m"; sourceTree = "<group>"; };
+		63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmplifyScrollLabel.h; path = amplify/AmplifyScrollLabel.h; sourceTree = "<group>"; };
+		63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AmplifyScrollLabel.m; path = amplify/AmplifyScrollLabel.m; sourceTree = "<group>"; };
+		63C4FB561B422A2600ECA356 /* AmplifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyViewController.h; sourceTree = "<group>"; };
+		63C4FB571B422A2600ECA356 /* AmplifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyViewController.m; sourceTree = "<group>"; };
+		63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AmplifyViewController.xib; sourceTree = "<group>"; };
 		63DD8C911B40A6DD00FBD29D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		63F625B41B4B6150005D07DA /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6315DF061B52F5CF00884624 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */,
+				63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		633C88F91B40952100035BFD = {
 			isa = PBXGroup;
 			children = (
+				6315DF061B52F5CF00884624 /* Views */,
 				633C89041B40952100035BFD /* amplify */,
 				633C89181B40952100035BFD /* amplifyTests */,
 				633C89031B40952100035BFD /* Products */,
@@ -80,14 +100,16 @@
 		633C89041B40952100035BFD /* amplify */ = {
 			isa = PBXGroup;
 			children = (
+				637760C81B52E80A00838707 /* Categories */,
 				633C89251B40980300035BFD /* Spotify.h */,
 				633C89071B40952100035BFD /* AppDelegate.h */,
 				633C89081B40952100035BFD /* AppDelegate.m */,
 				633C890C1B40952100035BFD /* Images.xcassets */,
 				633C89051B40952100035BFD /* Supporting Files */,
 				63DD8C911B40A6DD00FBD29D /* MainMenu.xib */,
-				633C89261B409EF300035BFD /* AmplifyMenu.h */,
-				633C89271B409EF300035BFD /* AmplifyMenu.m */,
+				63C4FB561B422A2600ECA356 /* AmplifyViewController.h */,
+				63C4FB571B422A2600ECA356 /* AmplifyViewController.m */,
+				63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */,
 			);
 			path = amplify;
 			sourceTree = "<group>";
@@ -95,6 +117,7 @@
 		633C89051B40952100035BFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63F625B31B4B612E005D07DA /* Images */,
 				633C89061B40952100035BFD /* Info.plist */,
 				633C890A1B40952100035BFD /* main.m */,
 			);
@@ -116,6 +139,23 @@
 				633C891A1B40952100035BFD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		637760C81B52E80A00838707 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				637760C91B52E83900838707 /* NSImage+Transform.h */,
+				637760CA1B52E83900838707 /* NSImage+Transform.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		63F625B31B4B612E005D07DA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				63F625B41B4B6150005D07DA /* noArtworkImage.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +239,8 @@
 			files = (
 				633C890D1B40952100035BFD /* Images.xcassets in Resources */,
 				63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */,
+				63C4FB5A1B422A2600ECA356 /* AmplifyViewController.xib in Resources */,
+				63F625B51B4B6150005D07DA /* noArtworkImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,9 +258,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B0132F1B49CC0600DD6EC4 /* AmplifyScrollLabel.m in Sources */,
+				637760CB1B52E83900838707 /* NSImage+Transform.m in Sources */,
 				633C890B1B40952100035BFD /* main.m in Sources */,
-				633C89281B409EF300035BFD /* AmplifyMenu.m in Sources */,
 				633C89091B40952100035BFD /* AppDelegate.m in Sources */,
+				63C4FB591B422A2600ECA356 /* AmplifyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

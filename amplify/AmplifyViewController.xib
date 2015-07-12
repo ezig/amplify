@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AmplifyViewController">
+            <connections>
+                <outlet property="albumArt" destination="K3e-75-vSj" id="Bi6-vX-72z"/>
+                <outlet property="nextButton" destination="iU3-Ia-GL2" id="3EB-65-3hr"/>
+                <outlet property="playButton" destination="a3h-zJ-78b" id="CVm-Qy-TtF"/>
+                <outlet property="prevButton" destination="tYT-kT-K9w" id="Lue-y7-akd"/>
+                <outlet property="shuffleButton" destination="PFT-qk-3vp" id="2Jl-La-vVr"/>
+                <outlet property="songScrollLabel" destination="B5g-5z-cdv" id="aug-5m-Lke"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="volumeSlider" destination="qPU-ve-U0V" id="HOS-r8-eF0"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="PFT-qk-3vp">
+                    <rect key="frame" x="252" y="45" width="28" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="0ai-Uj-UEZ"/>
+                        <constraint firstAttribute="width" constant="28" id="kKZ-aJ-lL6"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="C4359E0E-D335-4F40-A98C-7198FDB0AB42" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="tRE-BK-aIC">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressShuffle:" target="-2" id="tVZ-uO-Mke"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="a3h-zJ-78b" userLabel="Play">
+                    <rect key="frame" x="146" y="45" width="28" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="KrY-xl-VVc"/>
+                        <constraint firstAttribute="width" constant="28" id="Ztk-8J-SLZ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="play" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sEq-8m-JnO">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressPlay:" target="-2" id="13S-a9-Jhy"/>
+                    </connections>
+                </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="B5g-5z-cdv" customClass="AmplifyScrollLabel">
+                    <rect key="frame" x="20" y="88" width="260" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="ExZ-kE-sGP"/>
+                    </constraints>
+                </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-75-vSj">
+                    <rect key="frame" x="20" y="15" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="elk-Mx-ZuT"/>
+                        <constraint firstAttribute="height" constant="70" id="mB3-xh-xyl"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="noArtworkImage" id="NXv-g8-KgM"/>
+                </imageView>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qPU-ve-U0V">
+                    <rect key="frame" x="121" y="16" width="161" height="20"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="hGn-J3-fBv"/>
+                    <connections>
+                        <action selector="didChangeSlider:" target="-2" id="nrQ-id-2Pc"/>
+                    </connections>
+                </slider>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eaV-nh-eT0">
+                    <rect key="frame" x="96" y="15" width="23" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="DP1-PL-q3k"/>
+                        <constraint firstAttribute="width" constant="23" id="uG4-9x-rqP"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="volume" id="S5u-dt-RfV"/>
+                </imageView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="tYT-kT-K9w" userLabel="Previous">
+                    <rect key="frame" x="93" y="45" width="28" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="5sS-pQ-BpT"/>
+                        <constraint firstAttribute="height" constant="32" id="pJX-m1-2f1"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="previous" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="wDJ-zO-cSo">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressPrev:" target="-2" id="SyZ-tq-lcd"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="iU3-Ia-GL2">
+                    <rect key="frame" x="199" y="45" width="28" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="Aw3-B9-WtF"/>
+                        <constraint firstAttribute="width" constant="28" id="BqW-jd-wUo"/>
+                    </constraints>
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="next" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hYV-RV-iMu">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" size="14" name="AppleColorEmoji"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didPressNext:" target="-2" id="5rb-ur-kCP"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qPU-ve-U0V" secondAttribute="bottom" constant="18" id="3d4-yk-isD"/>
+                <constraint firstItem="PFT-qk-3vp" firstAttribute="leading" secondItem="iU3-Ia-GL2" secondAttribute="trailing" constant="25" id="9dN-zJ-knA"/>
+                <constraint firstAttribute="bottom" secondItem="eaV-nh-eT0" secondAttribute="bottom" constant="15" id="9od-JN-NWm"/>
+                <constraint firstItem="tYT-kT-K9w" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="3" id="D64-X1-yK3"/>
+                <constraint firstItem="B5g-5z-cdv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="F1u-3j-UIE"/>
+                <constraint firstItem="eaV-nh-eT0" firstAttribute="top" secondItem="tYT-kT-K9w" secondAttribute="bottom" constant="7" id="HEC-yQ-kTb"/>
+                <constraint firstAttribute="trailing" secondItem="PFT-qk-3vp" secondAttribute="trailing" constant="20" id="HQ1-s5-z2q"/>
+                <constraint firstItem="B5g-5z-cdv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="IGI-6m-zQi"/>
+                <constraint firstItem="K3e-75-vSj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="KD6-oJ-ITr"/>
+                <constraint firstAttribute="trailing" secondItem="B5g-5z-cdv" secondAttribute="trailing" constant="20" id="MIg-fm-aMO"/>
+                <constraint firstAttribute="trailing" secondItem="qPU-ve-U0V" secondAttribute="trailing" constant="20" id="Thh-fE-pkl"/>
+                <constraint firstItem="iU3-Ia-GL2" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="11" id="XdD-lo-2t8"/>
+                <constraint firstAttribute="bottom" secondItem="K3e-75-vSj" secondAttribute="bottom" constant="15" id="YKD-NC-p6J"/>
+                <constraint firstItem="qPU-ve-U0V" firstAttribute="top" secondItem="PFT-qk-3vp" secondAttribute="bottom" constant="11" id="a8K-sP-Uyf"/>
+                <constraint firstItem="a3h-zJ-78b" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="11" id="eFs-n2-0IF"/>
+                <constraint firstItem="a3h-zJ-78b" firstAttribute="leading" secondItem="tYT-kT-K9w" secondAttribute="trailing" constant="25" id="q3A-HP-7mc"/>
+                <constraint firstItem="qPU-ve-U0V" firstAttribute="leading" secondItem="eaV-nh-eT0" secondAttribute="trailing" constant="4" id="qbn-Wp-NnQ"/>
+                <constraint firstItem="iU3-Ia-GL2" firstAttribute="leading" secondItem="a3h-zJ-78b" secondAttribute="trailing" constant="25" id="xDc-AM-E2k"/>
+                <constraint firstItem="PFT-qk-3vp" firstAttribute="top" secondItem="B5g-5z-cdv" secondAttribute="bottom" constant="8" id="xje-zj-9b2"/>
+                <constraint firstItem="eaV-nh-eT0" firstAttribute="leading" secondItem="K3e-75-vSj" secondAttribute="trailing" constant="6" id="zW8-Iw-Z4U"/>
+            </constraints>
+            <point key="canvasLocation" x="231" y="326.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="C4359E0E-D335-4F40-A98C-7198FDB0AB42" width="50" height="45">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGSUpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
+ERYbHCUmJysyNzo9Q0ZVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
+b2xvcoAPEgDAAACAAoAN0hIJExVaTlMub2JqZWN0c6EUgAOADNISCRcaohgZgASABYALEADVHR4fIAkh
+GyIjJFZOU1NpemVfEA9OU0JpdHNQZXJTYW1wbGVfEBBOU0NvbG9yU3BhY2VOYW1lWU5TUERGRGF0YYAG
+gAeACIAKWHs1MCwgNDV9XxAZTlNDYWxpYnJhdGVkUkdCQ29sb3JTcGFjZdIoCSkqV05TLmRhdGFPEQRg
+JVBERi0xLjUKJbXtrvsKMyAwIG9iago8PCAvTGVuZ3RoIDQgMCBSCiAgIC9GaWx0ZXIgL0ZsYXRlRGVj
+b2RlCj4+CnN0cmVhbQp4nG1SS1IFMQjc5xS5gMgnP47xjmBNlc/Fc6Hev0oykIml1mxoOjTQzEfCPL/P
+e35+wXz/SjJAdGQqUJDzexYB4bLwI3M9MXPg4AUX9vr0O3EVFIVmgdU1pM2XAmMjaY7YhCIkoMpOmLZI
+m3FpNopCF0tWGI3zkRlhmDI3UK5WSWSEmJA/OBPceJWTDVrUhWO0GR7mSrTGvV0awF02pnbiazmnL7Pw
+Z9hBVaeGd1kw+juM0cwEqWvwASp970UdRi9TJxZ3/rFcmbW67HJVWcGx/L1mCfyEgOc14jrWmnT8c723
+Pz/Ia7qlbxbBcoEKZW5kc3RyZWFtCmVuZG9iago0IDAgb2JqCiAgIDIzNwplbmRvYmoKMiAwIG9iago8
+PAogICAvRXh0R1N0YXRlIDw8CiAgICAgIC9hMCA8PCAvQ0EgMSAvY2EgMSA+PgogICA+Pgo+PgplbmRv
+YmoKNSAwIG9iago8PCAvVHlwZSAvUGFnZQogICAvUGFyZW50IDEgMCBSCiAgIC9NZWRpYUJveCBbIDAg
+MCA0OS41OTk5OTggNDQuNzk5OTk5IF0KICAgL0NvbnRlbnRzIDMgMCBSCiAgIC9Hcm91cCA8PAogICAg
+ICAvVHlwZSAvR3JvdXAKICAgICAgL1MgL1RyYW5zcGFyZW5jeQogICAgICAvQ1MgL0RldmljZVJHQgog
+ICA+PgogICAvUmVzb3VyY2VzIDIgMCBSCj4+CmVuZG9iagoxIDAgb2JqCjw8IC9UeXBlIC9QYWdlcwog
+ICAvS2lkcyBbIDUgMCBSIF0KICAgL0NvdW50IDEKPj4KZW5kb2JqCjYgMCBvYmoKPDwgL0NyZWF0b3Ig
+KGNhaXJvIDEuMTAuMiAoaHR0cDovL2NhaXJvZ3JhcGhpY3Mub3JnKSkKICAgL1Byb2R1Y2VyIChjYWly
+byAxLjEwLjIgKGh0dHA6Ly9jYWlyb2dyYXBoaWNzLm9yZykpCj4+CmVuZG9iago3IDAgb2JqCjw8IC9U
+eXBlIC9DYXRhbG9nCiAgIC9QYWdlcyAxIDAgUgo+PgplbmRvYmoKeHJlZgowIDgKMDAwMDAwMDAwMCA2
+NTUzNSBmIAowMDAwMDAwNjM1IDAwMDAwIG4gCjAwMDAwMDAzNTEgMDAwMDAgbiAKMDAwMDAwMDAxNSAw
+MDAwMCBuIAowMDAwMDAwMzI5IDAwMDAwIG4gCjAwMDAwMDA0MjMgMDAwMDAgbiAKMDAwMDAwMDcwMCAw
+MDAwMCBuIAowMDAwMDAwODI3IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgOAogICAvUm9vdCA3IDAg
+UgogICAvSW5mbyA2IDAgUgo+PgpzdGFydHhyZWYKODc5CiUlRU9GCoAJ0iwtLi9aJGNsYXNzbmFtZVgk
+Y2xhc3Nlc11OU011dGFibGVEYXRhoy4wMVZOU0RhdGFYTlNPYmplY3TSLC0zNF1OU1BERkltYWdlUmVw
+ozU2MV1OU1BERkltYWdlUmVwWk5TSW1hZ2VSZXDSLC04OVdOU0FycmF5ojgx0iwtOzxeTlNNdXRhYmxl
+QXJyYXmjOzgx0z4/CUBBQldOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOADtIsLURFV05TQ29sb3Ki
+RDHSLC1HSFdOU0ltYWdlokcxXxAPTlNLZXllZEFyY2hpdmVy0UtMVHJvb3SAAQAIABEAGgAjAC0AMgA3
+AEoAUABZAGAAbQB0AHwAfgCDAIUAhwCMAJcAmQCbAJ0AogClAKcAqQCrAK0AuAC/ANEA5ADuAPAA8gD0
+APYA/wEbASABKAWMBY4FkwWeBacFtQW5BcAFyQXOBdwF4AXuBfkF/gYGBgkGDgYdBiEGKAYwBj0GQgZE
+BkYGSwZTBlYGWwZjBmYGeAZ7BoAAAAAAAAACAQAAAAAAAABNAAAAAAAAAAAAAAAAAAAGgg
+</mutableData>
+        </image>
+        <image name="next" width="52" height="52"/>
+        <image name="noArtworkImage" width="100" height="100"/>
+        <image name="play" width="52" height="52"/>
+        <image name="previous" width="52" height="52"/>
+        <image name="volume" width="55" height="45"/>
+    </resources>
+</document>
