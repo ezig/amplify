@@ -42,8 +42,8 @@
 		633C89251B40980300035BFD /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		637760C91B52E83900838707 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
 		637760CA1B52E83900838707 /* NSImage+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Transform.m"; sourceTree = "<group>"; };
-		63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyScrollLabel.h; sourceTree = "<group>"; };
-		63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyScrollLabel.m; sourceTree = "<group>"; };
+		63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmplifyScrollLabel.h; path = amplify/AmplifyScrollLabel.h; sourceTree = "<group>"; };
+		63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AmplifyScrollLabel.m; path = amplify/AmplifyScrollLabel.m; sourceTree = "<group>"; };
 		63C4FB561B422A2600ECA356 /* AmplifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyViewController.h; sourceTree = "<group>"; };
 		63C4FB571B422A2600ECA356 /* AmplifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyViewController.m; sourceTree = "<group>"; };
 		63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AmplifyViewController.xib; sourceTree = "<group>"; };
@@ -69,9 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6315DF061B52F5CF00884624 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */,
+				63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		633C88F91B40952100035BFD = {
 			isa = PBXGroup;
 			children = (
+				6315DF061B52F5CF00884624 /* Views */,
 				633C89041B40952100035BFD /* amplify */,
 				633C89181B40952100035BFD /* amplifyTests */,
 				633C89031B40952100035BFD /* Products */,
@@ -100,8 +110,6 @@
 				63C4FB561B422A2600ECA356 /* AmplifyViewController.h */,
 				63C4FB571B422A2600ECA356 /* AmplifyViewController.m */,
 				63C4FB581B422A2600ECA356 /* AmplifyViewController.xib */,
-				63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */,
-				63B0132E1B49CC0600DD6EC4 /* AmplifyScrollLabel.m */,
 			);
 			path = amplify;
 			sourceTree = "<group>";

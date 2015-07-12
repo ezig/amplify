@@ -49,6 +49,7 @@
     if (self.popover.shown) {
         [self.popover close];
         ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
+        [[[NSWorkspace sharedWorkspace] menuBarOwningApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
     } else {
         [NSApp activateIgnoringOtherApps:YES];
         [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
