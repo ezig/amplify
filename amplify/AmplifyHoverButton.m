@@ -11,7 +11,13 @@
 
 @interface AmplifyHoverButton ()
 
+
+@property (nonatomic, strong) NSImage *normalImage;
+@property (nonatomic, strong) NSImage *hoverImage;
+
 @property (nonatomic, strong) NSTrackingArea *trackingArea;
+
+@property (nonatomic, assign) BOOL mouseIn;
 
 @end
 
@@ -20,14 +26,22 @@
 - (void) setImage:(NSImage *)image withTint:(NSColor *)tint {
     self.normalImage = image;
     self.hoverImage = [image imageTintedWithColor:tint];
+    
+    if (self.mouseIn) {
+        self.image = self.hoverImage;
+    } else {
+        self.image = self.normalImage;
+    }
 }
 
 #pragma mark - Mouseover Handling
 - (void)mouseEntered:(NSEvent *)theEvent {
+    self.mouseIn = YES;
     self.image = self.hoverImage;
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
+    self.mouseIn = NO;
     self.image = self.normalImage;
 }
 
