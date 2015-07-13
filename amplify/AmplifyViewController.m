@@ -13,7 +13,7 @@
 #import "NSImage+Transform.h"
 #include <Carbon/Carbon.h>
 
-@interface AmplifyViewController ()
+@interface AmplifyViewController () <NSUserNotificationCenterDelegate>
 
 @property (weak) IBOutlet AmplifyHoverButton *nextButton;
 @property (weak) IBOutlet AmplifyHoverButton *prevButton;
@@ -28,6 +28,8 @@
 @property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
 
 @property (nonatomic, strong) SpotifyApplication *spotify;
+
+@property (nonatomic, strong) NSString *currentTrackURL;
 
 @property (nonatomic, strong) NSColor *spotifyGreen;
 
@@ -44,6 +46,8 @@
     
     [self setupImages];
     
+    [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
+    
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     
     self.albumArt.imageScaling = NSImageScaleAxesIndependently;
@@ -53,6 +57,8 @@
     
     if ([self.spotify isRunning]) {
         [self playbackChanged:nil];
+        [self updateArtworkWithCompletion:nil];
+        self.songScrollLabel.text = [self getFormattedSongTitle];
     }
 
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
@@ -141,8 +147,17 @@
 - (void)playbackChanged:(NSNotification *)notification {
     if ([self.spotify isRunning]) {
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
-            self.songScrollLabel.text = [self getFormattedSongTitle];
-            [self updateArtwork];
+            
+            if (![self.currentTrackURL isEqualToString:self.spotify.currentTrack.spotifyUrl]) {
+                self.currentTrackURL = [self.spotify.currentTrack.spotifyUrl copy];
+                self.songScrollLabel.text = [self getFormattedSongTitle];
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+                    [self updateArtworkWithCompletion:^(NSImage *album) {
+                        [self sendNotification:album];
+                    }];
+                });
+            }
             
             [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
         } else {
@@ -198,32 +213,64 @@
     [[NSApplication sharedApplication] terminate:nil];
 }
 
-- (void)updateArtwork {
+- (void)updateArtworkWithCompletion:(void (^)(NSImage *))completion {
+    NSImage *album;
+    
     NSURL *songURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
     
     NSURLRequest *songRequest = [[NSURLRequest alloc] initWithURL:songURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
     
-    [NSURLConnection sendAsynchronousRequest:songRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if (data) {
-             NSURL *artURL = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
-             
-             NSURLRequest *artRequest = [[NSURLRequest alloc] initWithURL:artURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
-             
-             [NSURLConnection sendAsynchronousRequest:artRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-              {
-                  if (data) {
-                      dispatch_async(dispatch_get_main_queue(), ^ {
-                          self.albumArt.image = [[NSImage alloc] initWithData:data];
-                      });
-                  } else {
-                      self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
-                  }
-              }];
-         } else {
-             self.albumArt.image = [NSImage imageNamed:@"noArtworkImage"];
-         }
-     }];
+    NSData *data = [NSURLConnection sendSynchronousRequest:songRequest returningResponse:nil error:nil];
+
+    if (data) {
+        NSURL *artURL = [NSURL URLWithString:[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] objectForKey:@"thumbnail_url"]];
+         
+        NSURLRequest *artRequest = [[NSURLRequest alloc] initWithURL:artURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
+         
+        data = [NSURLConnection sendSynchronousRequest:artRequest returningResponse:nil error:nil];
+        
+        if (data) {
+            album = [[NSImage alloc] initWithData:data];
+        } else {
+            album = [NSImage imageNamed:@"noArtworkImage"];
+        }
+        
+    } else {
+        album = [NSImage imageNamed:@"noArtworkImage"];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        self.albumArt.image = album;
+        if (completion) {
+            completion(album);
+        }
+    });
+}
+
+- (void) sendNotification:(NSImage *)album {
+    // only actually send a notification if the popover isn't visible and the user isn't currently in spotify
+    if (!self.isVisible && ![[[NSWorkspace sharedWorkspace] frontmostApplication].bundleIdentifier isEqualToString:@"com.spotify.client"]) {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+
+        notification.title = self.spotify.currentTrack.name;
+        notification.subtitle = self.spotify.currentTrack.album;
+        notification.informativeText = self.spotify.currentTrack.artist;
+        
+        notification.contentImage = album;
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
+}
+
+# pragma mark - NSUserNotificationCenterDelegate methods
+
+- (BOOL) userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
+}
+
+// clicking on notification launches Spotify
+- (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
+    [[NSWorkspace sharedWorkspace] launchApplication:@"Spotify"];
 }
 
 @end
