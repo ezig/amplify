@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AmplifyViewController">
             <connections>
-                <outlet property="albumArt" destination="K3e-75-vSj" id="Bi6-vX-72z"/>
+                <outlet property="albumArtView" destination="K3e-75-vSj" id="NZJ-Sd-RzP"/>
                 <outlet property="nextButton" destination="iU3-Ia-GL2" id="3EB-65-3hr"/>
                 <outlet property="playButton" destination="a3h-zJ-78b" id="CVm-Qy-TtF"/>
                 <outlet property="prevButton" destination="tYT-kT-K9w" id="Lue-y7-akd"/>
@@ -29,7 +28,7 @@
                         <constraint firstAttribute="height" constant="35" id="0ai-Uj-UEZ"/>
                         <constraint firstAttribute="width" constant="28" id="kKZ-aJ-lL6"/>
                     </constraints>
-                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="EF2B8B99-9EA8-4988-BBC2-5D760A740E84" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="tRE-BK-aIC">
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="8A0108D1-5305-4211-9DA1-FC3C8FD37C4E" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="tRE-BK-aIC">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
                     </buttonCell>
@@ -160,7 +159,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="EF2B8B99-9EA8-4988-BBC2-5D760A740E84" width="50" height="45">
+        <image name="8A0108D1-5305-4211-9DA1-FC3C8FD37C4E" width="50" height="45">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGQkNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QDwcI
 ERYbHCUmJygwMzY8P1UkbnVsbNQJCgsMDQ4PEFYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVwc1dOU0Nv

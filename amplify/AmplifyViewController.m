@@ -24,7 +24,7 @@
 @property (weak) IBOutlet NSButton *shuffleButton;
 
 @property (weak) IBOutlet NSSlider *volumeSlider;
-@property (weak) IBOutlet NSImageView *albumArt;
+@property (weak) IBOutlet NSImageView *albumArtView;
 @property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
 
 @property (nonatomic, strong) SpotifyApplication *spotify;
@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSString *currentTrackURL;
 
 @property (nonatomic, strong) NSColor *spotifyGreen;
+
+@property (nonatomic, strong) NSImage *albumArt;
 
 @property (nonatomic, strong) NSImage *shuffleImage;
 @property (nonatomic, strong) NSImage *shuffleTinted;
@@ -50,15 +52,33 @@
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     
-    self.albumArt.imageScaling = NSImageScaleAxesIndependently;
+    self.albumArtView.imageScaling = NSImageScaleAxesIndependently;
     
     self.songScrollLabel.speed = 0.02;
     self.songScrollLabel.text = @"No song";
     
+    // even though we force the
     if ([self.spotify isRunning]) {
-        [self playbackChanged:nil];
-        [self updateArtworkWithCompletion:nil];
         self.songScrollLabel.text = [self getFormattedSongTitle];
+        
+        // if there was already album art before the view loaded, set it
+        if (self.albumArt) {
+            self.albumArtView.image = self.albumArt;
+        }
+        // otherwise, get the album artwork
+        else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+                [self updateArtworkWithCompletion:nil];
+            });
+        }
+        
+        // set the play button image (normally this changes whenever the playback changes, but
+        // set it manually once when the view loads)
+        if (self.spotify.playerState == SpotifyEPlSPlaying) {
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
+        } else {
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
+        }
     }
 
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
@@ -82,6 +102,9 @@
         } else {
             self.shuffleButton.image = self.shuffleImage;
         }
+    } else {
+        self.songScrollLabel.text = @"No song";
+        self.albumArtView.image = [NSImage imageNamed:@"noArtworkImage"];
     }
 }
 
@@ -94,6 +117,7 @@
     // don't set the play button here because we're going to set that in playbackChanged anyway
     [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyGreen];
     [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyGreen];
+    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
 }
 
 // returning nil will prevent alert sound
@@ -216,7 +240,9 @@
 - (void)updateArtworkWithCompletion:(void (^)(NSImage *))completion {
     NSImage *album;
     
-    NSURL *songURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", self.spotify.currentTrack.spotifyUrl]];
+    NSString *spotifyURL = [self.spotify.currentTrack.spotifyUrl copy];
+    
+    NSURL *songURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://embed.spotify.com/oembed/?url=%@", spotifyURL]];
     
     NSURLRequest *songRequest = [[NSURLRequest alloc] initWithURL:songURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3.0];
     
@@ -240,9 +266,12 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^ {
-        self.albumArt.image = album;
-        if (completion) {
-            completion(album);
+        if ([spotifyURL isEqualToString:self.spotify.currentTrack.spotifyUrl]) {
+            self.albumArt = album;
+            self.albumArtView.image = album;
+            if (completion) {
+                completion(album);
+            }
         }
     });
 }
