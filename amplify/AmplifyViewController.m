@@ -38,6 +38,8 @@
 @property (nonatomic, strong) NSImage *shuffleImage;
 @property (nonatomic, strong) NSImage *shuffleTinted;
 
+@property (strong) IBOutlet NSWindow *prefsWindow;
+
 @end
 
 @implementation AmplifyViewController
@@ -232,6 +234,11 @@
         }
     }
 }
+
+- (IBAction)didPressPreferences:(id)sender {
+    [self.prefsWindow makeKeyAndOrderFront:nil];
+}
+
 
 - (IBAction)didPressQuit:(id)sender {
     [[NSApplication sharedApplication] terminate:nil];

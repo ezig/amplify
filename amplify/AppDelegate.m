@@ -91,5 +91,4 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     // Insert code here to tear down your application
 }
 
-
 @end
