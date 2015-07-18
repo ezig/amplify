@@ -40,6 +40,10 @@
 
 @property (strong) IBOutlet NSWindow *prefsWindow;
 
+@property (weak) IBOutlet NSButton *enableNotifications;
+@property (weak) IBOutlet NSButton *enableLaunchOnLogin;
+
+
 @end
 
 @implementation AmplifyViewController
@@ -235,8 +239,16 @@
     }
 }
 
+#pragma mark - Settings pop up button actions
+
 - (IBAction)didPressPreferences:(id)sender {
     [self.prefsWindow makeKeyAndOrderFront:nil];
+    
+    if (self.delegate.launchOnLogin) {
+        self.enableLaunchOnLogin.state = NSOnState;
+    } else {
+        self.enableLaunchOnLogin.state = NSOffState;
+    }
 }
 
 
@@ -244,6 +256,20 @@
     [[NSApplication sharedApplication] terminate:nil];
 }
 
+#pragma mark - Preferences window actions
+
+- (IBAction)didChangeEnableNotifications:(id)sender {
+}
+
+- (IBAction)didChangeLaunchOnLogin:(id)sender {
+    if (self.enableLaunchOnLogin.state == NSOnState) {
+        self.delegate.launchOnLogin = YES;
+    } else {
+        self.delegate.launchOnLogin = NO;
+    }
+}
+
+#pragma mark - Private methods
 - (void)updateArtworkWithCompletion:(void (^)(NSImage *))completion {
     NSImage *album;
     

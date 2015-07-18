@@ -11,7 +11,5 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, AmplifyPopoverDelegate>
 
--(void) togglePopover:(id)sender;
-
 @end
 
