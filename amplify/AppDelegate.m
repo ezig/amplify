@@ -66,6 +66,11 @@
     }
 }
 
+- (void)closePopover:(id)sender {
+    [self.popover close];
+    ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
+}
+
 // TODO: clean up hot key handling
 - (void)setupHotkey {
     EventHotKeyRef hotKeyRef;

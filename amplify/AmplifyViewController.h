@@ -10,9 +10,8 @@
 
 @protocol AmplifyPopoverDelegate <NSObject>
 
-@property (nonatomic, assign) BOOL launchOnLogin;
-
 - (void)togglePopover:(id)sender;
+- (void)closePopover:(id)sender;
 
 @end
 

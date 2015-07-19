@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Ezra Zigmond. All rights reserved.
 //
 
+#import "PreferencesViewController.h"
 #import "AmplifyViewController.h"
 #import "AmplifyScrollLabel.h"
 #import "AmplifyHoverButton.h"
@@ -39,10 +40,6 @@
 @property (nonatomic, strong) NSImage *shuffleTinted;
 
 @property (strong) IBOutlet NSWindow *prefsWindow;
-
-@property (weak) IBOutlet NSButton *enableNotifications;
-@property (weak) IBOutlet NSButton *enableLaunchOnLogin;
-
 
 @end
 
@@ -243,30 +240,18 @@
 
 - (IBAction)didPressPreferences:(id)sender {
     [self.prefsWindow makeKeyAndOrderFront:nil];
+    PreferencesViewController *contentView = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:nil];
     
-    if (self.delegate.launchOnLogin) {
-        self.enableLaunchOnLogin.state = NSOnState;
-    } else {
-        self.enableLaunchOnLogin.state = NSOffState;
-    }
+    contentView.delegate = (id<PreferencesDelegate>)self.delegate;
+    
+    [self.delegate closePopover:nil];
+    
+    self.prefsWindow.contentViewController = contentView;
 }
 
 
 - (IBAction)didPressQuit:(id)sender {
     [[NSApplication sharedApplication] terminate:nil];
-}
-
-#pragma mark - Preferences window actions
-
-- (IBAction)didChangeEnableNotifications:(id)sender {
-}
-
-- (IBAction)didChangeLaunchOnLogin:(id)sender {
-    if (self.enableLaunchOnLogin.state == NSOnState) {
-        self.delegate.launchOnLogin = YES;
-    } else {
-        self.delegate.launchOnLogin = NO;
-    }
 }
 
 #pragma mark - Private methods
