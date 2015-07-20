@@ -12,6 +12,7 @@
 #import "AmplifyHoverButton.h"
 #import "Spotify.h"
 #import "NSImage+Transform.h"
+#include <ShortcutRecorder/ShortcutRecorder.h>
 #include <Carbon/Carbon.h>
 
 @interface AmplifyViewController () <NSUserNotificationCenterDelegate>
@@ -23,6 +24,9 @@
 // not a hover button because the visual effect would be confusing
 // (shuffle button changes color when clicked to indicate shuffling / not shuffling)≥
 @property (weak) IBOutlet NSButton *shuffleButton;
+
+@property (weak) IBOutlet NSButton *volumeUp;
+@property (weak) IBOutlet NSButton *volumeDown;
 
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSImageView *albumArtView;
@@ -39,8 +43,6 @@
 @property (nonatomic, strong) NSImage *shuffleImage;
 @property (nonatomic, strong) NSImage *shuffleTinted;
 
-@property (strong) IBOutlet NSWindow *prefsWindow;
-
 @end
 
 @implementation AmplifyViewController
@@ -48,6 +50,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [self bindButtons];
     
     [self setupImages];
     
@@ -83,7 +87,7 @@
             [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
         }
     }
-
+    
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
                                           handler:^(NSEvent *event) {
                                               return [self handleKeyPress:event];
@@ -112,7 +116,7 @@
 }
 
 - (void) setupImages {
-    self.spotifyGreen = [NSColor colorWithRed:0.51 green:0.72 blue:0.10 alpha:1.0];
+    self.spotifyGreen = [NSColor colorWithRed:0.5176 green:0.741 blue:0.0 alpha:1.0];
     
     self.shuffleImage = [NSImage imageNamed:@"shuffle"];
     self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyGreen];
@@ -127,34 +131,8 @@
 - (NSEvent *)handleKeyPress:(NSEvent *)event {
     if (self.isVisible) {
         switch ([event keyCode]) {
-            case kVK_ANSI_P:
-                [self didPressPlay:nil];
-                break;
-            
-            case kVK_ANSI_D:
-                [self didPressNext:nil];
-                break;
-                
-            case kVK_ANSI_A:
-                [self didPressPrev:nil];
-                break;
-            
-            case kVK_ANSI_U:
-                [self didPressShuffle:nil];
-                break;
-                
             case kVK_ANSI_Q:
                 [self didPressQuit:nil];
-                break;
-                
-            case kVK_ANSI_W:
-                self.volumeSlider.integerValue = MIN(100, self.volumeSlider.integerValue + 5);
-                [self didChangeSlider:nil];
-                break;
-            
-            case kVK_ANSI_S:
-                self.volumeSlider.integerValue = MAX(0, self.volumeSlider.integerValue - 5);
-                [self didChangeSlider:nil];
                 break;
                 
             case kVK_Escape:
@@ -236,6 +214,16 @@
     }
 }
 
+- (IBAction)didPressVolumeDown:(id)sender {
+    self.volumeSlider.integerValue = MAX(0, self.volumeSlider.integerValue - 5);
+    [self didChangeSlider:nil];
+}
+
+- (IBAction)didPressVolumeUp:(id)sender {
+    self.volumeSlider.integerValue = MIN(100, self.volumeSlider.integerValue + 5);
+    [self didChangeSlider:nil];
+}
+
 #pragma mark - Settings pop up button actions
 
 - (IBAction)didPressPreferences:(id)sender {
@@ -307,6 +295,64 @@
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
+}
+
+- (void) bindButtons {
+    NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
+    
+    [self.playButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.play"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.playButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.play"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.nextButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.next"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.nextButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.next"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.prevButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.prev"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.prevButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.prev"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.shuffleButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.shuffle"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.shuffleButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.shuffle"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.volumeUp bind:@"keyEquivalent"
+                    toObject:defaults
+                 withKeyPath:@"values.volumeUp"
+                     options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.volumeUp bind:@"keyEquivalentModifierMask"
+                    toObject:defaults
+                 withKeyPath:@"values.volumeUp"
+                     options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.volumeDown bind:@"keyEquivalent"
+               toObject:defaults
+            withKeyPath:@"values.volumeDown"
+                options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.volumeDown bind:@"keyEquivalentModifierMask"
+               toObject:defaults
+            withKeyPath:@"values.volumeDOwn"
+                options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
 }
 
 # pragma mark - NSUserNotificationCenterDelegate methods

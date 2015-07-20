@@ -55,8 +55,12 @@
         [[[NSWorkspace sharedWorkspace] menuBarOwningApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
     } else {
         [NSApp activateIgnoringOtherApps:YES];
+        
         [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
-        ((AmplifyViewController*) self.popover.contentViewController).isVisible = YES;
+        
+        AmplifyViewController *contentView = (AmplifyViewController *) self.popover.contentViewController;
+        [contentView.prefsWindow orderOut:nil];
+        contentView.isVisible = NO;
     }
 }
 

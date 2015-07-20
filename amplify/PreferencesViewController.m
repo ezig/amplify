@@ -11,9 +11,9 @@
 
 @interface PreferencesViewController ()
 
-@property (weak) IBOutlet SRRecorderControl *playShorcut;
+@property (weak) IBOutlet SRRecorderControl *playShortcut;
 @property (weak) IBOutlet SRRecorderControl *shuffleShortcut;
-@property (weak) IBOutlet SRRecorderControl *nextShorcut;
+@property (weak) IBOutlet SRRecorderControl *nextShortcut;
 @property (weak) IBOutlet SRRecorderControl *previousShortcut;
 @property (weak) IBOutlet SRRecorderControl *volumeUpShortcut;
 @property (weak) IBOutlet SRRecorderControl *volumeDownShortcut;
@@ -31,6 +31,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    
+    NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
+    
+    [self.playShortcut bind:NSValueBinding
+                  toObject:defaults
+               withKeyPath:@"values.play"
+                   options:nil];
+    
+    [self.playShortcut setAllowedModifierFlags:NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+    
+    [self.shuffleShortcut bind:NSValueBinding
+                      toObject:defaults
+                   withKeyPath:@"values.shuffle"
+                       options:nil];
+    [self.shuffleShortcut setAllowedModifierFlags:NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+    
+    [self.nextShortcut bind:NSValueBinding
+                  toObject:defaults
+               withKeyPath:@"values.next"
+                   options:nil];
+    
+    [self.nextShortcut setAllowedModifierFlags:NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+    
+    [self.previousShortcut bind:NSValueBinding
+                  toObject:defaults
+               withKeyPath:@"values.prev"
+                   options:nil];
+    
+    [self.previousShortcut setAllowedModifierFlags:NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+    
+    [self.volumeUpShortcut bind:NSValueBinding
+                  toObject:defaults
+               withKeyPath:@"values.volumeUp"
+                   options:nil];
+    
+    [self.volumeDownShortcut setAllowedModifierFlags:NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+    
+    [self.volumeDownShortcut bind:NSValueBinding
+                   toObject:defaults
+                withKeyPath:@"values.volumeDown"
+                    options:nil];
+    
+    [self.volumeUpShortcut setAllowedModifierFlags:NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+    
+    [self.globalShortcut bind:NSValueBinding
+                         toObject:defaults
+                      withKeyPath:@"values.global"
+                          options:nil];
 }
 
 - (void)viewDidAppear {

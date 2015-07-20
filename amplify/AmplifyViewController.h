@@ -20,4 +20,6 @@
 @property (nonatomic, strong) id<AmplifyPopoverDelegate> delegate;
 @property (nonatomic, assign) BOOL isVisible;
 
+@property (strong) IBOutlet NSWindow *prefsWindow;
+
 @end

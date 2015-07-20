@@ -6,11 +6,15 @@
 	<dict>
 		<key>Resources/AmplifyViewController.nib</key>
 		<data>
-		aVcRcuLIUy570+gdZS2OAMJHIX4=
+		hWk2N5lOzZii8HuNqwFJkgIcKOE=
 		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
 		somL1nOCbPKpG1mZY1BbXzy11Jo=
+		</data>
+		<key>Resources/PreferencesViewController.nib</key>
+		<data>
+		5unNTvl8XIALVsY9kM/dwRWG0B0=
 		</data>
 		<key>Resources/next.pdf</key>
 		<data>
@@ -51,13 +55,35 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/PTHotKey.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			WWTCmLuoqEVS44RA2bgIyhkcNLE=
+			</data>
+			<key>requirement</key>
+			<string>anchor apple generic and identifier "com.kulakov.PTHotKey" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "86E3WCASLJ")</string>
+		</dict>
+		<key>Frameworks/ShortcutRecorder.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			75cIkwg3ZYacg9GZe+YpWXdocsY=
+			</data>
+			<key>requirement</key>
+			<string>anchor apple generic and identifier "com.kulakov.ShortcutRecorder" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "86E3WCASLJ")</string>
+		</dict>
 		<key>Resources/AmplifyViewController.nib</key>
 		<data>
-		aVcRcuLIUy570+gdZS2OAMJHIX4=
+		hWk2N5lOzZii8HuNqwFJkgIcKOE=
 		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
 		somL1nOCbPKpG1mZY1BbXzy11Jo=
+		</data>
+		<key>Resources/PreferencesViewController.nib</key>
+		<data>
+		5unNTvl8XIALVsY9kM/dwRWG0B0=
 		</data>
 		<key>Resources/next.pdf</key>
 		<data>
