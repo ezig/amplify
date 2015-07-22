@@ -22,6 +22,11 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    if (![[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"hasBeenLaunched"]) {
+        [self setupHotkeyDefaults];
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"hasBeenLaunched"];
+    }
+    
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
     NSImage *icon = [NSImage imageNamed:@"statusIcon"];
@@ -97,6 +102,20 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     AppDelegate* delegate = (AppDelegate*)[[NSApplication sharedApplication] delegate];
     [delegate togglePopover:nil];
     return noErr;
+}
+
+- (void) setupHotkeyDefaults {
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"a", @"characters" : @"a", @"keyCode" : @0, @"modifierFlags" : @0} forKey:@"prev"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"d", @"characters" : @"d", @"keyCode" : @2, @"modifierFlags" : @0} forKey:@"next"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"p", @"characters" : @"p", @"keyCode" : @35, @"modifierFlags" : @0} forKey:@"play"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"u", @"characters" : @"u", @"keyCode" : @32, @"modifierFlags" : @0} forKey:@"shuffle"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"w", @"characters" : @"w", @"keyCode" : @13, @"modifierFlags" : @0} forKey:@"volumeUp"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"s", @"characters" : @"s", @"keyCode" : @1, @"modifierFlags" : @0} forKey:@"volumeDown"];
 }
 
 #pragma mark - Launch on login methods
