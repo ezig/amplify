@@ -29,6 +29,7 @@
     
     if (![[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"hasBeenLaunched"]) {
         [self setupUserDefaults];
+        NSLog(@"Test");
         [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"hasBeenLaunched"];
     }
     
@@ -99,6 +100,8 @@
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"s", @"characters" : @"s", @"keyCode" : @1, @"modifierFlags" : @0} forKey:@"volumeDown"];
     
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"notifications"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"theme"];
 }
 
 #pragma mark - NSObject

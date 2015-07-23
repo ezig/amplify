@@ -23,6 +23,7 @@
 @property (weak) IBOutlet NSButton *enableLaunchOnLogin;
 @property (weak) IBOutlet NSButton *enableNotifications;
 
+@property (weak) IBOutlet NSSegmentedControl *themeControl;
 
 @end
 
@@ -32,6 +33,27 @@
     [super viewDidLoad];
     // Do view setup here.
     
+    if (self.delegate.launchOnLogin) {
+        self.enableLaunchOnLogin.state = NSOnState;
+    } else {
+        self.enableLaunchOnLogin.state = NSOffState;
+    }
+    
+    if ([[[NSUserDefaultsController sharedUserDefaultsController] defaults] boolForKey:@"notifications"]) {
+        self.enableNotifications.state = NSOnState;
+    } else {
+        self.enableNotifications.state = NSOffState;
+    }
+    
+    NSString *color = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"theme"];
+    
+    if ([color isEqualToString:@"classic"]) {
+        self.themeControl.selectedSegment = 0;
+    } else if ([color isEqualToString:@"new"]) {
+        self.themeControl.selectedSegment = 1;
+    } else {
+        self.themeControl.selectedSegment = 2;
+    }
     
     NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
     
@@ -83,17 +105,7 @@
 }
 
 - (void)viewDidAppear {
-    if (self.delegate.launchOnLogin) {
-        self.enableLaunchOnLogin.state = NSOnState;
-    } else {
-        self.enableLaunchOnLogin.state = NSOffState;
-    }
-    
-    if ([[[NSUserDefaultsController sharedUserDefaultsController] defaults] boolForKey:@"notifications"]) {
-        self.enableNotifications.state = NSOnState;
-    } else {
-        self.enableNotifications.state = NSOffState;
-    }
+    [super viewDidAppear];
 }
 
 - (IBAction)didChangeLaunchOnLogin:(id)sender {
@@ -112,5 +124,14 @@
     }
 }
 
+- (IBAction)didChangeTheme:(id)sender {
+    if (self.themeControl.selectedSegment == 0) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"theme"];
+    } else if (self.themeControl.selectedSegment == 1) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"new" forKey:@"theme"];
+    } else {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"inverted" forKey:@"theme"];
+    }
+}
 
 @end

@@ -36,7 +36,7 @@
 
 @property (nonatomic, strong) NSString *currentTrackURL;
 
-@property (nonatomic, strong) NSColor *spotifyGreen;
+@property (nonatomic, strong) NSColor *spotifyColor;
 
 @property (nonatomic, strong) NSImage *albumArt;
 
@@ -50,6 +50,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.theme" options:NSKeyValueObservingOptionInitial context:NULL];
     
     [self bindButtons];
     
@@ -82,9 +84,9 @@
         // set the play button image (normally this changes whenever the playback changes, but
         // set it manually once when the view loads)
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
-            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyColor];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
         }
     }
     
@@ -116,15 +118,15 @@
 }
 
 - (void) setupImages {
-    self.spotifyGreen = [NSColor colorWithRed:0.5176 green:0.741 blue:0.0 alpha:1.0];
+    self.spotifyColor = [self colorForString:[[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"theme"]];
     
     self.shuffleImage = [NSImage imageNamed:@"shuffle"];
-    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyGreen];
+    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyColor];
     
     // don't set the play button here because we're going to set that in playbackChanged anyway
-    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyGreen];
-    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyGreen];
-    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
+    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyColor];
+    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyColor];
+    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
 }
 
 // returning nil will prevent alert sound
@@ -164,9 +166,9 @@
                 });
             }
             
-            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyColor];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
         }
     } else {
         self.songScrollLabel.text = @"No song";
@@ -243,6 +245,16 @@
 }
 
 #pragma mark - Private methods
+- (NSColor *)colorForString:(NSString *)color {
+    if ([color isEqualToString:@"classic"]) {
+        return [NSColor colorWithRed:0.5176 green:0.741 blue:0.0 alpha:1.0];
+    } else if ([color isEqualToString:@"new"]) {
+        return [NSColor colorWithRed:0.1373 green:0.8118 blue:0.3725 alpha:1.0];
+    } else {
+        return [NSColor colorWithRed:0.4941 green:0.282352941 blue:0.8980 alpha:1.0];
+    }
+}
+
 - (void)updateArtworkWithCompletion:(void (^)(NSImage *))completion {
     NSImage *album;
     
@@ -356,8 +368,17 @@
                 options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
     [self.volumeDown bind:@"keyEquivalentModifierMask"
                toObject:defaults
-            withKeyPath:@"values.volumeDOwn"
+            withKeyPath:@"values.volumeDown"
                 options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+}
+
+# pragma mark - NSObject
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"values.theme"]) {
+        [self setupImages];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 # pragma mark - NSUserNotificationCenterDelegate methods
