@@ -219,6 +219,10 @@
     [[NSApplication sharedApplication] terminate:nil];
 }
 
+- (IBAction)didPressHide:(id)sender {
+    [self.delegate togglePopover:self];
+}
+
 #pragma mark - Private methods
 - (NSColor *)colorForString:(NSString *)color {
     if ([color isEqualToString:@"classic"]) {
