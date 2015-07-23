@@ -11,6 +11,7 @@
 @protocol AmplifyPopoverDelegate <NSObject>
 
 - (void)togglePopover:(id)sender;
+- (void)closePopover:(id)sender;
 
 @end
 
@@ -18,5 +19,7 @@
 
 @property (nonatomic, strong) id<AmplifyPopoverDelegate> delegate;
 @property (nonatomic, assign) BOOL isVisible;
+
+@property (strong) IBOutlet NSWindow *prefsWindow;
 
 @end

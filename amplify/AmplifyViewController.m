@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 Ezra Zigmond. All rights reserved.
 //
 
+#import "PreferencesViewController.h"
 #import "AmplifyViewController.h"
 #import "AmplifyScrollLabel.h"
 #import "AmplifyHoverButton.h"
 #import "Spotify.h"
 #import "NSImage+Transform.h"
+#include <ShortcutRecorder/ShortcutRecorder.h>
 #include <Carbon/Carbon.h>
 
 @interface AmplifyViewController () <NSUserNotificationCenterDelegate>
@@ -23,6 +25,9 @@
 // (shuffle button changes color when clicked to indicate shuffling / not shuffling)≥
 @property (weak) IBOutlet NSButton *shuffleButton;
 
+@property (weak) IBOutlet NSButton *volumeUp;
+@property (weak) IBOutlet NSButton *volumeDown;
+
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSImageView *albumArtView;
 @property (weak) IBOutlet AmplifyScrollLabel *songScrollLabel;
@@ -31,7 +36,7 @@
 
 @property (nonatomic, strong) NSString *currentTrackURL;
 
-@property (nonatomic, strong) NSColor *spotifyGreen;
+@property (nonatomic, strong) NSColor *spotifyColor;
 
 @property (nonatomic, strong) NSImage *albumArt;
 
@@ -45,6 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.theme" options:NSKeyValueObservingOptionInitial context:NULL];
+    
+    [self bindButtons];
     
     [self setupImages];
     
@@ -75,16 +84,11 @@
         // set the play button image (normally this changes whenever the playback changes, but
         // set it manually once when the view loads)
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
-            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyColor];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
         }
     }
-
-    [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
-                                          handler:^(NSEvent *event) {
-                                              return [self handleKeyPress:event];
-                                          }];
     
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(playbackChanged:)
@@ -106,66 +110,20 @@
         self.songScrollLabel.text = @"No song";
         self.albumArtView.image = [NSImage imageNamed:@"noArtworkImage"];
     }
+    
+    [self.view.window becomeKeyWindow];
 }
 
 - (void) setupImages {
-    self.spotifyGreen = [NSColor colorWithRed:0.51 green:0.72 blue:0.10 alpha:1.0];
+    self.spotifyColor = [self colorForString:[[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"theme"]];
     
     self.shuffleImage = [NSImage imageNamed:@"shuffle"];
-    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyGreen];
+    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyColor];
     
     // don't set the play button here because we're going to set that in playbackChanged anyway
-    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyGreen];
-    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyGreen];
-    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
-}
-
-// returning nil will prevent alert sound
-- (NSEvent *)handleKeyPress:(NSEvent *)event {
-    if (self.isVisible) {
-        switch ([event keyCode]) {
-            case kVK_ANSI_P:
-                [self didPressPlay:nil];
-                break;
-            
-            case kVK_ANSI_D:
-                [self didPressNext:nil];
-                break;
-                
-            case kVK_ANSI_A:
-                [self didPressPrev:nil];
-                break;
-            
-            case kVK_ANSI_U:
-                [self didPressShuffle:nil];
-                break;
-                
-            case kVK_ANSI_Q:
-                [self didPressQuit:nil];
-                break;
-                
-            case kVK_ANSI_W:
-                self.volumeSlider.integerValue = MIN(100, self.volumeSlider.integerValue + 5);
-                [self didChangeSlider:nil];
-                break;
-            
-            case kVK_ANSI_S:
-                self.volumeSlider.integerValue = MAX(0, self.volumeSlider.integerValue - 5);
-                [self didChangeSlider:nil];
-                break;
-                
-            case kVK_Escape:
-                [self.delegate togglePopover:self];
-                break;
-                
-            default:
-                return event;
-        }
-        
-        return nil;
-    } else {
-        return event;
-    }
+    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyColor];
+    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyColor];
+    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
 }
 
 - (void)playbackChanged:(NSNotification *)notification {
@@ -183,9 +141,9 @@
                 });
             }
             
-            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyColor];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyGreen];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
         }
     } else {
         self.songScrollLabel.text = @"No song";
@@ -233,8 +191,47 @@
     }
 }
 
+- (IBAction)didPressVolumeDown:(id)sender {
+    self.volumeSlider.integerValue = MAX(0, self.volumeSlider.integerValue - 5);
+    [self didChangeSlider:nil];
+}
+
+- (IBAction)didPressVolumeUp:(id)sender {
+    self.volumeSlider.integerValue = MIN(100, self.volumeSlider.integerValue + 5);
+    [self didChangeSlider:nil];
+}
+
+#pragma mark - Settings pop up button actions
+
+- (IBAction)didPressPreferences:(id)sender {
+    [self.prefsWindow makeKeyAndOrderFront:nil];
+    PreferencesViewController *contentView = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:nil];
+    
+    contentView.delegate = (id<PreferencesDelegate>)self.delegate;
+    
+    [self.delegate closePopover:nil];
+    
+    self.prefsWindow.contentViewController = contentView;
+}
+
+
 - (IBAction)didPressQuit:(id)sender {
     [[NSApplication sharedApplication] terminate:nil];
+}
+
+- (IBAction)didPressHide:(id)sender {
+    [self.delegate togglePopover:self];
+}
+
+#pragma mark - Private methods
+- (NSColor *)colorForString:(NSString *)color {
+    if ([color isEqualToString:@"classic"]) {
+        return [NSColor colorWithRed:0.5176 green:0.741 blue:0.0 alpha:1.0];
+    } else if ([color isEqualToString:@"new"]) {
+        return [NSColor colorWithRed:0.1373 green:0.8118 blue:0.3725 alpha:1.0];
+    } else {
+        return [NSColor colorWithRed:0.4941 green:0.282352941 blue:0.8980 alpha:1.0];
+    }
 }
 
 - (void)updateArtworkWithCompletion:(void (^)(NSImage *))completion {
@@ -277,8 +274,13 @@
 }
 
 - (void) sendNotification:(NSImage *)album {
-    // only actually send a notification if the popover isn't visible and the user isn't currently in spotify
-    if (!self.isVisible && ![[[NSWorkspace sharedWorkspace] frontmostApplication].bundleIdentifier isEqualToString:@"com.spotify.client"]) {
+    // only actually send a notification if
+    // 1. notifications are enabled in the settings
+    // 2. the popover isn't visible and
+    // 3. the user isn't currently in spotify
+    if ([[[NSUserDefaultsController sharedUserDefaultsController] defaults] boolForKey:@"notifications"] &&
+        !self.isVisible &&
+        ![[[NSWorkspace sharedWorkspace] frontmostApplication].bundleIdentifier isEqualToString:@"com.spotify.client"]) {
         NSUserNotification *notification = [[NSUserNotification alloc] init];
 
         notification.title = self.spotify.currentTrack.name;
@@ -288,6 +290,73 @@
         notification.contentImage = album;
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
+}
+
+- (void) bindButtons {
+    NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
+    
+    [self.playButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.play"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.playButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.play"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.nextButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.next"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.nextButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.next"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.prevButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.prev"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.prevButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.prev"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.shuffleButton bind:@"keyEquivalent"
+                 toObject:defaults
+              withKeyPath:@"values.shuffle"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.shuffleButton bind:@"keyEquivalentModifierMask"
+                 toObject:defaults
+              withKeyPath:@"values.shuffle"
+                  options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.volumeUp bind:@"keyEquivalent"
+                    toObject:defaults
+                 withKeyPath:@"values.volumeUp"
+                     options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.volumeUp bind:@"keyEquivalentModifierMask"
+                    toObject:defaults
+                 withKeyPath:@"values.volumeUp"
+                     options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+    
+    [self.volumeDown bind:@"keyEquivalent"
+               toObject:defaults
+            withKeyPath:@"values.volumeDown"
+                options:@{NSValueTransformerBindingOption: [SRKeyEquivalentTransformer new]}];
+    [self.volumeDown bind:@"keyEquivalentModifierMask"
+               toObject:defaults
+            withKeyPath:@"values.volumeDown"
+                options:@{NSValueTransformerBindingOption: [SRKeyEquivalentModifierMaskTransformer new]}];
+}
+
+# pragma mark - NSObject
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"values.theme"]) {
+        [self setupImages];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 

@@ -8,10 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "AmplifyViewController.h"
+#import "PreferencesViewController.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, AmplifyPopoverDelegate>
-
--(void) togglePopover:(id)sender;
+@interface AppDelegate : NSObject <NSApplicationDelegate, AmplifyPopoverDelegate, PreferencesDelegate>
 
 @end
 
