@@ -23,7 +23,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     if (![[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"hasBeenLaunched"]) {
-        [self setupHotkeyDefaults];
+        [self setupUserDefaults];
         [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"hasBeenLaunched"];
     }
     
@@ -104,7 +104,7 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     return noErr;
 }
 
-- (void) setupHotkeyDefaults {
+- (void) setupUserDefaults {
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"a", @"characters" : @"a", @"keyCode" : @0, @"modifierFlags" : @0} forKey:@"prev"];
     
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"d", @"characters" : @"d", @"keyCode" : @2, @"modifierFlags" : @0} forKey:@"next"];
@@ -116,6 +116,8 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"w", @"characters" : @"w", @"keyCode" : @13, @"modifierFlags" : @0} forKey:@"volumeUp"];
     
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"s", @"characters" : @"s", @"keyCode" : @1, @"modifierFlags" : @0} forKey:@"volumeDown"];
+    
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"notifications"];
 }
 
 #pragma mark - Launch on login methods

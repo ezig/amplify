@@ -83,11 +83,17 @@
 }
 
 - (void)viewDidAppear {
-        if (self.delegate.launchOnLogin) {
-            self.enableLaunchOnLogin.state = NSOnState;
-        } else {
-            self.enableLaunchOnLogin.state = NSOffState;
-        }
+    if (self.delegate.launchOnLogin) {
+        self.enableLaunchOnLogin.state = NSOnState;
+    } else {
+        self.enableLaunchOnLogin.state = NSOffState;
+    }
+    
+    if ([[[NSUserDefaultsController sharedUserDefaultsController] defaults] boolForKey:@"notifications"]) {
+        self.enableNotifications.state = NSOnState;
+    } else {
+        self.enableNotifications.state = NSOffState;
+    }
 }
 
 - (IBAction)didChangeLaunchOnLogin:(id)sender {
@@ -97,5 +103,14 @@
         self.delegate.launchOnLogin = NO;
     }
 }
+
+- (IBAction)didChangeEnableNotifications:(id)sender {
+    if (self.enableNotifications.state == NSOnState) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"notifications"];
+    } else {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@NO forKey:@"notifications"];
+    }
+}
+
 
 @end

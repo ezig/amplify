@@ -283,8 +283,13 @@
 }
 
 - (void) sendNotification:(NSImage *)album {
-    // only actually send a notification if the popover isn't visible and the user isn't currently in spotify
-    if (!self.isVisible && ![[[NSWorkspace sharedWorkspace] frontmostApplication].bundleIdentifier isEqualToString:@"com.spotify.client"]) {
+    // only actually send a notification if
+    // 1. notifications are enabled in the settings
+    // 2. the popover isn't visible and
+    // 3. the user isn't currently in spotify
+    if ([[[NSUserDefaultsController sharedUserDefaultsController] defaults] boolForKey:@"notifications"] &&
+        !self.isVisible &&
+        ![[[NSWorkspace sharedWorkspace] frontmostApplication].bundleIdentifier isEqualToString:@"com.spotify.client"]) {
         NSUserNotification *notification = [[NSUserNotification alloc] init];
 
         notification.title = self.spotify.currentTrack.name;
