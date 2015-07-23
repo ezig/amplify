@@ -90,11 +90,6 @@
         }
     }
     
-    [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
-                                          handler:^(NSEvent *event) {
-                                              return [self handleKeyPress:event];
-                                          }];
-    
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(playbackChanged:)
                                                             name:@"com.spotify.client.PlaybackStateChanged"
@@ -115,6 +110,8 @@
         self.songScrollLabel.text = @"No song";
         self.albumArtView.image = [NSImage imageNamed:@"noArtworkImage"];
     }
+    
+    [self.view.window becomeKeyWindow];
 }
 
 - (void) setupImages {
@@ -127,28 +124,6 @@
     [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyColor];
     [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyColor];
     [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
-}
-
-// returning nil will prevent alert sound
-- (NSEvent *)handleKeyPress:(NSEvent *)event {
-    if (self.isVisible) {
-        switch ([event keyCode]) {
-            case kVK_ANSI_Q:
-                [self didPressQuit:nil];
-                break;
-                
-            case kVK_Escape:
-                [self.delegate togglePopover:self];
-                break;
-                
-            default:
-                return event;
-        }
-        
-        return nil;
-    } else {
-        return event;
-    }
 }
 
 - (void)playbackChanged:(NSNotification *)notification {

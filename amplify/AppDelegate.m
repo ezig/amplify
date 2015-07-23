@@ -29,7 +29,6 @@
     
     if (![[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"hasBeenLaunched"]) {
         [self setupUserDefaults];
-        NSLog(@"Test");
         [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"hasBeenLaunched"];
     }
     
@@ -81,8 +80,9 @@
         [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
         
         AmplifyViewController *contentView = (AmplifyViewController *) self.popover.contentViewController;
+        
         [contentView.prefsWindow orderOut:nil];
-        contentView.isVisible = NO;
+        contentView.isVisible = YES;
     }
 }
 
