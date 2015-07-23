@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "Spotify.h"
 #import "AmplifyviewController.h"
+#import <PTHotKey/PTHotKeyCenter.h>
+#import <PTHotKey/PTHotKey+ShortcutRecorder.h>
+
 #import <Carbon/Carbon.h>
 
 @interface AppDelegate ()
@@ -22,6 +25,8 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.global" options:NSKeyValueObservingOptionInitial context:NULL];
+    
     if (![[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"hasBeenLaunched"]) {
         [self setupUserDefaults];
         [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"hasBeenLaunched"];
@@ -35,8 +40,6 @@
     self.statusItem.image = icon;
     
     self.statusItem.action = @selector(togglePopover:);
-    
-    [self setupHotkey];
     
     self.spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
     
@@ -52,6 +55,19 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
+
+- (void)applicationDidResignActive:(NSNotification *)notification {
+    if (self.popover.shown) {
+        [self togglePopover:nil];
+    }
+}
+
+- (void)closePopover:(id)sender {
+    [self.popover close];
+    ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
+}
+
+#pragma mark - Private methods
 
 - (void)togglePopover:(id)sender {
     if (self.popover.shown) {
@@ -69,41 +85,6 @@
     }
 }
 
-- (void)applicationDidResignActive:(NSNotification *)notification {
-    if (self.popover.shown) {
-        [self togglePopover:nil];
-    }
-}
-
-- (void)closePopover:(id)sender {
-    [self.popover close];
-    ((AmplifyViewController*) self.popover.contentViewController).isVisible = NO;
-}
-
-// TODO: clean up hot key handling
-- (void)setupHotkey {
-    EventHotKeyRef hotKeyRef;
-    EventHotKeyID hotKeyID;
-    EventTypeSpec eventType;
-    
-    eventType.eventClass = kEventClassKeyboard;
-    eventType.eventKind = kEventHotKeyPressed;
-    
-    hotKeyID.signature = 'mhk1';
-    hotKeyID.id = 1;
-    
-    InstallApplicationEventHandler(&hotKeyHandler, 1, &eventType, NULL, NULL);
-    
-   RegisterEventHotKey(kVK_ANSI_Period, cmdKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
-}
-
-OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData)
-{
-    AppDelegate* delegate = (AppDelegate*)[[NSApplication sharedApplication] delegate];
-    [delegate togglePopover:nil];
-    return noErr;
-}
-
 - (void) setupUserDefaults {
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"a", @"characters" : @"a", @"keyCode" : @0, @"modifierFlags" : @0} forKey:@"prev"];
     
@@ -118,6 +99,33 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"s", @"characters" : @"s", @"keyCode" : @1, @"modifierFlags" : @0} forKey:@"volumeDown"];
     
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"notifications"];
+}
+
+#pragma mark - NSObject
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"values.global"]) {
+        
+        PTHotKeyCenter *keyCenter = [PTHotKeyCenter sharedCenter];
+        
+        // deregister the previous hotkey
+        PTHotKey *oldKey = [keyCenter hotKeyWithIdentifier:keyPath];
+        [keyCenter unregisterHotKey:oldKey];
+        
+        NSDictionary *shortcut = [object valueForKeyPath:keyPath];
+        
+        // only register a new hotkey if there's a shortcut
+        if (shortcut && (NSNull *)shortcut != [NSNull null]) {
+            PTHotKey *newKey = [PTHotKey hotKeyWithIdentifier:keyPath
+                                                     keyCombo:shortcut
+                                                       target:self
+                                                       action:@selector(togglePopover:)];
+            [keyCenter registerHotKey:newKey];
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+    
 }
 
 #pragma mark - Launch on login methods
