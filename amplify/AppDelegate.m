@@ -87,16 +87,22 @@
 }
 
 - (void) setupUserDefaults {
+    // default prev key is a
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"a", @"characters" : @"a", @"keyCode" : @0, @"modifierFlags" : @0} forKey:@"prev"];
     
+    // default next key is d
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"d", @"characters" : @"d", @"keyCode" : @2, @"modifierFlags" : @0} forKey:@"next"];
     
+    // default pause/play key is p
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"p", @"characters" : @"p", @"keyCode" : @35, @"modifierFlags" : @0} forKey:@"play"];
     
+    // default shuffle key is u
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"u", @"characters" : @"u", @"keyCode" : @32, @"modifierFlags" : @0} forKey:@"shuffle"];
     
+    // default volumeUp key is w
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"w", @"characters" : @"w", @"keyCode" : @13, @"modifierFlags" : @0} forKey:@"volumeUp"];
     
+    // default volumeDown key is s
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@{@"charactersIgnoringModifiers" : @"s", @"characters" : @"s", @"keyCode" : @1, @"modifierFlags" : @0} forKey:@"volumeDown"];
     
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"notifications"];
@@ -107,6 +113,7 @@
 #pragma mark - NSObject
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    // update the global hotkey if the shorcut in user defaults changes
     if ([keyPath isEqualToString:@"values.global"]) {
         
         PTHotKeyCenter *keyCenter = [PTHotKeyCenter sharedCenter];

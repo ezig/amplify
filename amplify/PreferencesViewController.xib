@@ -163,20 +163,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rn6-1k-48m">
-                    <rect key="frame" x="90" y="52" width="232" height="24"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="B8x-xv-YMo">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment label="Classic" selected="YES"/>
-                            <segment label="New Green" tag="1"/>
-                            <segment label="Inverted"/>
-                        </segments>
-                    </segmentedCell>
-                    <connections>
-                        <action selector="didChangeTheme:" target="-2" id="8MV-4Z-QwC"/>
-                    </connections>
-                </segmentedControl>
                 <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-FZ-S6v">
                     <rect key="frame" x="20" y="43" width="300" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -184,13 +170,27 @@
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swm-DK-MAC">
-                    <rect key="frame" x="18" y="50" width="46" height="25"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Theme" id="gi7-Yh-mKf">
+                    <rect key="frame" x="18" y="50" width="91" height="25"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Button Theme" id="gi7-Yh-mKf">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rn6-1k-48m">
+                    <rect key="frame" x="131" y="52" width="191" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="B8x-xv-YMo">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Classic" selected="YES"/>
+                            <segment label="New" tag="1"/>
+                            <segment label="Inverted"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="didChangeTheme:" target="-2" id="8MV-4Z-QwC"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JW6-6n-aYz" secondAttribute="trailing" constant="20" id="3JH-48-kMe"/>

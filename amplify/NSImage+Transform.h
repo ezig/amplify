@@ -10,6 +10,7 @@
 
 @interface NSImage (Transform)
 
+// returns the image tinted with the given color
 - (NSImage *)imageTintedWithColor:(NSColor *)tint;
 
 @end

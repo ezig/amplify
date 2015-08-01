@@ -8,17 +8,25 @@
 
 #import "AmplifyScrollLabel.h"
 
+// distance between the end of the text and the beginning of the wraparound
 #define WRAPAROUND_OFFSET 50
 
 @interface AmplifyScrollLabel () {
+    // locations of the two strings
     NSPoint _point1;
     NSPoint _point2;
 }
 
 @property (nonatomic, strong) NSTimer *scroller;
-@property (nonatomic, assign) CGFloat stringWidth;
 @property (nonatomic, strong) NSDictionary *stringAttrs;
+
+// pixel width of text when drawn with stringAttrs
+@property (nonatomic, assign) CGFloat stringWidth;
+
 @property (nonatomic, strong) NSTrackingArea *trackingArea;
+
+// scrolling is disabled if the text of the label
+// is smaller than the label and thus fits totally in the label
 @property (nonatomic, assign) BOOL scrollEnabled;
 
 @end
@@ -51,6 +59,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [self.text drawAtPoint:_point1 withAttributes:self.stringAttrs];
     
+    // only draw the second string if scrolling
     if (self.scrollEnabled) {
         [self.text drawAtPoint:_point2 withAttributes:self.stringAttrs];
     }
@@ -65,6 +74,7 @@
 
 #pragma mark - Setters
 - (void) setText:(NSString *)newText {
+    // reset the scrolling timer
     [self.scroller invalidate];
     self.scroller = nil;
     
@@ -74,12 +84,14 @@
     
     [self resetPosition];
     
+    // only enable scrolling if the text is actually wider than the label
     if (self.stringWidth < self.frame.size.width) {
         self.scrollEnabled = NO;
     } else {
         self.scrollEnabled = YES;
     }
     
+    // conditionally start the scroll timer
     if (self.mode == ScrollModeContinuous && self.speed > 0 && self.scrollEnabled && self.text != nil) {
         self.scroller = [NSTimer scheduledTimerWithTimeInterval:self.speed target:self selector:@selector(moveText:) userInfo:nil repeats:YES];
     }
@@ -88,6 +100,7 @@
 }
 
 - (void) setSpeed:(NSTimeInterval)newSpeed {
+    // restart the timer with the new interval
     if (newSpeed != _speed) {
         _speed = newSpeed;
         
@@ -106,16 +119,18 @@
     _point1.x -= 1.0;
     _point2.x -= 1.0;
     
-    // if right side of the string moves off the screen,
+    // if right side of either string moves off the screen,
     // move the left side of the string to the right edge
     if (_point1.x < -self.stringWidth) {
         _point1.x += self.frame.size.width + self.stringWidth + WRAPAROUND_OFFSET;
     }
-    
     if (_point2.x < -self.stringWidth) {
         _point2.x += self.frame.size.width + self.stringWidth + WRAPAROUND_OFFSET;
     }
     
+    // if we are in hover mode and the second string gets back
+    // to the original position of the first string, one full scroll has finished
+    // so cancel the timer
     if (self.mode == ScrollModeOnHover) {
         if (fabs(_point2.x) < 0.5) {
             [self.scroller invalidate];

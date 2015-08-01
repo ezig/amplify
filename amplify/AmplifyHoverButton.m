@@ -27,6 +27,7 @@
     self.normalImage = image;
     self.hoverImage = [image imageTintedWithColor:tint];
     
+    // make sure to use the correct image tint when setting the image
     if (self.mouseIn) {
         self.image = self.hoverImage;
     } else {

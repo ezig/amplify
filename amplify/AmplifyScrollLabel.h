@@ -9,14 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 typedef enum scroll_mode {
-    ScrollModeContinuous,
-    ScrollModeOnHover
+    ScrollModeContinuous, // scrolls continuously, stops on mouse over
+    ScrollModeOnHover // on mouse over, the label will scroll once
 } ScrollMode;
 
 @interface AmplifyScrollLabel : NSView
 
 @property (nonatomic, strong) NSString * text;
-@property (nonatomic, assign) NSTimeInterval speed;
+@property (nonatomic, assign) NSTimeInterval speed; // smaller is faster
 @property (nonatomic, assign) ScrollMode mode;
 
 - (void)resetPosition;
