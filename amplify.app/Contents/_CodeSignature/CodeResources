@@ -8,13 +8,17 @@
 		<data>
 		Fajl7WYVjjQnIIzJs8qksy22EuU=
 		</data>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		WJ1YlPOjoyl8aYLlBvrVD2G871o=
+		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
 		somL1nOCbPKpG1mZY1BbXzy11Jo=
 		</data>
 		<key>Resources/PreferencesViewController.nib</key>
 		<data>
-		h+K3ChAEMdBrRyJhjuNI7jxuTPU=
+		peDRi6PNWNLX3VFhw+hOVGDbCgs=
 		</data>
 		<key>Resources/next.pdf</key>
 		<data>
@@ -59,7 +63,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			WWTCmLuoqEVS44RA2bgIyhkcNLE=
+			3yxS9KKDuBLzPbw99jCIV/s+Gsw=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.kulakov.PTHotKey" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "86E3WCASLJ")</string>
@@ -68,7 +72,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			75cIkwg3ZYacg9GZe+YpWXdocsY=
+			julGaPMDg4Lp4NrHPHAo2vdecpc=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.kulakov.ShortcutRecorder" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "86E3WCASLJ")</string>
@@ -77,13 +81,17 @@
 		<data>
 		Fajl7WYVjjQnIIzJs8qksy22EuU=
 		</data>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		WJ1YlPOjoyl8aYLlBvrVD2G871o=
+		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
 		somL1nOCbPKpG1mZY1BbXzy11Jo=
 		</data>
 		<key>Resources/PreferencesViewController.nib</key>
 		<data>
-		h+K3ChAEMdBrRyJhjuNI7jxuTPU=
+		peDRi6PNWNLX3VFhw+hOVGDbCgs=
 		</data>
 		<key>Resources/next.pdf</key>
 		<data>
