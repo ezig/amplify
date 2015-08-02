@@ -63,6 +63,7 @@
 		633C891A1B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C891B1B40952100035BFD /* amplifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amplifyTests.m; sourceTree = "<group>"; };
 		633C89251B40980300035BFD /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
+		6369BE391B6EB7D8008A6E8F /* amplify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = amplify.entitlements; sourceTree = "<group>"; };
 		637760C91B52E83900838707 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
 		637760CA1B52E83900838707 /* NSImage+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Transform.m"; sourceTree = "<group>"; };
 		63B0132D1B49CC0600DD6EC4 /* AmplifyScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmplifyScrollLabel.h; path = amplify/AmplifyScrollLabel.h; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		633C89041B40952100035BFD /* amplify */ = {
 			isa = PBXGroup;
 			children = (
+				6369BE391B6EB7D8008A6E8F /* amplify.entitlements */,
 				637760C81B52E80A00838707 /* Categories */,
 				6315DF061B52F5CF00884624 /* Views */,
 				633C89251B40980300035BFD /* Spotify.h */,
@@ -246,6 +248,11 @@
 				TargetAttributes = {
 					633C89011B40952100035BFD = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					633C89141B40952100035BFD = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -410,6 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = amplify/amplify.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = amplify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -422,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = amplify/amplify.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
