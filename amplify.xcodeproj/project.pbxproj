@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		6315DF071B53115200884624 /* AmplifyHoverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AmplifyHoverButton.h; path = amplify/AmplifyHoverButton.h; sourceTree = "<group>"; };
 		6315DF081B53115200884624 /* AmplifyHoverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AmplifyHoverButton.m; path = amplify/AmplifyHoverButton.m; sourceTree = "<group>"; };
-		633C89021B40952100035BFD /* amplify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amplify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		633C89021B40952100035BFD /* amplifyforspotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amplifyforspotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633C89061B40952100035BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C89071B40952100035BFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		633C89081B40952100035BFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		633C89031B40952100035BFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				633C89021B40952100035BFD /* amplify.app */,
+				633C89021B40952100035BFD /* amplifyforspotify.app */,
 				633C89151B40952100035BFD /* amplifyTests.xctest */,
 			);
 			name = Products;
@@ -216,7 +216,7 @@
 			);
 			name = amplify;
 			productName = amplify;
-			productReference = 633C89021B40952100035BFD /* amplify.app */;
+			productReference = 633C89021B40952100035BFD /* amplifyforspotify.app */;
 			productType = "com.apple.product-type.application";
 		};
 		633C89141B40952100035BFD /* amplifyTests */ = {
@@ -370,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -407,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -421,8 +421,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = amplify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = amplifyforspotify;
 			};
 			name = Debug;
 		};
@@ -439,8 +439,8 @@
 				);
 				INFOPLIST_FILE = amplify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = amplifyforspotify;
 			};
 			name = Release;
 		};

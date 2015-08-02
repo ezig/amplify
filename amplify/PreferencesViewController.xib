@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesViewController">
             <connections>
-                <outlet property="enableLaunchOnLogin" destination="Aay-MD-f8g" id="7BW-Xj-n4C"/>
                 <outlet property="enableNotifications" destination="bOt-e5-faG" id="kGu-Nv-Izt"/>
                 <outlet property="globalShortcut" destination="uLw-tQ-bVF" id="CPk-0f-Ske"/>
                 <outlet property="nextShortcut" destination="JW6-6n-aYz" id="qgO-Z9-67D"/>
@@ -26,26 +25,6 @@
             <rect key="frame" x="0.0" y="5" width="340" height="344"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aay-MD-f8g">
-                    <rect key="frame" x="18" y="18" width="121" height="18"/>
-                    <buttonCell key="cell" type="check" title="Launch on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Iy-wF-ioi">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="didChangeLaunchOnLogin:" target="-2" id="ReV-H3-V5c"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bOt-e5-faG">
-                    <rect key="frame" x="174" y="18" width="148" height="18"/>
-                    <buttonCell key="cell" type="check" title="Enable notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VFh-hk-qA3">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="didChangeEnableNotifications:" target="-2" id="qG8-9G-2ld"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWX-Md-gzO">
                     <rect key="frame" x="18" y="92" width="99" height="25"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Global shortcut" id="h8a-lg-BzA">
@@ -191,6 +170,16 @@
                         <action selector="didChangeTheme:" target="-2" id="8MV-4Z-QwC"/>
                     </connections>
                 </segmentedControl>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bOt-e5-faG">
+                    <rect key="frame" x="96" y="18" width="148" height="18"/>
+                    <buttonCell key="cell" type="check" title="Enable notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VFh-hk-qA3">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didChangeEnableNotifications:" target="-2" id="qG8-9G-2ld"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JW6-6n-aYz" secondAttribute="trailing" constant="20" id="3JH-48-kMe"/>
