@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
@@ -16,6 +15,7 @@
                 <outlet property="songScrollLabel" destination="B5g-5z-cdv" id="aug-5m-Lke"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="volumeDown" destination="ozl-Lg-cbZ" id="tOa-oY-uw1"/>
+                <outlet property="volumeImage" destination="eaV-nh-eT0" id="WmY-4E-z5S"/>
                 <outlet property="volumeSlider" destination="qPU-ve-U0V" id="HOS-r8-eF0"/>
                 <outlet property="volumeUp" destination="LS5-Us-zOk" id="NNP-eX-PNZ"/>
             </connections>
@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" constant="35" id="0ai-Uj-UEZ"/>
                         <constraint firstAttribute="width" constant="28" id="kKZ-aJ-lL6"/>
                     </constraints>
-                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="D1D23BF0-83C5-408D-92D2-F99872E86832" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="tRE-BK-aIC">
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="DA4104F8-D81F-48F8-BEC3-F0242B708375" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="tRE-BK-aIC">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" size="14" name="AppleColorEmoji"/>
                     </buttonCell>
@@ -199,50 +199,49 @@ Gw
             <point key="canvasLocation" x="228" y="164.5"/>
         </customView>
         <window title="Amplify Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="cgN-oL-Bh8">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="0.0" y="533" width="332" height="344"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <rect key="contentRect" x="0.0" y="533" width="332" height="365"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="Z1B-ur-nuC">
-                <rect key="frame" x="0.0" y="0.0" width="332" height="344"/>
+                <rect key="frame" x="0.0" y="0.0" width="332" height="365"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
-            <point key="canvasLocation" x="256" y="471"/>
+            <point key="canvasLocation" x="256" y="483.5"/>
         </window>
     </objects>
     <resources>
-        <image name="D1D23BF0-83C5-408D-92D2-F99872E86832" width="50" height="45">
+        <image name="DA4104F8-D81F-48F8-BEC3-F0242B708375" width="50" height="45">
             <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGSUpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
-ERYbHCUmJysyNzo9Q0ZVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
-b2xvcoAPEgDAAACAAoAN0hIJExVaTlMub2JqZWN0c6EUgAOADNISCRcaohgZgASABYALEADVHR4fIAkh
-GyIjJFZOU1NpemVfEA9OU0JpdHNQZXJTYW1wbGVfEBBOU0NvbG9yU3BhY2VOYW1lWU5TUERGRGF0YYAG
-gAeACIAKWHs1MCwgNDV9XxAZTlNDYWxpYnJhdGVkUkdCQ29sb3JTcGFjZdIoCSkqV05TLmRhdGFPEQRg
-JVBERi0xLjUKJbXtrvsKMyAwIG9iago8PCAvTGVuZ3RoIDQgMCBSCiAgIC9GaWx0ZXIgL0ZsYXRlRGVj
-b2RlCj4+CnN0cmVhbQp4nG1SS1IFMQjc5xS5gMgnP47xjmBNlc/Fc6Hev0oykIml1mxoOjTQzEfCPL/P
-e35+wXz/SjJAdGQqUJDzexYB4bLwI3M9MXPg4AUX9vr0O3EVFIVmgdU1pM2XAmMjaY7YhCIkoMpOmLZI
-m3FpNopCF0tWGI3zkRlhmDI3UK5WSWSEmJA/OBPceJWTDVrUhWO0GR7mSrTGvV0awF02pnbiazmnL7Pw
-Z9hBVaeGd1kw+juM0cwEqWvwASp970UdRi9TJxZ3/rFcmbW67HJVWcGx/L1mCfyEgOc14jrWmnT8c723
-Pz/Ia7qlbxbBcoEKZW5kc3RyZWFtCmVuZG9iago0IDAgb2JqCiAgIDIzNwplbmRvYmoKMiAwIG9iago8
-PAogICAvRXh0R1N0YXRlIDw8CiAgICAgIC9hMCA8PCAvQ0EgMSAvY2EgMSA+PgogICA+Pgo+PgplbmRv
-YmoKNSAwIG9iago8PCAvVHlwZSAvUGFnZQogICAvUGFyZW50IDEgMCBSCiAgIC9NZWRpYUJveCBbIDAg
-MCA0OS41OTk5OTggNDQuNzk5OTk5IF0KICAgL0NvbnRlbnRzIDMgMCBSCiAgIC9Hcm91cCA8PAogICAg
-ICAvVHlwZSAvR3JvdXAKICAgICAgL1MgL1RyYW5zcGFyZW5jeQogICAgICAvQ1MgL0RldmljZVJHQgog
-ICA+PgogICAvUmVzb3VyY2VzIDIgMCBSCj4+CmVuZG9iagoxIDAgb2JqCjw8IC9UeXBlIC9QYWdlcwog
-ICAvS2lkcyBbIDUgMCBSIF0KICAgL0NvdW50IDEKPj4KZW5kb2JqCjYgMCBvYmoKPDwgL0NyZWF0b3Ig
-KGNhaXJvIDEuMTAuMiAoaHR0cDovL2NhaXJvZ3JhcGhpY3Mub3JnKSkKICAgL1Byb2R1Y2VyIChjYWly
-byAxLjEwLjIgKGh0dHA6Ly9jYWlyb2dyYXBoaWNzLm9yZykpCj4+CmVuZG9iago3IDAgb2JqCjw8IC9U
-eXBlIC9DYXRhbG9nCiAgIC9QYWdlcyAxIDAgUgo+PgplbmRvYmoKeHJlZgowIDgKMDAwMDAwMDAwMCA2
-NTUzNSBmIAowMDAwMDAwNjM1IDAwMDAwIG4gCjAwMDAwMDAzNTEgMDAwMDAgbiAKMDAwMDAwMDAxNSAw
-MDAwMCBuIAowMDAwMDAwMzI5IDAwMDAwIG4gCjAwMDAwMDA0MjMgMDAwMDAgbiAKMDAwMDAwMDcwMCAw
-MDAwMCBuIAowMDAwMDAwODI3IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgOAogICAvUm9vdCA3IDAg
-UgogICAvSW5mbyA2IDAgUgo+PgpzdGFydHhyZWYKODc5CiUlRU9GCoAJ0iwtLi9aJGNsYXNzbmFtZVgk
-Y2xhc3Nlc11OU011dGFibGVEYXRhoy4wMVZOU0RhdGFYTlNPYmplY3TSLC0zNF1OU1BERkltYWdlUmVw
-ozU2MV1OU1BERkltYWdlUmVwWk5TSW1hZ2VSZXDSLC04OVdOU0FycmF5ojgx0iwtOzxeTlNNdXRhYmxl
-QXJyYXmjOzgx0z4/CUBBQldOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOADtIsLURFV05TQ29sb3Ki
-RDHSLC1HSFdOU0ltYWdlokcxXxAPTlNLZXllZEFyY2hpdmVy0UtMVHJvb3SAAQAIABEAGgAjAC0AMgA3
-AEoAUABZAGAAbQB0AHwAfgCDAIUAhwCMAJcAmQCbAJ0AogClAKcAqQCrAK0AuAC/ANEA5ADuAPAA8gD0
-APYA/wEbASABKAWMBY4FkwWeBacFtQW5BcAFyQXOBdwF4AXuBfkF/gYGBgkGDgYdBiEGKAYwBj0GQgZE
-BkYGSwZTBlYGWwZjBmYGeAZ7BoAAAAAAAAACAQAAAAAAAABNAAAAAAAAAAAAAAAAAAAGgg
+YnBsaXN0MDDUAQIDBAUGQkNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QDwcI
+ERYbHCUmJygwMzY8P1UkbnVsbNQJCgsMDQ4PEFYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVwc1dOU0Nv
+bG9ygA4SAMAAAIACgAzSEgkTFVpOUy5vYmplY3RzoRSAA4AL0hIJFxqiGBmABIAFgAoQANUdHh8gCSEb
+IiMkVk5TU2l6ZV8QD05TQml0c1BlclNhbXBsZV8QEE5TQ29sb3JTcGFjZU5hbWVZTlNQREZEYXRhgAaA
+B4AIgAlYezUwLCA0NX1fEBlOU0NhbGlicmF0ZWRSR0JDb2xvclNwYWNlTxEEYCVQREYtMS41CiW17a77
+CjMgMCBvYmoKPDwgL0xlbmd0aCA0IDAgUgogICAvRmlsdGVyIC9GbGF0ZURlY29kZQo+PgpzdHJlYW0K
+eJxtUktSBTEI3OcUuYDIJz+O8Y5gTZXPxXOh3r9KMpCJpdZsaDo00MxHwjy/z3t+fsF8/0oyQHRkKlCQ
+83sWAeGy8CNzPTFz4OAFF/b69DtxFRSFZoHVNaTNlwJjI2mO2IQiJKDKTpi2SJtxaTaKQhdLVhiN85EZ
+YZgyN1CuVklkhJiQPzgT3HiVkw1a1IVjtBke5kq0xr1dGsBdNqZ24ms5py+z8GfYQVWnhndZMPo7jNHM
+BKlr8AEqfe9FHUYvUycWd/6xXJm1uuxyVVnBsfy9Zgn8hIDnNeI61pp0/HO9tz8/yGu6pW8WwXKBCmVu
+ZHN0cmVhbQplbmRvYmoKNCAwIG9iagogICAyMzcKZW5kb2JqCjIgMCBvYmoKPDwKICAgL0V4dEdTdGF0
+ZSA8PAogICAgICAvYTAgPDwgL0NBIDEgL2NhIDEgPj4KICAgPj4KPj4KZW5kb2JqCjUgMCBvYmoKPDwg
+L1R5cGUgL1BhZ2UKICAgL1BhcmVudCAxIDAgUgogICAvTWVkaWFCb3ggWyAwIDAgNDkuNTk5OTk4IDQ0
+Ljc5OTk5OSBdCiAgIC9Db250ZW50cyAzIDAgUgogICAvR3JvdXAgPDwKICAgICAgL1R5cGUgL0dyb3Vw
+CiAgICAgIC9TIC9UcmFuc3BhcmVuY3kKICAgICAgL0NTIC9EZXZpY2VSR0IKICAgPj4KICAgL1Jlc291
+cmNlcyAyIDAgUgo+PgplbmRvYmoKMSAwIG9iago8PCAvVHlwZSAvUGFnZXMKICAgL0tpZHMgWyA1IDAg
+UiBdCiAgIC9Db3VudCAxCj4+CmVuZG9iago2IDAgb2JqCjw8IC9DcmVhdG9yIChjYWlybyAxLjEwLjIg
+KGh0dHA6Ly9jYWlyb2dyYXBoaWNzLm9yZykpCiAgIC9Qcm9kdWNlciAoY2Fpcm8gMS4xMC4yIChodHRw
+Oi8vY2Fpcm9ncmFwaGljcy5vcmcpKQo+PgplbmRvYmoKNyAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZwog
+ICAvUGFnZXMgMSAwIFIKPj4KZW5kb2JqCnhyZWYKMCA4CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAw
+MDYzNSAwMDAwMCBuIAowMDAwMDAwMzUxIDAwMDAwIG4gCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAw
+MDMyOSAwMDAwMCBuIAowMDAwMDAwNDIzIDAwMDAwIG4gCjAwMDAwMDA3MDAgMDAwMDAgbiAKMDAwMDAw
+MDgyNyAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDgKICAgL1Jvb3QgNyAwIFIKICAgL0luZm8gNiAw
+IFIKPj4Kc3RhcnR4cmVmCjg3OQolJUVPRgrSKSorLFokY2xhc3NuYW1lWCRjbGFzc2VzXU5TUERGSW1h
+Z2VSZXCjLS4vXU5TUERGSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIpKjEyV05TQXJyYXmiMS/S
+KSo0NV5OU011dGFibGVBcnJheaM0MS/TNzgJOTo7V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AN
+0ikqPT5XTlNDb2xvcqI9L9IpKkBBV05TSW1hZ2WiQC9fEA9OU0tleWVkQXJjaGl2ZXLRREVUcm9vdIAB
+AAgAEQAaACMALQAyADcASQBPAFgAXwBsAHMAewB9AIIAhACGAIsAlgCYAJoAnAChAKQApgCoAKoArAC3
+AL4A0ADjAO0A7wDxAPMA9QD+ARoFfgWDBY4FlwWlBakFtwXCBcsF0AXYBdsF4AXvBfMF+gYCBg8GFAYW
+BhgGHQYlBigGLQY1BjgGSgZNBlIAAAAAAAACAQAAAAAAAABGAAAAAAAAAAAAAAAAAAAGVA
 </mutableData>
         </image>
         <image name="NSActionTemplate" width="14" height="14"/>

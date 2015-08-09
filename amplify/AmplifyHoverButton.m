@@ -23,9 +23,21 @@
 
 @implementation AmplifyHoverButton
 
-- (void) setImage:(NSImage *)image withTint:(NSColor *)tint {
-    self.normalImage = image;
-    self.hoverImage = [image imageTintedWithColor:tint];
+- (void) setImage:(NSImage *)image withTint:(NSColor *)tint hoverTint:(NSColor *)hoverTint {
+    
+    if (tint) {
+        self.normalImage = [image imageTintedWithColor:tint];
+    } else {
+        self.normalImage = image;
+    }
+    
+    if (hoverTint) {
+        self.hoverImage = [image imageTintedWithColor:hoverTint];
+    } else {
+        self.normalImage = image;
+    }
+    
+    self.alternateImage = self.hoverImage;
     
     // make sure to use the correct image tint when setting the image
     if (self.mouseIn) {

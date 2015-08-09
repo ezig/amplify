@@ -11,6 +11,7 @@
 #import "AmplifyScrollLabel.h"
 #import "AmplifyHoverButton.h"
 #import "Spotify.h"
+#import "AmplifyThemeManager.h"
 #import "NSImage+Transform.h"
 #include <ShortcutRecorder/ShortcutRecorder.h>
 #include <Carbon/Carbon.h>
@@ -27,6 +28,7 @@
 
 @property (weak) IBOutlet NSButton *volumeUp;
 @property (weak) IBOutlet NSButton *volumeDown;
+@property (weak) IBOutlet NSImageView *volumeImage;
 
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSImageView *albumArtView;
@@ -36,7 +38,8 @@
 
 @property (nonatomic, strong) NSString *currentTrackURL;
 
-@property (nonatomic, strong) NSColor *spotifyColor;
+@property (nonatomic, strong) NSColor *normalColor;
+@property (nonatomic, strong) NSColor *hoverColor;
 
 @property (nonatomic, strong) NSImage *albumArt;
 
@@ -49,9 +52,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
     
-    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.theme" options:NSKeyValueObservingOptionInitial context:NULL];
+    // Do view setup here.
+    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.buttonTheme" options:NSKeyValueObservingOptionInitial context:NULL];
+    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.popoverTheme" options:NSKeyValueObservingOptionInitial context:NULL];
     
     [self bindButtons];
     
@@ -65,8 +69,7 @@
     
     self.songScrollLabel.speed = 0.02;
     self.songScrollLabel.text = @"No song";
-    
-    // even though we force the
+
     if ([self.spotify isRunning]) {
         self.songScrollLabel.text = [self getFormattedSongTitle];
         
@@ -84,9 +87,9 @@
         // set the play button image (normally this changes whenever the playback changes, but
         // set it manually once when the view loads)
         if (self.spotify.playerState == SpotifyEPlSPlaying) {
-            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyColor];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.normalColor hoverTint:self.hoverColor];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.normalColor hoverTint:self.hoverColor];
         }
     }
     
@@ -95,6 +98,18 @@
                                                             name:@"com.spotify.client.PlaybackStateChanged"
                                                           object:nil
                                               suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+}
+
+- (void)viewWillAppear {
+    NSString *popoverTheme = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"popoverTheme"];
+    
+    if ([popoverTheme isEqualToString:@"classic"]) {
+        self.view.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    } else if ([popoverTheme isEqualToString:@"vibrant"]) {
+        self.view.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantLight];
+    } else {
+        self.view.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    }
 }
 
 - (void) viewDidAppear {
@@ -115,15 +130,28 @@
 }
 
 - (void) setupImages {
-    self.spotifyColor = [self colorForString:[[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"theme"]];
+    NSString *popoverTheme = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"popoverTheme"];
+    NSString *buttonTheme = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"buttonTheme"];
     
-    self.shuffleImage = [NSImage imageNamed:@"shuffle"];
-    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.spotifyColor];
+    if ([popoverTheme isEqualToString:@"dark"]) {
+        self.songScrollLabel.color = [NSColor lightGrayColor];
+    } else {
+        self.songScrollLabel.color = [NSColor blackColor];
+    }
+    
+    self.normalColor = [AmplifyThemeManager normalColorForTheme:popoverTheme];
+    self.hoverColor = [AmplifyThemeManager hoverColorForButtonTheme:buttonTheme];
+    
+    self.volumeImage.image = [[NSImage imageNamed:@"volume"] imageTintedWithColor:self.normalColor];
+    
+    self.shuffleImage = [[NSImage imageNamed:@"shuffle"] imageTintedWithColor:self.normalColor];
+    self.shuffleTinted = [self.shuffleImage imageTintedWithColor:self.hoverColor];
+    self.shuffleButton.alternateImage = self.shuffleTinted;
     
     // don't set the play button here because we're going to set that in playbackChanged anyway
-    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.spotifyColor];
-    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.spotifyColor];
-    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
+    [self.nextButton setImage:[NSImage imageNamed:@"next"] withTint:self.normalColor hoverTint:self.hoverColor];
+    [self.prevButton setImage:[NSImage imageNamed:@"previous"] withTint:self.normalColor hoverTint:self.hoverColor];
+    [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.normalColor hoverTint:self.hoverColor];
 }
 
 - (void)playbackChanged:(NSNotification *)notification {
@@ -141,12 +169,13 @@
                 });
             }
             
-            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.spotifyColor];
+            [self.playButton setImage:[NSImage imageNamed:@"pause"] withTint:self.normalColor hoverTint:self.hoverColor];
         } else {
-            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.spotifyColor];
+            [self.playButton setImage:[NSImage imageNamed:@"play"] withTint:self.normalColor hoverTint:self.hoverColor];
         }
     } else {
         self.songScrollLabel.text = @"No song";
+        self.albumArtView.image = [NSImage imageNamed:@"noArtworkImage"];
     }
 }
 
@@ -224,15 +253,6 @@
 }
 
 #pragma mark - Private methods
-- (NSColor *)colorForString:(NSString *)color {
-    if ([color isEqualToString:@"classic"]) {
-        return [NSColor colorWithRed:0.5176 green:0.741 blue:0.0 alpha:1.0];
-    } else if ([color isEqualToString:@"new"]) {
-        return [NSColor colorWithRed:0.1373 green:0.8118 blue:0.3725 alpha:1.0];
-    } else {
-        return [NSColor colorWithRed:0.4941 green:0.282352941 blue:0.8980 alpha:1.0];
-    }
-}
 
 - (void)updateArtworkWithCompletion:(void (^)(NSImage *))completion {
     NSImage *album;
@@ -353,7 +373,7 @@
 
 # pragma mark - NSObject
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"values.theme"]) {
+    if ([keyPath isEqualToString:@"values.buttonTheme"] || [keyPath isEqualToString:@"values.popoverTheme"]) {
         [self setupImages];
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

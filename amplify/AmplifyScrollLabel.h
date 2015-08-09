@@ -18,6 +18,7 @@ typedef enum scroll_mode {
 @property (nonatomic, strong) NSString * text;
 @property (nonatomic, assign) NSTimeInterval speed; // smaller is faster
 @property (nonatomic, assign) ScrollMode mode;
+@property (nonatomic, strong) NSColor *color;
 
 - (void)resetPosition;
 

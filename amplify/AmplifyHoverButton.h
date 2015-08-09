@@ -11,6 +11,6 @@
 @interface AmplifyHoverButton : NSButton
 
 // Sets the image as the normal image and tints the image to create the hover image
-- (void) setImage:(NSImage *)image withTint:(NSColor *)tint;
+- (void) setImage:(NSImage *)image withTint:(NSColor *)tint hoverTint:(NSColor *)hoverTint;
 
 @end

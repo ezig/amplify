@@ -23,7 +23,8 @@
 @property (weak) IBOutlet NSButton *enableLaunchOnLogin;
 @property (weak) IBOutlet NSButton *enableNotifications;
 
-@property (weak) IBOutlet NSSegmentedControl *themeControl;
+@property (weak) IBOutlet NSSegmentedControl *buttonThemeControl;
+@property (weak) IBOutlet NSSegmentedControl *popoverThemeControl;
 
 @end
 
@@ -45,14 +46,24 @@
         self.enableNotifications.state = NSOffState;
     }
     
-    NSString *color = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"theme"];
+    NSString *buttonTheme = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"buttonTheme"];
     
-    if ([color isEqualToString:@"classic"]) {
-        self.themeControl.selectedSegment = 0;
-    } else if ([color isEqualToString:@"new"]) {
-        self.themeControl.selectedSegment = 1;
+    if ([buttonTheme isEqualToString:@"classic"]) {
+        self.buttonThemeControl.selectedSegment = 0;
+    } else if ([buttonTheme isEqualToString:@"new"]) {
+        self.buttonThemeControl.selectedSegment = 1;
     } else {
-        self.themeControl.selectedSegment = 2;
+        self.buttonThemeControl.selectedSegment = 2;
+    }
+
+    NSString *popoverTheme = [[[NSUserDefaultsController sharedUserDefaultsController] defaults] valueForKey:@"popoverTheme"];
+    
+    if ([popoverTheme isEqualToString:@"classic"]) {
+        self.popoverThemeControl.selectedSegment = 0;
+    } else if ([popoverTheme isEqualToString:@"vibrant"]) {
+        self.popoverThemeControl.selectedSegment = 1;
+    } else {
+        self.popoverThemeControl.selectedSegment = 2;
     }
     
     NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
@@ -124,13 +135,23 @@
     }
 }
 
-- (IBAction)didChangeTheme:(id)sender {
-    if (self.themeControl.selectedSegment == 0) {
-        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"theme"];
-    } else if (self.themeControl.selectedSegment == 1) {
-        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"new" forKey:@"theme"];
+- (IBAction)didChangePopoverTheme:(id)sender {
+    if (self.popoverThemeControl.selectedSegment == 0) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"popoverTheme"];
+    } else if (self.popoverThemeControl.selectedSegment == 1) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"vibrant" forKey:@"popoverTheme"];
     } else {
-        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"inverted" forKey:@"theme"];
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"dark" forKey:@"popoverTheme"];
+    }
+}
+
+- (IBAction)didChangeButtonTheme:(id)sender {
+    if (self.buttonThemeControl.selectedSegment == 0) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"buttonTheme"];
+    } else if (self.buttonThemeControl.selectedSegment == 1) {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"new" forKey:@"buttonTheme"];
+    } else {
+        [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"night" forKey:@"buttonTheme"];
     }
 }
 

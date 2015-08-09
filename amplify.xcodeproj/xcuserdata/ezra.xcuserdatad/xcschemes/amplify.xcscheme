@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "633C89011B40952100035BFD"
-               BuildableName = "amplify.app"
+               BuildableName = "amplifyforspotify.app"
                BlueprintName = "amplify"
                ReferencedContainer = "container:amplify.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "633C89011B40952100035BFD"
-            BuildableName = "amplify.app"
+            BuildableName = "amplifyforspotify.app"
             BlueprintName = "amplify"
             ReferencedContainer = "container:amplify.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "633C89011B40952100035BFD"
-            BuildableName = "amplify.app"
+            BuildableName = "amplifyforspotify.app"
             BlueprintName = "amplify"
             ReferencedContainer = "container:amplify.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "633C89011B40952100035BFD"
-            BuildableName = "amplify.app"
+            BuildableName = "amplifyforspotify.app"
             BlueprintName = "amplify"
             ReferencedContainer = "container:amplify.xcodeproj">
          </BuildableReference>

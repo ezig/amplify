@@ -107,7 +107,8 @@
     
     [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@YES forKey:@"notifications"];
     
-    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"theme"];
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"buttonTheme"];
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] setValue:@"classic" forKey:@"popoverTheme"];
 }
 
 #pragma mark - NSObject

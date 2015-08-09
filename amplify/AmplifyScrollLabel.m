@@ -18,7 +18,7 @@
 }
 
 @property (nonatomic, strong) NSTimer *scroller;
-@property (nonatomic, strong) NSDictionary *stringAttrs;
+@property (nonatomic, strong) NSMutableDictionary *stringAttrs;
 
 // pixel width of text when drawn with stringAttrs
 @property (nonatomic, assign) CGFloat stringWidth;
@@ -28,6 +28,7 @@
 // scrolling is disabled if the text of the label
 // is smaller than the label and thus fits totally in the label
 @property (nonatomic, assign) BOOL scrollEnabled;
+
 
 @end
 
@@ -48,13 +49,13 @@
 }
 
 - (void)setup {
+    self.color = [NSColor blackColor];
     NSFont *font = [NSFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-    self.stringAttrs = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
     
+    self.stringAttrs = [NSMutableDictionary dictionaryWithObjects:@[font, self.color] forKeys:@[NSFontAttributeName, NSForegroundColorAttributeName]];
     // default scroll mode is on hover
     self.mode = ScrollModeOnHover;
 }
-
 
 - (void)drawRect:(NSRect)dirtyRect {
     [self.text drawAtPoint:_point1 withAttributes:self.stringAttrs];
@@ -111,6 +112,12 @@
             self.scroller = [NSTimer scheduledTimerWithTimeInterval:_speed target:self selector:@selector(moveText:) userInfo:nil repeats:YES];
         }
     }
+}
+
+- (void) setColor:(NSColor *)color {
+    _color = color;
+    
+    self.stringAttrs[NSForegroundColorAttributeName] = _color;
 }
 
 #pragma mark - Private Methods
