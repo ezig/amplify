@@ -24,6 +24,8 @@
 		63D2A6E51B5C23AC00187842 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D2A6E31B5C23AC00187842 /* PreferencesViewController.xib */; };
 		63D3B7721B77D707001F4ACC /* AmplifyThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D3B7711B77D707001F4ACC /* AmplifyThemeManager.m */; };
 		63DD8C921B40A6DD00FBD29D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD8C911B40A6DD00FBD29D /* MainMenu.xib */; };
+		63E3E95D1B781D8900746521 /* AmplifySearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E3E95C1B781D8900746521 /* AmplifySearchManager.m */; };
+		63E3E9611B781DE600746521 /* AmplifySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E3E9601B781DE600746521 /* AmplifySearchResult.m */; };
 		63F625B51B4B6150005D07DA /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F625B41B4B6150005D07DA /* noArtworkImage.png */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,10 @@
 		63D3B7701B77D707001F4ACC /* AmplifyThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifyThemeManager.h; sourceTree = "<group>"; };
 		63D3B7711B77D707001F4ACC /* AmplifyThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifyThemeManager.m; sourceTree = "<group>"; };
 		63DD8C911B40A6DD00FBD29D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		63E3E95B1B781D8900746521 /* AmplifySearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifySearchManager.h; sourceTree = "<group>"; };
+		63E3E95C1B781D8900746521 /* AmplifySearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifySearchManager.m; sourceTree = "<group>"; };
+		63E3E95F1B781DE600746521 /* AmplifySearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplifySearchResult.h; sourceTree = "<group>"; };
+		63E3E9601B781DE600746521 /* AmplifySearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplifySearchResult.m; sourceTree = "<group>"; };
 		63F625B41B4B6150005D07DA /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +160,10 @@
 				63D2A6E31B5C23AC00187842 /* PreferencesViewController.xib */,
 				63D3B7701B77D707001F4ACC /* AmplifyThemeManager.h */,
 				63D3B7711B77D707001F4ACC /* AmplifyThemeManager.m */,
+				63E3E95B1B781D8900746521 /* AmplifySearchManager.h */,
+				63E3E95C1B781D8900746521 /* AmplifySearchManager.m */,
+				63E3E95F1B781DE600746521 /* AmplifySearchResult.h */,
+				63E3E9601B781DE600746521 /* AmplifySearchResult.m */,
 				633C89051B40952100035BFD /* Supporting Files */,
 			);
 			path = amplify;
@@ -310,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E3E95D1B781D8900746521 /* AmplifySearchManager.m in Sources */,
 				63D3B7721B77D707001F4ACC /* AmplifyThemeManager.m in Sources */,
 				63B0132F1B49CC0600DD6EC4 /* AmplifyScrollLabel.m in Sources */,
 				637760CB1B52E83900838707 /* NSImage+Transform.m in Sources */,
@@ -318,6 +329,7 @@
 				63C4FB591B422A2600ECA356 /* AmplifyViewController.m in Sources */,
 				63D2A6E41B5C23AC00187842 /* PreferencesViewController.m in Sources */,
 				6315DF091B53115200884624 /* AmplifyHoverButton.m in Sources */,
+				63E3E9611B781DE600746521 /* AmplifySearchResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
