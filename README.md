@@ -1,4 +1,4 @@
-# amplify ![alt tag] (amplify/Images.xcassets/statusIcon.imageset/icon@2x.png)
+# amplify ![alt tag](amplify/Images.xcassets/statusIcon.imageset/icon@2x.png)
 
 ###### take control of spotify
-amplify is available free for download on the [Mac App Store](https://itunes.apple.com/us/app/amplify-for-spotify/id1025490895).
+amplify is available free for download [here](https://github.com/ezig/amplify/releases/tag/v1.0).
